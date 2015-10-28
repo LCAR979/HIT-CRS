@@ -1,14 +1,14 @@
 class ApplicantV1 < ActiveRecord::Migration
   def up
   	create_table :applicants do |t|
-  		t.string	:username
-  		t.string 	:userid
-  		t.string 	:phone
-  		t.string 	:department
-  		t.string 	:email
-  		t.string	:name
-  		t.string	:password
-  		t.boolean 	:isvalid
+  		t.string	:username, null: false
+  		t.string 	:studentid, null: false
+  		t.string 	:phone, null: false
+  		t.string 	:department, null: false
+  		t.string 	:email, null: false
+  		t.string	:name, null:false
+  		t.string	:password, null:false
+  		t.boolean 	:isvalid, null:false
   	end
   end
 
