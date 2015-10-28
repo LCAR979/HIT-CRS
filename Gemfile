@@ -37,3 +37,8 @@ gem 'bootstrap-sass', '2.0.4'
 
 # To use debugger
 # gem 'debugger'
+group :development, :test do
+  gem "rspec-rails",">=2.0.1"
+  gem "cucumber-rails"
+  gem "database_cleaner"
+end 
