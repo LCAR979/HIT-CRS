@@ -57,5 +57,5 @@ HITCrs::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   resources :applications
   resources :staffs
-
+  match '/signup', to: 'staffs#new'
 end
