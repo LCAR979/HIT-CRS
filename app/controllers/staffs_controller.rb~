@@ -16,6 +16,6 @@ class StaffsController < ApplicationController
 	def edit 
 	end
 	def hello(paras) 
-		puts paras
+		puts patas
 	end
 end
