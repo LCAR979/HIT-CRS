@@ -61,18 +61,8 @@ HITCrs::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   resources :applications
   resources :staffs
-  #static pages
-  get '/', to: 'static_pages#index' 
-  get '/index', to: 'static_pages#index'  
-  get '/feature', to: 'static_pages#feature'  
-  get '/about', to: 'static_pages#about'
-  get '/help', to: 'static_pages#help'  
   get '/signup', to: 'static_pages#signup'
-  get '/login', to: 'static_pages#login'
-  get '/home', to: 'static_pages#home'
-
-  #about signup and signin
-  post '/save', to: 'overall_controll#save'
-  post '/check_login', to: 'overall_controll#check_login' 
+  get 'home', to: 'static_pages#index'
+  post '/save', to: 'overall_controll#signup'
   
 end

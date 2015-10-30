@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<%= stylesheet_link_tag "index2" %>
+	
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">CRS</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">首页 <span class="sr-only">(current)</span></a></li>
+        <li><a href="feature.html">特色</a></li>
+		<li><a href="help.html">帮助</a></li>
+		<li><a href="about.html">关于我们</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	<form class="table1" action="/save" method="post">
+		<div class="signup">
+		<p>欢迎注册CRS</p>
+		</div>
+		<div class="input-group">
+	<span class="input-group-addon" id="basic-addon1">昵称</span>
+  <input type="text" name="username" />
+</div>&nbsp&nbsp&nbsp&nbsp&nbsp;*允许使用数字，字母，中英文字符
+	</br>
+	</br>
+	<div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">密码</span>
+  <input type="text" name="password" />
+</div>&nbsp&nbsp&nbsp&nbsp&nbsp;*允许使用数字，字母，中英文字符
+	</br>
+	</br>
+	<div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">姓名</span>
+  <input type="text" name="name" />
+</div>&nbsp&nbsp&nbsp&nbsp&nbsp;*必须填写真实姓名
+	</br>
+	</br>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon1">电话</span>
+	  <input type="text" name="phone" />
+	</div>&nbsp&nbsp&nbsp&nbsp&nbsp;*填写常用电话
+	</br>
+	</br>
+	<div class="input-group">
+	  <span class="input-group-addon" id="basic-addon1">邮箱</span>
+	  <input type="text" name="email" />
+	</div>&nbsp&nbsp&nbsp&nbsp&nbsp;*填写常用邮箱
+	
+	</br>
+	</br>
+	<p>&nbsp&nbsp&nbsp&nbsp&nbsp;身份：
+	</br>
+	&nbsp&nbsp&nbsp&nbsp&nbsp;
+	<input type="radio" name="work" value="student" onclick="change()"/>学生&nbsp;&nbsp;&nbsp;
+	<input type="radio" name="work" value="staff" onclick="change()"/>教室管理老师
+	</p>
+	<div id="stNum">
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1">学号</span>
+		  <input type="text" name="studentid" />
+		</div>
+		  &nbsp&nbsp&nbsp&nbsp&nbsp;*填写真实学号
+		
+	</div>
+	<div id="staffNum">
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1">工号</span>
+		  <input type="text" name="staffid" />
+		</div>
+		  &nbsp&nbsp&nbsp&nbsp&nbsp;*填写真实工号
+	</div>
+
+	</br>
+	</br>
+	
+	<div id="dep">
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1">学院</span>
+		  <input type="text" name="department" />
+		</div>
+		  &nbsp&nbsp&nbsp&nbsp&nbsp;*填写学院
+	</div>
+	
+	<div class="A">
+	<input name="commit" type="submit" value="submit" />
+	</div>
+	</form>
+	<div class="copyright">
+	&copy; Copyright Galieo
+	</div>
+	<%= javascript_include_tag "hidden" %>
+	<%= javascript_include_tag "jquery-2.1.4" %>
+	<%= javascript_include_tag "bootstrap" %>
+</body>
+</html>
+	
