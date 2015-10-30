@@ -1,5 +1,4 @@
 source 'https://ruby.taobao.org'
-
 gem 'rails', '3.2.16'
 
 # Bundle edge Rails instead:
@@ -41,4 +40,5 @@ group :development, :test do
   gem "rspec-rails",">=2.0.1"
   gem "cucumber-rails"
   gem "database_cleaner"
+  gem "capybara"
 end 
