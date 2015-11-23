@@ -34,7 +34,7 @@ class OverallControllController < ApplicationController
 				redirect_to("/login")
 			end
 		else
-			redrict_to("/login")
+			redirect_to("/login")
 		end 
 	end
 	

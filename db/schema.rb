@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151028150344) do
+ActiveRecord::Schema.define(:version => 20151123082520) do
 
   create_table "applicants", :force => true do |t|
     t.string  "username",   :null => false
@@ -22,6 +22,74 @@ ActiveRecord::Schema.define(:version => 20151028150344) do
     t.string  "name",       :null => false
     t.string  "password",   :null => false
     t.boolean "isvalid",    :null => false
+  end
+
+  create_table "requests", :force => true do |t|
+    t.string  "name"
+    t.string  "department"
+    t.string  "location"
+    t.string  "studentid"
+    t.string  "phone"
+    t.string  "description"
+    t.integer "numAttendents"
+    t.integer "building"
+    t.integer "size"
+    t.boolean "media"
+    t.integer "week"
+    t.integer "time"
+    t.integer "status"
+    t.string  "comment"
+    t.string  "teachername"
+    t.string  "teacherphone"
+  end
+
+  create_table "rooms", :force => true do |t|
+    t.integer "week"
+    t.string  "location"
+    t.integer "building"
+    t.integer "size"
+    t.integer "day1course1"
+    t.integer "day1course3"
+    t.integer "day1course5"
+    t.integer "day1course7"
+    t.integer "day1course9"
+    t.integer "day1course11"
+    t.integer "day2course1"
+    t.integer "day2course3"
+    t.integer "day2course5"
+    t.integer "day2course7"
+    t.integer "day2course9"
+    t.integer "day2course11"
+    t.integer "day3course1"
+    t.integer "day3course3"
+    t.integer "day3course5"
+    t.integer "day3course7"
+    t.integer "day3course9"
+    t.integer "day3course11"
+    t.integer "day4course1"
+    t.integer "day4course3"
+    t.integer "day4course5"
+    t.integer "day4course7"
+    t.integer "day4course9"
+    t.integer "day4course11"
+    t.integer "day5course1"
+    t.integer "day5course3"
+    t.integer "day5course5"
+    t.integer "day5course7"
+    t.integer "day5course9"
+    t.integer "day5course11"
+    t.integer "day6course1"
+    t.integer "day6course3"
+    t.integer "day6course5"
+    t.integer "day6course7"
+    t.integer "day6course9"
+    t.integer "day6course11"
+    t.integer "day7course1"
+    t.integer "day7course3"
+    t.integer "day7course5"
+    t.integer "day7course7"
+    t.integer "day7course9"
+    t.integer "day7course11"
   end
 
   create_table "staffs", :force => true do |t|
