@@ -11,10 +11,11 @@ class RequestsController < ApplicationController
   	def create
 	    @request = Request.new(params[:request])
 	    @request.applicant_id = params[:applicant_id]
+	    @applicant = Request.find(params[:applicant_id])
 	    @request.status = 3  			 #initial status: processing
 	    respond_to do |format|
 	      if @request.save
-	        format.html { redirect_to "/rooms" , notice: 'request was successfully created.' }
+	        format.html { redirect_to applicant_path(@applicant) , notice: 'Request was successfully created.' }
 	        format.json { render json: @request, status: :created, location: @request }
 	      else
 	        format.html { render action: "new" }

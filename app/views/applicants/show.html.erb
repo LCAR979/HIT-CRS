@@ -1,2 +1,5 @@
 <p><%= @applicant.name%> is logging!</p>
+<% if flash[:notice]%>
+	<h3><%=flash[:notice]%> </h3>
+<%end%>
 <td><%= link_to 'new request', new_applicant_request_path(@applicant)%></td>
