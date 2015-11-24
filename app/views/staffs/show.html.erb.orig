@@ -1,15 +1,10 @@
 <p><%= @staff.name%> is logging!</p>
+<<<<<<< HEAD
 <p> Requests in Processing </p> 
 <table id="requests-list">
   <tr>
   </tr>
   <% @myrequests.each do |request| %> 
-<h1>Listing in processing rooms</h1>
-<table id="requests-list">
-  <tr>
-  </tr>
-  <% @requests.each do |request| %> 
-    <% @attributes.each do |attr| %>
         <% if request.status ==3%> 
             <td>Room status: processing </td>
             <td>size: <%= @roomsize[request.size] %></td>
@@ -20,9 +15,7 @@
         <%end%>
     <%end%>
     </tr>
-            <td><%= link_to 'Show', request %></td>
-        <%end%>
-    <%end%>
-    </tr>
-  <% end %>
 </table>
+=======
+<td><%= link_to 'new request', new_staff_request_path(@staff)%></td>
+>>>>>>> merged

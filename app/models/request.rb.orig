@@ -1,5 +1,9 @@
 class Request < ActiveRecord::Base
 	#set relationship with room
+<<<<<<< HEAD
 	attr_accessible :name,:department, :location,:studentid, :phone, :description, :numAttendents, :building ,:size, :media, :week, :time, :status, :comment, :teachername, :teacherphone, :day
+=======
+	attr_accessible :name,:department, :location,:studentid, :phone, :description, :numAttendents, :building ,:size, :media, :week, :time, :status, :comment, :teachername, :teacherphone
+>>>>>>> merged
 	belongs_to :applicant
 end

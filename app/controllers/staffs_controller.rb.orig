@@ -1,5 +1,6 @@
 class StaffsController < ApplicationController
 	#This controller is designed for teacher staff activities
+<<<<<<< HEAD
 	def requestProc
 		@roomsize = [42, 72, 120, 260]
 		@Buildings = ['ZhengXin', 'GeWu']
@@ -50,6 +51,7 @@ class StaffsController < ApplicationController
 	 #    	format.json{ render json: @requests }
 	 #    end 
 	    #-------------------------------------------------------
+=======
 	def index
 		#list all the in processing request
 		raise params.inspect
@@ -66,6 +68,7 @@ class StaffsController < ApplicationController
 	    	format.html # index.html.erb
 	    	format.json{ render json: @requests }
 	    end 
+>>>>>>> merged
     end
     # def auditrequest
     # 	@request = Request.find(params[:id])
@@ -86,6 +89,7 @@ class StaffsController < ApplicationController
     # 	end	
     # end
 	def show
+<<<<<<< HEAD
 		#changed !
 		# @roomsize = [42, 72, 120, 260]
 		# @Buildings = ['ZhengXin', 'GeWu']
@@ -96,11 +100,13 @@ class StaffsController < ApplicationController
 	 #    	format.html # index.html.erb
 	 #    	format.json{ render json: @staff}
 	 #    end 	
+=======
 		@staff = Staff.find(params[:id])
 		respond_to do |format|
 	    	format.html # index.html.erb
 	    	format.json{ render json: @staff }
 	    end 	
+>>>>>>> merged
 	end
 	def new	
 	end

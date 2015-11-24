@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <body>
@@ -84,6 +85,7 @@
 		</tr>
 	  <% end %>
 	</table>
+=======
 <h1>Listing rooms</h1>
 <table id="room-list">
   <tr>
@@ -109,5 +111,6 @@
     </tr>
   <% end %>
 </table>
+>>>>>>> merged
 
 <br />
