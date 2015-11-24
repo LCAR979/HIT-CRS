@@ -170,3 +170,6 @@ section {
 {
 	background-image: url("about-1.jpg"); 
 }
+a{
+	text-decoration: none;
+}

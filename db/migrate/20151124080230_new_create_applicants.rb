@@ -1,6 +1,6 @@
 class NewCreateApplicants < ActiveRecord::Migration
   def up
-  	create_table :applicants do |t| 
+  	create_table 'applicants' do |t| 
  		t.string	:username  		
  		t.string 	:studentid		
  		t.string 	:phone 		

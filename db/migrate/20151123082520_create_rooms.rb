@@ -1,6 +1,6 @@
 class CreateRooms < ActiveRecord::Migration
   def up
-  	create_table :rooms do |t|
+  	create_table "rooms" do |t|
   		t.integer   :week	 		#week is between 1~18
   		t.string 	:location		#room location: different building, differet format
   		t.integer   :building 		#build inter[0-?] current: 0=>zhengxin, 1=>GeWu
@@ -52,6 +52,6 @@ class CreateRooms < ActiveRecord::Migration
   end
 
   def down
-  	drop_table 'requests'
+  	drop_table "rooms"
   end
 end
