@@ -11,17 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151124030053) do
+ActiveRecord::Schema.define(:version => 20151124080230) do
 
   create_table "applicants", :force => true do |t|
-    t.string  "username",   :null => false
-    t.string  "studentid",  :null => false
-    t.string  "phone",      :null => false
-    t.string  "department", :null => false
-    t.string  "email",      :null => false
-    t.string  "name",       :null => false
-    t.string  "password",   :null => false
-    t.boolean "isvalid",    :null => false
+    t.string  "username"
+    t.string  "studentid"
+    t.string  "phone"
+    t.string  "department"
+    t.string  "email"
+    t.string  "name"
+    t.string  "password"
+    t.boolean "isvalid"
   end
 
   create_table "requests", :force => true do |t|
@@ -41,7 +41,8 @@ ActiveRecord::Schema.define(:version => 20151124030053) do
     t.string  "comment"
     t.string  "teachername"
     t.string  "teacherphone"
-    t.string  "auditStaffname"
+    t.integer "applicant_id"
+    t.integer "staff_id"
   end
 
   create_table "rooms", :force => true do |t|

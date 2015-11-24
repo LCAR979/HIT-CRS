@@ -1,7 +1,5 @@
 HITCrs::Application.routes.draw do
-  get "static_pages/home"
 
-  get "static_pages/help"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -63,6 +61,16 @@ HITCrs::Application.routes.draw do
   resources :staffs
   resources :rooms
   resources :requests
+  resources :applicants
+  #-----------------------
+  #nested routes
+  resources :staffs do
+    resources :requests
+  end
+   resources :applicants do
+    resources :requests
+  end
+  #-----------------------
   #static pages
   get '/', to: 'static_pages#index' 
   get '/index', to: 'static_pages#index'  
@@ -72,7 +80,8 @@ HITCrs::Application.routes.draw do
   get '/signup', to: 'static_pages#signup'
   get '/login', to: 'static_pages#login'
   get '/home', to: 'static_pages#home'
-
+  get "static_pages/home"
+  get "static_pages/help"
   #about signup and signin
   post '/save', to: 'overall_controll#save'
   post '/check_login', to: 'overall_controll#check_login' 

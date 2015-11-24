@@ -1,13 +1,16 @@
 class RequestsController < ApplicationController
 	def new
 	  @request = Request.new
+	  @applicant = Applicant.find(params[:applicant_id])
+	  #raise params
       respond_to do |format|
 	      format.html # new.html.erb
-	      format.json { render json: @request }
+	      format.json { render json: @request}
       end
   	end
   	def create
 	    @request = Request.new(params[:request])
+	    @request.applicant_id = params[:applicant_id]
 	    @request.status = 3  			 #initial status: processing
 	    respond_to do |format|
 	      if @request.save

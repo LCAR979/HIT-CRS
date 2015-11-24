@@ -19,19 +19,19 @@ class OverallControllController < ApplicationController
 	def check_login
 		if params[:work] == "student"
 			hashpassword = secure_hash(params[:password])
-			searchRe = Applicant.find_by_username(params[:username])
-			if hashpassword == searchRe.password
-				redirect_to("/home")
+			@searchRe = Applicant.find_by_username(params[:username])
+			if hashpassword == @searchRe.password
+				redirect_to applicant_path(@searchRe)
 			else
 				redirect_to("/login")
 			end
 		elsif params[:work] == "staff"
 			hashpassword = secure_hash(params[:password])
-			searchRe = Staff.find_by_username(params[:username])
-			if hashpassword == searchRe.password
+			@searchRe = Staff.find_by_username(params[:username])
+			if hashpassword == @searchRe.password
 			#	redirect_to("/home")
-			# 	successful logging in staff to the staffs main pages
-				redirect_to('/staffs')
+			# 	successful logging in staff to the certain staffs main pages
+				redirect_to staff_path(@searchRe)
 			else
 				redirect_to("/login")
 			end

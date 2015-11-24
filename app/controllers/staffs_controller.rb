@@ -36,6 +36,11 @@ class StaffsController < ApplicationController
     # 	end	
     # end
 	def show
+		@staff = Staff.find(params[:id])
+		respond_to do |format|
+	    	format.html # index.html.erb
+	    	format.json{ render json: @staff }
+	    end 	
 	end
 	def new	
 	end
