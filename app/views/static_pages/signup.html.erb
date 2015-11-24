@@ -1,0 +1,78 @@
+﻿<form class="form-horizontal" action="/save" method="post" role="form" data-toggle="validator">
+	<div class="form-group">
+    <label for="username" class="control-label col-xs-2" >Username</label>
+    <div class="col-xs-10">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username" pattern="^[0-9A-Za-z_]{5,14}" data-error="5-14 characters,digits and '-' "  required>
+  	</div>
+    <!-- <span class="glyphicon form-control-feedback" aria-hidden="true"></span> -->
+    <span class="help-block with-errors"></span>
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="control-label col-xs-2">Password</label>
+    <div class="col-xs-10">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" pattern="^\w{6,}" data-error="Minimum of 6 characters"  required>
+  	</div>
+    <span class="help-block with-errors"></span>
+  </div>
+
+  <div class="form-group">
+    <label for="name" class="control-label col-xs-2">Real Name</label>
+    <div class="col-xs-10">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Real Name">
+  	</div>
+    <span class="help-block with-errors">Real name required</span>
+  </div>
+
+   <div class="form-group">
+    <label for="phone" class="control-label col-xs-2">Phone</label>
+    <div class="col-xs-10">
+        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone" pattern="^[0-9]{11}$" data-error="seems not a correct phone number" required>
+  	</div>
+    <span class="help-block with-errors"></span>
+  </div>
+
+   <div class="form-group">
+    <label for="email" class="control-label col-xs-2">Email</label>
+    <div class="col-xs-10">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email" data-error="Seems not a correct email address" required>
+  	</div>
+    <span class="help-block with-errors"></span>
+  </div>
+
+  <div class="form-group" id="Identity">
+    <label for="identity" class="control-label col-xs-2 radio inline">Identity</label>
+    <div class="col-xs-10">
+      <label class="radio-inline"> <input type="radio" name="identity" class="form-control radio inline" value="student" onclick="change()" />Student </label>
+       <label class="radio-inline"> <input type="radio" name="identity" class="form-control radio inline" value="staff" onclick="change()" />Staff</label>
+    </div>
+  </div>
+
+   <div class="form-group" id="stNum">
+    <label for="studentid" class="control-label col-xs-2">Student ID</label>
+    <div class="col-xs-10">
+        <input type="text" class="form-control" id="studentid" name="studentid" placeholder="Student ID">
+  	</div>
+  </div>
+
+   <div class="form-group" id="staffNum">
+    <label for="staffid" class="control-label col-xs-2">Staff ID</label>
+    <div class="col-xs-10">
+        <input type="text" class="form-control" id="staffid" name="staffid" placeholder="Staff ID">
+  	</div>
+  </div>
+
+  <div class="form-group" id="dep">
+    <label for="department" class="control-label col-xs-2">Department</label>
+    <div class="col-xs-10">
+        <input type="text" class="form-control" id="department" name="department" placeholder="Department">
+  	</div>
+  </div>
+	
+  <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+            <button type="submit"  class="btn btn-primary">Signup</button>
+        </div>
+  </div>
+
+</form>

@@ -1,0 +1,28 @@
+﻿<form class="form-horizontal" action="/check_login" method="post" role="form" data-toggle="validator">
+  <div class="form-group">
+    <label for="username" class="control-label col-xs-2" >Username</label>
+    <div class="col-xs-10">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="control-label col-xs-2" >Password</label>
+    <div class="col-xs-10">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+    </div>
+  </div>
+
+<div class="form-group" id="Identity">
+  <label for="identity" class="control-label col-xs-2 radio inline">Identity</label>
+  <div class="col-xs-10">
+    <label class="radio-inline"> <input type="radio" name="identity" class="form-control radio inline" value="student"  onclick="change()" />Student</label>
+    <label class="radio-inline"> <input type="radio" name="identity" class="form-control radio inline" value="staff"  onclick="change()" />Staff</label>
+  </div>
+</div>
+  <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+            <button type="submit"  class="btn btn-primary">Login</button>
+        </div>
+  </div>
+</form>
