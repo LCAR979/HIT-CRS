@@ -61,6 +61,8 @@ HITCrs::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   resources :applications
   resources :staffs
+  resources :rooms
+  resources :requests
   #static pages
   get '/', to: 'static_pages#index' 
   get '/index', to: 'static_pages#index'  

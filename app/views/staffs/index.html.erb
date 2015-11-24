@@ -1,0 +1,18 @@
+<h1>Listing in processing rooms</h1>
+<table id="requests-list">
+  <tr>
+  </tr>
+  <% @requests.each do |request| %> 
+    <% @attributes.each do |attr| %>
+        <% if request.status ==3%> 
+            <td>Room status: processing </td>
+            <td>size: <%= @roomsize[request.size] %></td>
+            <td>building: <%= @Buildings[request.building] %></td>
+            <td>location: <%= request.location%></td>
+            <td>week: <%= request.week %></td>
+            <td><%= link_to 'Show', request %></td>
+        <%end%>
+    <%end%>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,27 @@
+<p>
+  <b>Room:</b>
+  location:
+  <%= @room.location %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @roomsize[@room.size] %>
+</p>
+<p>
+  <b> Building</b>
+  <%= @Buildings[@room.building]%>
+</p>
+//How to show room's status at some certain time
+  <b>Status:</b>
+  <% if @room.day1course1 ==0 %>
+      <td> Available </td>
+  <% elsif @room.day1course1 ==1 %>
+      <td> in use </td>
+  <% else %>
+      <td> processing </ts>
+  <% end %>
+
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Back', rooms_path %>

@@ -3,8 +3,8 @@ class CreateRooms < ActiveRecord::Migration
   	create_table :rooms do |t|
   		t.integer   :week	 		#week is between 1~18
   		t.string 	:location		#room location: different building, differet format
-  		t.integer   :building 		#build inter[1-?] current: 1=>zhengxin, 2=>GeWu
-  		t.integer 	:size		 	#size is [1~4], 1=>42, 2=>72, 3=>120, 4=>260
+  		t.integer   :building 		#build inter[0-?] current: 0=>zhengxin, 1=>GeWu
+  		t.integer 	:size		 	#size is [0~3], 0=>42, 1=>72, 2=>120, 3=>260
   		#room time using status: 7*12 = 84 interval(we save 42)
   		t.integer :day1course1      # 0=> 'available', 1=>'in use', 2=>'processing'
 		t.integer :day1course3

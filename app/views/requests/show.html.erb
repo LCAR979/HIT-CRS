@@ -1,0 +1,16 @@
+<p>
+  <b>Room:</b>
+  location:
+  <%= @request.location %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @roomsize[@request.size] %>
+</p>
+<p>
+  <b> Building</b>
+	<%= @Buildings[@request.building]%>
+</p>
+//need to append new attributes!!
+<%= link_to 'Back', rooms_path %>

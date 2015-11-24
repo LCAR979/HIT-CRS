@@ -26,10 +26,12 @@ class OverallControllController < ApplicationController
 				redirect_to("/login")
 			end
 		elsif params[:work] == "staff"
-			hashpassword = secure_hash(params[:password])[0]
+			hashpassword = secure_hash(params[:password])
 			searchRe = Staff.find_by_username(params[:username])
 			if hashpassword == searchRe.password
-				redirect_to("/home")
+			#	redirect_to("/home")
+			# 	successful logging in staff to the staffs main pages
+				redirect_to('/staffs')
 			else
 				redirect_to("/login")
 			end
@@ -37,7 +39,6 @@ class OverallControllController < ApplicationController
 			redirect_to("/login")
 		end 
 	end
-	
 	def secure_hash(string)
 		Digest::SHA2.hexdigest(string)
 	end
