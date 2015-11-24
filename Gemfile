@@ -1,9 +1,6 @@
 source 'https://ruby.taobao.org'
 gem 'rails', '3.2.16'
 
-group :development do
-	gem 'sqlite3','1.3.5'
-end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -14,15 +11,18 @@ group :assets do
 end
 
 gem 'jquery-rails','2.0.2'
-gem 'bootstrap-sass', '2.0.4'
-
+gem 'bootstrap-sass'
 
 group :development, :test do
+  gem 'sqlite3','1.3.5'
   gem "rspec-rails",">=2.0.1"
-  gem "cucumber-rails"
+  gem "cucumber-rails",:require=>false
   gem "database_cleaner"
-  gem "capybara"
 end 
+
+group :test do
+  gem 'capybara' 
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

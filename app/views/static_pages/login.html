@@ -1,58 +1,28 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-  <%= stylesheet_link_tag "index3" %>
-</head>
-<body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">CRS</a>
+﻿<form class="form-horizontal" action="/check_login" method="post" role="form" data-toggle="validator">
+  <div class="form-group">
+    <label for="username" class="control-label col-xs-2" >Username</label>
+    <div class="col-xs-10">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
     </div>
+  </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="index.html">首页 <span class="sr-only">(current)</span></a></li>
-        <li><a href="feature.html">特色</a></li>
-		<li><a href="help.html">帮助</a></li>
-		<li><a href="about.html">关于我们</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-<form class="table1" action="/check_login" method="post">
-	<div class="login">
-	<p>欢迎登录CRS</p>
-	</div>
-	</br>
-	<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">昵称</span>
-  <input type="text" name="username" />
-</div>&nbsp&nbsp&nbsp&nbsp&nbsp;
-	</br>
-	</br>
-	<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">密码</span>
-  <input type="text" name="password" />
+  <div class="form-group">
+    <label for="password" class="control-label col-xs-2" >Password</label>
+    <div class="col-xs-10">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+    </div>
+  </div>
+
+<div class="form-group" id="Identity">
+  <label for="identity" class="control-label col-xs-2 radio inline">Identity</label>
+  <div class="col-xs-10">
+    <label class="radio-inline"> <input type="radio" name="identity" class="form-control radio inline" value="student"  onclick="change()" />Student</label>
+    <label class="radio-inline"> <input type="radio" name="identity" class="form-control radio inline" value="staff"  onclick="change()" />Staff</label>
+  </div>
 </div>
-</br>
-&nbsp&nbsp&nbsp&nbsp&nbsp;
-<input type="radio" name="work" value="student" />学生&nbsp;&nbsp;&nbsp;
-<input type="radio" name="work" value="staff" />教室管理老师
-<div class="A">
-	<input type="submit"/>登录
-	</div>
-	</form>
-	<div class="copyright">
-	&copy; Copyright Galieo
-	</div>
-</body>
-</html>
+  <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+            <button type="submit"  class="btn btn-primary">Login</button>
+        </div>
+  </div>
+</form>

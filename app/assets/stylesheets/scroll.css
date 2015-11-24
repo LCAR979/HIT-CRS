@@ -1,0 +1,172 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
+	box-sizing: border-box;
+}
+
+ul {
+	color:black;
+}
+
+html, body, article, section {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+article {
+	position: absolute;
+	transition:transform 1s ease;
+}
+
+section {
+	position: absolute;
+	padding: 40px 80px;
+	transition:transform 1s ease;
+}
+
+
+.content-nav {
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	width: 40px;
+	z-index: 99;
+}
+
+.content-nav ul li a{
+	display: block;
+	width: 10px;
+	height: 10px;
+	background-color: white;
+	border-radius: 5px;
+	margin: 0 auto 20px auto;
+	cursor: pointer;
+	position: relative;
+}
+
+.content-nav ul li.active a{
+	width: 15px;
+	height: 15px;
+	background-color: black;
+	border-radius: 10px;
+}
+.inner {
+	height: 100%;
+	padding: 0 100px;
+	color: white;
+}
+
+.inner-title {
+	text-align: center;
+	font-size: 40px;
+	
+}
+
+/**/
+.inner-content{
+	padding-top: 30px;
+	font-size: 1.2em;
+	color: black;
+}
+.inner-sub {
+	padding: 10px 0 10px 0;
+}
+
+.inner-sub ul {
+	list-style: disc;
+}
+
+.inner-sub-title{
+	font-size: 1.5em;
+	padding: 5px 0 5px 0;
+}
+
+.inner-sub-content {
+	padding: 5px 0 5px 0px;
+}
+.inner-content::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.move-on {
+	transform:translate(0%, 0%);
+}
+
+.move-up {
+	transform:translate(0%, -100%);
+}
+
+.move-down {
+	transform:translate(0%, 100%);
+}
+
+.move-left {
+	transform:translate(-100%, 0%);
+}
+
+.move-right {
+	transform:translate(100%, 0%);
+}
+/*end of common style*/
+
+/*theme 1*/
+.a1 nav {
+  margin-top: -53px;
+}
+
+.s11 ul {
+  margin-left: 20px;
+}
+
+.inner-title {
+  text-shadow: 5px 6px #1eb368;
+}
+
+#index-1
+{
+	background-image: url("index-1.jpg");
+}
+#index-2
+{
+	background-image: url("index-2.jpg");
+}
+#index-3
+{
+	background-image: url("index-3.jpg"); 
+}
+#index-4
+{
+	background-image: url("index-4.jpg"); 
+}
+#feature-1
+{
+	background-image: url("feature-1.jpg"); 
+}
+#feature-2
+{
+	background-image: url("feature-2.jpg"); 
+}
+#feature-3
+{
+	background-image: url("feature-3.jpg"); 
+}
+#feature-4
+{
+	background-image: url("feature-4.jpg"); 
+}
+#help-1
+{
+	background-image: url("help-1.jpg"); 
+}
+#help-2
+{
+	background-image: url("help-2.jpg"); 
+}
+#about-1
+{
+	background-image: url("about-1.jpg"); 
+}

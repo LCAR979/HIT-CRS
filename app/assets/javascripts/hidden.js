@@ -1,5 +1,5 @@
 function change(){
-        var st=document.getElementsByName("work");
+        var st=document.getElementsByName("identity");
 		//var staff=document.getElementByValue("staff");
 		var dep=document.getElementById("dep");
 		var stNum=document.getElementById("stNum");

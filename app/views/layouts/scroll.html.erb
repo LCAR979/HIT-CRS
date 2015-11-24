@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<title>HIT-CRS</title>	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="utf8">	
+	<%= stylesheet_link_tag "bootstrap"%>
+	<%= stylesheet_link_tag "scroll" %>
+	<!-- <%= stylesheet_link_tag "custom" %>-->
+	<%= javascript_include_tag "scroll" %> 
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<%= render 'layouts/header' %>
+
+	<article class="a1 move-on">
+		<%= yield %>
+	</article>
+	
+	<%= render 'layouts/footer' %>
+</body>
+</html>

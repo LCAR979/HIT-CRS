@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<title>HIT-CRS</title>	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="utf8">	
+	<%= stylesheet_link_tag "bootstrap"%>
+	<%= stylesheet_link_tag "custom" %>
+	<%= javascript_include_tag "hidden" %> 
+	<%= javascript_include_tag "validator" %> 
+	<%= csrf_meta_tags %>
+</head>
+<body id="form">
+	<%= render 'layouts/header' %>
+	<div class="row">
+		<div class="col-xs-offset-4 col-xs-7">
+		<%= yield %>
+		</div>
+	</div>
+	<%= render 'layouts/footer' %>
+</body>
+</html>
