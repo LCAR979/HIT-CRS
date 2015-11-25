@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  layout "scroll"
   def index
   end
   def home
@@ -10,7 +11,9 @@ class StaticPagesController < ApplicationController
   def feature
   end
   def signup
+    render :layout => "form"
   end
   def login
+    render :layout => "form"
   end
 end
