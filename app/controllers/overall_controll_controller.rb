@@ -31,7 +31,7 @@ class OverallControllController < ApplicationController
 			if @searchRe == nil || (hashpassword != @searchRe.password)
 			#if hashpassword == @searchRe.password
 				redirect_to("/login")
-			else
+			elsif hashpassword == @searchRe.password
 				redirect_to applicant_path(@searchRe)
 			end
 		elsif params[:work] == "staff"
@@ -41,7 +41,7 @@ class OverallControllController < ApplicationController
 			#	redirect_to("/home")
 			# 	successful logging in staff to the certain staffs main pages
 				redirect_to("/login")
-			else
+			elsif hashpassword == @searchRe.password
 				redirect_to staff_requests_path(@searchRe)
 			end
 		else
