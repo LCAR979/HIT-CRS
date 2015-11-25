@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
 				  #may be it is a good option to set it to constants
 	def index
+		@search = Room.new
 		@rooms = Room.all
 		@roomsize = [42, 72, 120, 260]
 		@Buildings = ['ZhengXin', 'GeWu']

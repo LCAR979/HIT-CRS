@@ -23,11 +23,23 @@ class RequestsController < ApplicationController
   	def create
 	    @request = Request.new(params[:request])
 	    @request.applicant_id = params[:applicant_id]
-	    @applicant = Request.find(params[:applicant_id])
+	    @applicant = Applicant.find(params[:applicant_id])
 	    @request.status = 3  			 #initial status: processing
 	    #Request assignment Currently assign to first staff
+	    #Equal Principle
+	    @room = Room.find_by_location_and_week(@request.location,@request.week)
+	    str = 'day'+@request.day.to_s+'course' + @request.time.to_s
+	    if @room != nil
+	    	@room.attributes[str] = 2
+	    	@room.save
+	    end
+	    @staff = assignTasks()
+	    @request.staff_id = @staff.id
+	    @staff.tasks = @staff.tasks + 1
+	    @staff.save
+	    #raise @request.staff_id
 	    #---------------------------------------------------
-	    @request.staff_id = Staff.first.id
+	    #@request.staff_id = Staff.first.id
 	    #---------------------------------------------------
 	    respond_to do |format|
 	      if @request.save
@@ -50,7 +62,9 @@ class RequestsController < ApplicationController
 	    end 
   	end
   	def assignTasks()
-  		requests = Request.all
-  		
+  		tasks_vals = Staff.all.map(&:tasks)
+  		min_tasks = tasks_vals.min
+  		staff_with_min_tasks = Staff.find_by_tasks(min_tasks)
+  		return staff_with_min_tasks
   	end
 end

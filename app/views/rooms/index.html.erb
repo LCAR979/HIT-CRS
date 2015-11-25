@@ -1,27 +1,88 @@
-<h1>Listing rooms</h1>
-<table id="room-list">
-  <tr>
-  </tr>
-  <% @rooms.each do |room| %> 
-    <td>size: <%= @roomsize[room.size] %></td>
-    <td>building: <%= @Buildings[room.building] %></td>
-    <td>location: <%= room.location%></td>
-    <td>week: <%= room.week %></td>
-    <tr>
-    <tr> 
-    <% @attributes.each do |attr| %>
-        <td><%= attr %> :</td>
-        <% if room.send(attr) ==0%> 
-          <td> Available </td>
-        <% elsif room.day1course1 ==1 %>
-          <td> in use </td>
-        <% else %>
-          <td> processing </td>
-        <% end %>
-    <%end%>
-    <td><%= link_to 'Show', room %></td>
-    </tr>
-  <% end %>
-</table>
+<!DOCTYPE html>
+<html>
+<body>
+	<%=form_for @search do |s| %>
+		<%=s.select :week,[["week1", 1], ["week2", 2], ["week3", 3], ["week4", 4], ["week5", 5], ["week6", 6], ["week7", 7], ["week8", 8], ["week9", 9], ["week10", 10], ["week11", 11],
+		["week12", 12], ["week13", 13], ["week14", 14], ["week15", 15], ["week16", 16], ["week17", 17], ["week18", 18]] %>  
+
+		<%=s.select :building, [['ZhengXin',1],['GeWu',2]] %>
+
+		<%=s.select :location, [['All',-1],['11',11],['12',12],['13',13],['14',14],['101',101],['102',102],['103',103]] %>
+
+		<%=s.submit "Search"%>
+	<% end %>
+		
+	<table id="room-list">
+	<tr>
+	<td>Day</td>
+	<td>Monday</td>
+	<td>Tuesday</td>
+	<td>Wednesday</td>
+	<td>Thursday</td>
+	<td>Friday</td>
+	<td>Saturday</td>
+	<td>Sunday</td>
+	</tr>
+	<tr>
+	<td>Time</td>
+	<td> 1~2</td>
+	<td> 3~4</td>
+	<td> 5~6</td>
+	<td> 7~8</td>
+	<td> 9~10</td>
+	<td> 11~12</td>
+	<td> 1~2</td>
+	<td> 3~4</td>
+	<td> 5~6</td>
+	<td> 7~8</td>
+	<td> 9~10</td>
+	<td> 11~12</td>
+	<td> 1~2</td>
+	<td> 3~4</td>
+	<td> 5~6</td>
+	<td> 7~8</td>
+	<td> 9~10</td>
+	<td> 11~12</td>
+	<td> 1~2</td>
+	<td> 3~4</td>
+	<td> 5~6</td>
+	<td> 7~8</td>
+	<td> 9~10</td>
+	<td> 11~12</td>
+	<td> 1~2</td>
+	<td> 3~4</td>
+	<td> 5~6</td>
+	<td> 7~8</td>
+	<td> 9~10</td>
+	<td> 11~12</td>
+	<td> 1~2</td>
+	<td> 3~4</td>
+	<td> 5~6</td>
+	<td> 7~8</td>
+	<td> 9~10</td>
+	<td> 11~12</td>
+	<td> 1~2</td>
+	<td> 3~4</td>
+	<td> 5~6</td>
+	<td> 7~8</td>
+	<td> 9~10</td>
+	<td> 11~12</td>
+	</tr>
+
+	  <% @rooms.each do |room| %> 
+		<tr> 
+		<%=room.location%>
+		<% @attributes.each do |attr| %>
+			<% if room.send(attr) ==0%> 
+			  <td style="background-color : white;"></td>
+			<% elsif room.send(attr) ==1 %>
+			  <td style="background-color : red;"></td>
+			<% else %>
+			  <td style="background-color : yellow;"></td>
+			<% end %>
+		<%end%>
+		</tr>
+	  <% end %>
+	</table>
 
 <br />

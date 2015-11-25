@@ -50,6 +50,13 @@
 		<%=r.select :size, [["42", 1], ["72", 2], ["120", 3], ["260",4]] %>  
 		*Select the size of the room
 	</br>
+	----------------------------------------
+	</br>
+		<%=r.select :day, [["Mon", 1], ["Tues", 2], ["Wed", 3], ["Thur",4],["Fri",5],
+		["Sat",6],["Sun",7],] %>  
+		*Select the day of the room
+	</br>
+	----------------------------------------
 	</br>
 		<%=r.select :media, [["Yes", 1], ["No", 0]] %>  
 		*Use the multi-media?

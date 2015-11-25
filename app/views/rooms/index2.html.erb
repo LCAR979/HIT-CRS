@@ -1,0 +1,27 @@
+<h1>Listing rooms</h1>
+<table id="room-list">
+  <tr>
+  </tr>
+  <% @rooms.each do |room| %> 
+    <td>size: <%= @roomsize[room.size] %></td>
+    <td>building: <%= @Buildings[room.building] %></td>
+    <td>location: <%= room.location%></td>
+    <td>week: <%= room.week %></td>
+    <tr>
+    <tr> 
+    <% @attributes.each do |attr| %>
+        <td><%= attr %> :</td>
+        <% if room.send(attr) ==0%> 
+          <td> Available </td>
+        <% elsif room.day1course1 ==1 %>
+          <td> in use </td>
+        <% else %>
+          <td> processing </td>
+        <% end %>
+    <%end%>
+    <td><%= link_to 'Show', room %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />

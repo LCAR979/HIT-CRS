@@ -2,16 +2,24 @@ require 'digest'
 class OverallControllController < ApplicationController
 	def save
 		if params[:work] == "student"
-			hashpassword = secure_hash(params[:password])
-			Applicant.create(username: params[:username], studentid: params[:studentid], phone: params[:phone], 
-			department: params[:department],email: params[:email], name: params[:name], password: hashpassword, 
-			isvalid:true)
-			redirect_to('/login')
+			if Applicant.find_by_username(params[:username]) == nil
+				hashpassword = secure_hash(params[:password])
+				Applicant.create(username: params[:username], studentid: params[:studentid], phone: params[:phone], 
+				department: params[:department],email: params[:email], name: params[:name], password: hashpassword, 
+				isvalid:true)
+				redirect_to '/login'
+			else
+				redirect_to '/signup', notice: 'username is already in use!'
+			end
 		elsif params[:work] == "staff"
-			hashpassword = secure_hash(params[:password])
-			Staff.create(name: params[:name], username: params[:username], staffid: params[:staffid], phone: params[:phone],
-			email: params[:email], password: hashpassword, isvalid:true)
-			redirect_to("/login")
+			if Staff.find_by_username(params[:username]) == nil
+				hashpassword = secure_hash(params[:password])
+				Staff.create(name: params[:name], username: params[:username], staffid: params[:staffid], phone: params[:phone],
+				email: params[:email], password: hashpassword, isvalid:true)
+				redirect_to("/login")
+			else
+				redirect_to '/signup', notice: 'username is already in use!'
+			end
 		else
 			redirect_to("/signup")
 		end
@@ -20,20 +28,21 @@ class OverallControllController < ApplicationController
 		if params[:work] == "student"
 			hashpassword = secure_hash(params[:password])
 			@searchRe = Applicant.find_by_username(params[:username])
-			if hashpassword == @searchRe.password
-				redirect_to applicant_path(@searchRe)
-			else
+			if @searchRe == nil || (hashpassword != @searchRe.password)
+			#if hashpassword == @searchRe.password
 				redirect_to("/login")
+			else
+				redirect_to applicant_path(@searchRe)
 			end
 		elsif params[:work] == "staff"
 			hashpassword = secure_hash(params[:password])
 			@searchRe = Staff.find_by_username(params[:username])
-			if hashpassword == @searchRe.password
+			if @searchRe == nil || (hashpassword != @searchRe.password)
 			#	redirect_to("/home")
 			# 	successful logging in staff to the certain staffs main pages
-				redirect_to staff_requests_path(@staff)
-			else
 				redirect_to("/login")
+			else
+				redirect_to staff_requests_path(@searchRe)
 			end
 		else
 			redirect_to("/login")

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151124080230) do
+ActiveRecord::Schema.define(:version => 20151125032217) do
 
   create_table "applicants", :force => true do |t|
     t.string  "username"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20151124080230) do
     t.integer "week"
     t.integer "time"
     t.integer "status"
+    t.integer "day"
     t.string  "comment"
     t.string  "teachername"
     t.string  "teacherphone"
@@ -95,13 +96,14 @@ ActiveRecord::Schema.define(:version => 20151124080230) do
   end
 
   create_table "staffs", :force => true do |t|
-    t.string  "name",     :null => false
-    t.string  "staffid",  :null => false
-    t.string  "phone",    :null => false
-    t.string  "email",    :null => false
-    t.string  "username", :null => false
-    t.string  "password", :null => false
-    t.boolean "isvalid",  :null => false
+    t.string  "name",                    :null => false
+    t.string  "staffid",                 :null => false
+    t.string  "phone",                   :null => false
+    t.string  "email",                   :null => false
+    t.string  "username",                :null => false
+    t.string  "password",                :null => false
+    t.boolean "isvalid",                 :null => false
+    t.integer "tasks",    :default => 0
   end
 
 end
