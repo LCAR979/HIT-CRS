@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,8 +75,8 @@
 </body>
 </html>
 	
-=======
 <h1>Create a New Post</h1>
+<<<<<<< HEAD
 	<%=form_for @request, :url => applicant_requests_path(@applicant)  do |r|%>
 		<p class = "">
 			<%=r.label :name %><br/>
@@ -112,4 +111,65 @@
 			<%=r.submit "Create a New request"%>
 		</p>
 	<% end %>
->>>>>>> merged
+=======
+<%=form_for @request, :url => applicant_requests_path(@applicant),
+ :html => {class:'form-horizontal', 'role'=>'form', 'data-toggle'=>'validator' }  do |r|%>
+	<div class="form-group">
+		<%=r.label :name, class:"control-label col-xs-2" %>
+		<div class="col-xs-10">
+			<%=r.text_field :name , class:"form-control", value:@applicant.username %>
+		</div>
+		<span class="help-block with-errors"></span>
+	</div>
+
+	<div class="form-group">
+		<%=r.label :department, class:"control-label col-xs-2" %>
+		<div class="col-xs-10">
+			<%=r.text_field :department , class:"form-control",value:@applicant.department %>
+		</div>
+		<span class="help-block with-errors"></span>
+	</div>
+	<div class="form-group">
+		<%=r.label :location, class:"control-label col-xs-2"  %>
+		<div class="col-xs-10">
+			<%=r.text_field :location , class:"form-control",placeholder:"Location" %>
+		</div>
+		<span class="help-block with-errors"></span>
+	</div>
+	<div class="form-group">
+		<%=r.label :studentid, class:"control-label col-xs-2"  %>
+		<div class="col-xs-10">
+			<%=r.text_field :studentid , class:"form-control",value:@applicant.studentid %>
+		</div>
+		<span class="help-block with-errors"></span>
+	</div>
+	<div class="form-group">
+		<%=r.label :phone, class:"control-label col-xs-2" %>
+		<div class="col-xs-10">
+			<%=r.number_field :phone , class:"form-control",value:@applicant.phone %>
+		</div>
+		<span class="help-block with-errors"></span>
+	</div>
+	<div class="form-group">
+		<%=r.label :description, class:"control-label col-xs-2" %>
+		<div class="col-xs-10">
+			<%=r.text_area :description , class:"form-control",placeholder:"Description" %>
+		</div>
+		<span class="help-block with-errors"></span>
+	</div>
+	<div class="form-group">
+		<%=r.label :numAttendents,class:"control-label col-xs-2"  %>
+		<div class="col-xs-10">
+			<%=r.text_field :numAttendents , class:"form-control",placeholder:"Number of Attendants" %>
+		</div>
+		<span class="help-block with-errors"></span>
+	</div>
+
+	<div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+        	<button class="btn btn-primary"><%=r.submit "Create a New request"%></button>
+        </div>
+	</div>
+
+<% end %>
+>>>>>>> before merge

@@ -62,6 +62,7 @@ HITCrs::Application.routes.draw do
   resources :rooms
   resources :requests
   resources :applicants
+<<<<<<< HEAD
   #-----------------------
   #nested routes
   resources :staffs do
@@ -76,7 +77,16 @@ HITCrs::Application.routes.draw do
   put '/staffs/audit/:id',to: 'staffs#audit'
 
   #------------------------
+=======
 
+  resources :staffs do
+    resources :requests
+  end
+  resources :applicants do
+    resources :requests
+  end
+
+>>>>>>> before merge
   #static pages
   get '/', to: 'static_pages#index' 
   get '/index', to: 'static_pages#index'  

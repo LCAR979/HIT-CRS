@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-				  #may be it is a good option to set it to constants
+	layout "basic"
 	def index
 		@search = Room.new
 		@rooms = Room.all

@@ -11,13 +11,15 @@ class RequestsController < ApplicationController
 	    	format.json{ render json: @staff}
 	    end 
 	end
+	#layout "basic"
 	def new
 	  @request = Request.new
 	  @applicant = Applicant.find(params[:applicant_id])
 	  #raise params
       respond_to do |format|
-	      format.html # new.html.erb
-	      format.json { render json: @request}
+	      format.html { render layout:"form"}# new.html.erb
+	      format.json { render json: @request }
+	      
       end
   	end
   	def create

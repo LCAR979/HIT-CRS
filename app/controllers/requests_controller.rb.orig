@@ -13,20 +13,21 @@ class RequestsController < ApplicationController
 	    end 
 	end
 =======
->>>>>>> merged
+	#layout "basic"
+>>>>>>> before merge
 	def new
 	  @request = Request.new
 	  @applicant = Applicant.find(params[:applicant_id])
 	  #raise params
       respond_to do |format|
-	      format.html # new.html.erb
-	      format.json { render json: @request}
+	      format.html { render layout:"form"}# new.html.erb
+	      format.json { render json: @request }
+	      
       end
   	end
   	def create
 	    @request = Request.new(params[:request])
 	    @request.applicant_id = params[:applicant_id]
-<<<<<<< HEAD
 	    @applicant = Applicant.find(params[:applicant_id])
 	    @request.status = 3  			 #initial status: processing
 	    #Request assignment Currently assign to first staff
@@ -48,12 +49,10 @@ class RequestsController < ApplicationController
 	    respond_to do |format|
 	      if @request.save
 	        format.html { redirect_to applicant_path(@applicant) , notice: 'Request was successfully created.' }
-=======
 	    @request.status = 3  			 #initial status: processing
 	    respond_to do |format|
 	      if @request.save
 	        format.html { redirect_to "/rooms" , notice: 'request was successfully created.' }
->>>>>>> merged
 	        format.json { render json: @request, status: :created, location: @request }
 	      else
 	        format.html { render action: "new" }
@@ -71,13 +70,10 @@ class RequestsController < ApplicationController
 	      format.json { render json: @request }
 	    end 
   	end
-<<<<<<< HEAD
   	def assignTasks()
   		tasks_vals = Staff.all.map(&:tasks)
   		min_tasks = tasks_vals.min
   		staff_with_min_tasks = Staff.find_by_tasks(min_tasks)
   		return staff_with_min_tasks
   	end
-=======
->>>>>>> merged
 end

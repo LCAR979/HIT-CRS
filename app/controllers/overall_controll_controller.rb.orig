@@ -28,21 +28,35 @@ class OverallControllController < ApplicationController
 		if params[:work] == "student"
 			hashpassword = secure_hash(params[:password])
 			@searchRe = Applicant.find_by_username(params[:username])
+<<<<<<< HEAD
 			if @searchRe == nil || (hashpassword != @searchRe.password)
 			#if hashpassword == @searchRe.password
 				redirect_to("/login")
 			else
+=======
+			
+			if (@searchRe == nil || hashpassword != @searchRe.password)
+				redirect_to("/login")
+			else hashpassword == @searchRe.password 
+>>>>>>> before merge
 				redirect_to applicant_path(@searchRe)
 			end
 		elsif params[:work] == "staff"
 			hashpassword = secure_hash(params[:password])
 			@searchRe = Staff.find_by_username(params[:username])
+<<<<<<< HEAD
 			if @searchRe == nil || (hashpassword != @searchRe.password)
 			#	redirect_to("/home")
 			# 	successful logging in staff to the certain staffs main pages
 				redirect_to("/login")
 			else
 				redirect_to staff_requests_path(@searchRe)
+=======
+			if (@searchRe == nil || hashpassword != @searchRe.password)
+				redirect_to("/login")
+			else hashpassword == searchRe.password 
+				redirect_to staff_path(@searchRe)
+>>>>>>> before merge
 			end
 		else
 			redirect_to("/login")

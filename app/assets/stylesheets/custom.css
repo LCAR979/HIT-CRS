@@ -3,6 +3,7 @@ html{
 }
 body{
 	font-family: sans-serif;
+  padding-top: 60px;
 }
 section{
 	overflow:auto;

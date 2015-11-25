@@ -1,4 +1,5 @@
 class StaffsController < ApplicationController
+	layout "basic"
 	#This controller is designed for teacher staff activities
 	def requestProc
 		@roomsize = [42, 72, 120, 260]
