@@ -1,4 +1,10 @@
-﻿<form class="form-horizontal" action="/save" method="post" role="form" data-toggle="validator">
+﻿<% if flash[:notice]%>
+  <div class="alert alert-danger fade in col-xs-8">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+    <strong>Error!</strong> <%=flash[:notice]%>
+  </div>
+<%end%>
+<form class="form-horizontal" action="/save" method="post" role="form" data-toggle="validator">
 	<div class="form-group">
     <label for="username" class="control-label col-xs-2" >Username</label>
     <div class="col-xs-10">

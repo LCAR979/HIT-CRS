@@ -70,12 +70,12 @@ HITCrs::Application.routes.draw do
    resources :applicants do
     resources :requests
   end
-  #-----------------------
   get '/staffs/:staff_id/requests/:id', to: 'requests#show'
   get '/staffs/requestProc/:id',to: 'staffs#requestProc'
   put '/staffs/audit/:id',to: 'staffs#audit'
 
-  #------------------------
+  get '/rooms/applicant/:applicant_id', to: 'rooms#index'
+  get '/rooms/staff/:staff_id', to: 'rooms#index'
 
   #static pages
   get '/', to: 'static_pages#index' 
@@ -85,11 +85,13 @@ HITCrs::Application.routes.draw do
   get '/help', to: 'static_pages#help'  
   get '/signup', to: 'static_pages#signup'
   get '/login', to: 'static_pages#login'
-  get '/home', to: 'static_pages#home'
-  get "static_pages/home"
-  get "static_pages/help"
-  #about signup and signin
+  #get '/home', to: 'static_pages#home'
+
+
+  #about signup and login
   post '/save', to: 'overall_controll#save'
   post '/check_login', to: 'overall_controll#check_login' 
+  get 'logout', to: 'overall_controll#logout'
   
+
 end

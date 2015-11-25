@@ -1,18 +1,41 @@
-<p><%= @staff.name%> is logging!</p>
-<p> Requests in Processing </p> 
-<table id="requests-list">
-  <tr>
-  </tr>
-  <% @myrequests.each do |request| %> 
-        <% if request.status ==3%> 
-            <td>Room status: processing </td>
-            <td>size: <%= @roomsize[request.size] %></td>
-            <td>building: <%= @Buildings[request.building] %></td>
-            <td>location: <%= request.location%></td>
-            <td>week: <%= request.week %></td>
-            <td><%= link_to 'Show'%></td>
-        <%end%>
-    <%end%>
-    </tr>
-</table>
-<td><%= link_to 'new request', new_staff_request_path(@staff)%></td>
+
+<% if flash[:notice]%>
+  <div class="alert alert-success fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+    <strong>Success!</strong> <%=flash[:notice]%>
+  </div>
+<%end%>
+<div class="container">
+  <div class="row">
+    <div class=".col-lg-6">
+      <div class="row">
+        <!-- <div class="col-lg-2"><%= link_to 'Reservation history ', '#' %></div> -->
+        <div class="col-lg-2"><%= link_to 'Room available status', '/rooms/staff/'+ @staff.id.to_s %></div>
+         <div class="col-lg-2"><%= link_to 'View Request Pool', staff_requests_path(@staff) %></div>
+      </div>
+    </div>
+    <!-- <div class="span4">...</div> -->
+  </div>
+</div>
+
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+

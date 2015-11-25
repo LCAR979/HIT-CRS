@@ -1,86 +1,87 @@
-<!DOCTYPE html>
-<html>
-<body>
-	<%=form_for @search do |s| %>
-		<%=s.select :week,[["week1", 1], ["week2", 2], ["week3", 3], ["week4", 4], ["week5", 5], ["week6", 6], ["week7", 7], ["week8", 8], ["week9", 9], ["week10", 10], ["week11", 11],
-		["week12", 12], ["week13", 13], ["week14", 14], ["week15", 15], ["week16", 16], ["week17", 17], ["week18", 18]] %>  
+<%= form_for @search do |s| %>
+	<div class="col-lg-11 col-lg-offset-1">
+		<div class="form-group row">
+			<%=s.label :week, class:"control-label col-md-1"  %>
+			<div class="col-md-1">
+	        	<%=s.select :week, [["week1", 1], ["week2", 2], ["week3", 3], ["week4", 4], ["week5", 5], ["week6", 6], ["week7", 7], ["week8", 8], ["week9", 9], ["week10", 10], ["week11", 11],
+					["week12", 12], ["week13", 13], ["week14", 14], ["week15", 15], ["week16", 16], 
+					["week17", 17], ["week18", 18]],class:"form-control" %>
+			</div>
 
-		<%=s.select :building, [['ZhengXin',1],['GeWu',2]] %>
+	        <%=s.label :building, class:"control-label col-md-1"  %>
+			<div class="col-md-1-5">
+	        	<%=s.select :building, [['ZhengXin',1],['GeWu',2]],class:"form-control" %>
+	        </div>
 
-		<%=s.select :location, [['All',-1],['11',11],['12',12],['13',13],['14',14],['101',101],['102',102],['103',103]] %>
+	        <%=s.label :location, class:"control-label col-md-1"  %>
+	        <div class="col-md-1">
+	        	<%=s.text_field :location , class:"form-control",placeholder:"Location" %>
+	        </div>
 
-		<%=s.submit "Search"%>
-	<% end %>
+	        <div class="col-md-3"></div>
+	        <div class="col-md-2">
+	        	<%=s.submit "Search", class:"btn btn-info"%>
+	        </div>
+		</div> 
+	</div>
+<% end %>
 		
-	<table id="room-list">
+<table id="room-list" class="col-lg-12 ">
 	<tr>
-	<td>Day</td>
-	<td>Monday</td>
-	<td>Tuesday</td>
-	<td>Wednesday</td>
-	<td>Thursday</td>
-	<td>Friday</td>
-	<td>Saturday</td>
-	<td>Sunday</td>
+		<td class="col-lg-1-5">Day</td>
+		<td class="col-lg-1-5">Mon</td>
+		<td class="col-lg-1-5">Tues</td>
+		<td class="col-lg-1-5">Wed</td>
+		<td class="col-lg-1-5">Thur</td>
+		<td class="col-lg-1-5">Fri</td>
+		<td class="col-lg-1-5">Sat</td>
+		<td class="col-lg-1-5">Sun</td>	
 	</tr>
-	<tr>
-	<td>Time</td>
-	<td> 1~2</td>
-	<td> 3~4</td>
-	<td> 5~6</td>
-	<td> 7~8</td>
-	<td> 9~10</td>
-	<td> 11~12</td>
-	<td> 1~2</td>
-	<td> 3~4</td>
-	<td> 5~6</td>
-	<td> 7~8</td>
-	<td> 9~10</td>
-	<td> 11~12</td>
-	<td> 1~2</td>
-	<td> 3~4</td>
-	<td> 5~6</td>
-	<td> 7~8</td>
-	<td> 9~10</td>
-	<td> 11~12</td>
-	<td> 1~2</td>
-	<td> 3~4</td>
-	<td> 5~6</td>
-	<td> 7~8</td>
-	<td> 9~10</td>
-	<td> 11~12</td>
-	<td> 1~2</td>
-	<td> 3~4</td>
-	<td> 5~6</td>
-	<td> 7~8</td>
-	<td> 9~10</td>
-	<td> 11~12</td>
-	<td> 1~2</td>
-	<td> 3~4</td>
-	<td> 5~6</td>
-	<td> 7~8</td>
-	<td> 9~10</td>
-	<td> 11~12</td>
-	<td> 1~2</td>
-	<td> 3~4</td>
-	<td> 5~6</td>
-	<td> 7~8</td>
-	<td> 9~10</td>
-	<td> 11~12</td>
+	<tr >
+		<td class="col-lg-1-5">Course</td>
+		<% 7.times do %>
+			<td class="col-lg-1-5 ">
+				<table class="nest-table"><tr>
+					<td class="cell"> 1</td>
+					<td class="cell"> 3</td>
+					<td class="cell"> 5</td>
+					<td class="cell"> 7</td>
+					<td class="cell"> 9</td>
+					<td class="cell"> 11</td>
+				</tr></table>
+			</td>
+		<% end %>
 	</tr>
 
-	  <% @rooms.each do |room| %> 
-		<tr> 
-		<%=room.location%>
-		<% @attributes.each do |attr| %>
-			<% if room.send(attr) ==0%> 
-			  <td style="background-color : white;"></td>
-			<% elsif room.send(attr) ==1 %>
-			  <td style="background-color : red;"></td>
-			<% else %>
-			  <td style="background-color : yellow;"></td>
-			<% end %>
-		<%end%>
-		</tr>
-	  <% end %>
-	</table>
+	<% @rooms.each do |room| %>
+		<tr ><% i=0 %><% j=0 %>
+			<td class="col-lg-1-5"><%=room.location%></td>
+			<% @attributes.each do |attr| %>
+				
+
+				<% if i%6 == 0 %>
+					<td class="col-lg-1-5 ">
+					<table class="nest-table"><tr>
+				<% end %>
+
+				<% if room.send(attr) == 0%>  <!-- status: free-->
+				  <td class="cell-green cell"></td>
+				<% elsif room.send(attr) ==1 %> <!-- status: class -->
+				  <td class="cell-grey cell"></td>
+				<% elsif room.send(attr) ==2 %> <!-- status: wait -->
+				  <td class="cell-yellow cell"></td>
+				<% else %> 						<!-- status: resvered -->
+				  <td class="cell-blue cell"></td>
+				<% end %>
+
+
+				<% if j%6 == 5 %>
+					</tr></table>
+					</td>
+				<% end %>
+				<% i=i+1 %>
+				<% j=j+1 %>
+		  	<% end %>
+		</tr>	
+	<%end%>
+</table>

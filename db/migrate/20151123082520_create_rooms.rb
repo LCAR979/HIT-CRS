@@ -6,7 +6,8 @@ class CreateRooms < ActiveRecord::Migration
   		t.integer   :building 		#build inter[0-?] current: 0=>zhengxin, 1=>GeWu
   		t.integer 	:size		 	#size is [0~3], 0=>42, 1=>72, 2=>120, 3=>260
   		#room time using status: 7*12 = 84 interval(we save 42)
-  		t.integer :day1course1      # 0=> 'available', 1=>'in use', 2=>'processing'
+  		# 0=> 'free', 1=>'class', 2=>'wait', 3=>'reserved'
+  		t.integer :day1course1      
 		t.integer :day1course3
 		t.integer :day1course5
 		t.integer :day1course7

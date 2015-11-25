@@ -1,7 +1,7 @@
 require 'digest'
 class OverallControllController < ApplicationController
 	def save
-		if params[:work] == "student"
+		if params[:identity] == "student"
 			if Applicant.find_by_username(params[:username]) == nil
 				hashpassword = secure_hash(params[:password])
 				Applicant.create(username: params[:username], studentid: params[:studentid], phone: params[:phone], 
@@ -11,7 +11,7 @@ class OverallControllController < ApplicationController
 			else
 				redirect_to '/signup', notice: 'username is already in use!'
 			end
-		elsif params[:work] == "staff"
+		elsif params[:identity] == "staff"
 			if Staff.find_by_username(params[:username]) == nil
 				hashpassword = secure_hash(params[:password])
 				Staff.create(name: params[:name], username: params[:username], staffid: params[:staffid], phone: params[:phone],
@@ -25,7 +25,7 @@ class OverallControllController < ApplicationController
 		end
 	end
 	def check_login
-		if params[:work] == "student"
+		if params[:identity] == "student"
 			hashpassword = secure_hash(params[:password])
 			@searchRe = Applicant.find_by_username(params[:username])
 			if @searchRe == nil || (hashpassword != @searchRe.password)
@@ -34,7 +34,7 @@ class OverallControllController < ApplicationController
 			elsif hashpassword == @searchRe.password
 				redirect_to applicant_path(@searchRe)
 			end
-		elsif params[:work] == "staff"
+		elsif params[:identity] == "staff"
 			hashpassword = secure_hash(params[:password])
 			@searchRe = Staff.find_by_username(params[:username])
 			if @searchRe == nil || (hashpassword != @searchRe.password)
@@ -42,11 +42,15 @@ class OverallControllController < ApplicationController
 			# 	successful logging in staff to the certain staffs main pages
 				redirect_to("/login")
 			elsif hashpassword == @searchRe.password
-				redirect_to staff_requests_path(@searchRe)
+				#redirect_to staff_requests_path(@searchRe)
+				redirect_to staff_path(@searchRe)
 			end
 		else
 			redirect_to("/login")
 		end 
+	end
+	def logout
+		redirect_to("/index")
 	end
 	def secure_hash(string)
 		Digest::SHA2.hexdigest(string)

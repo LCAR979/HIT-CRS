@@ -1,20 +1,22 @@
-    <p><%= @staff.name%> is logging!</p>
+
 <p> Requests in Processing </p> 
 <table id="requests-list">
+
+  <% @all_requests.each do |request| %> 
   <tr>
-  </tr>
-  <% @myrequests.each do |request| %> 
-        <% if request.status ==3%> 
-            <td>Room status: processing </td>
-            <td>size: <%= @roomsize[request.size] %></td>
-            <td>building: <%= @Buildings[request.building] %></td>
-            <td>location: <%= request.location%></td>
-            <td>week: <%= request.week %></td>
-            ................................................
+        <% if request.status == 3%> <!-- status :wait -->
+            <!-- <td>Room status: waiting </td> -->
+            <td>Week: <%= request.week %></td> 
+            <td>Building: <%= @buildings[request.building] %></td>
+            <td>Location: <%= request.location %></td>
+            <td>Time Interval: <%= request.time %></td>
+            <td>Size: <%= @roomsize[request.size] %></td>
+
            <% str= '/staffs/'+@staff.id.to_s+'/requests/'+request.id.to_s %> 
-            <td><%= link_to 'Show', str, :method => :get%>
+            <td><%= link_to 'View detail', str, :method => :get %>
             </td>
         <%end%>
-    <%end%>
     </tr>
+    <%end%>
+    
 </table>

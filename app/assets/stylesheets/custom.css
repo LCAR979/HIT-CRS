@@ -43,7 +43,7 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-#logo {
+/*#logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
@@ -58,8 +58,10 @@ p {
 #logo:hover {
   color: #fff;
   text-decoration: none;
+}*/
+.navbar-brand{
+  padding-top: -5px;
 }
-
 #form{
   background-image: url("signup.jpg");
   padding-top: 100px;
@@ -72,4 +74,34 @@ p {
 }
 .help-block{
   padding-left: 145px;
+}
+textarea{
+  height: 20px;
+}
+table, td, th {
+    border: 1px solid black;
+}
+.nest-table{
+  width:100%;
+  border: 0px;
+}
+.cell{
+  width:16%;
+  height:10px;
+}
+.cell-yellow{
+  background-color: yellow;
+}
+.cell-green{
+  background-color: green;
+}
+.cell-grey{
+  background-color: grey;
+}
+.cell-blue{
+  background-color: blue;
+}
+.table-container{
+  padding-left: 0;
+  padding-right: 0;
 }

@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/index">
-        <img alt="Brand" src="#"></a>
+        <img alt="Brand" src="assets/logo.png"></a>
     </div> <!-- /.navbar header  -->
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -29,11 +29,14 @@
     	</ul>
       <ul class="nav navbar-nav navbar-right">     
           <% if @applicant != nil %>
-          <li><a href="#"><%= @applicant.name%></a></li>
-          <li><a href="#">Logout</a></li>
+            <li><a href="#"><%= @applicant.username%></a></li>
+            <li><a href="/logout">Logout</a></li>
+          <% elsif @staff != nil %>
+            <li><a href="#"><%= @staff.username%></a></li>
+            <li><a href="/logout">Logout</a></li>
           <% else %>
-          <li><a href="/login">Login</a></li>
-          <li><a href="/signup">Signup</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Signup</a></li>
           <% end %>
       </ul>
 		</div><!-- /.navbar-collapse -->

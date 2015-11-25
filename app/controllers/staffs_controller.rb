@@ -3,7 +3,7 @@ class StaffsController < ApplicationController
 	#This controller is designed for teacher staff activities
 	def requestProc
 		@roomsize = [42, 72, 120, 260]
-		@Buildings = ['ZhengXin', 'GeWu']
+		@buildings = ['ZhengXin', 'GeWu']
 		@request = Request.find(params[:id])
 		@staff = Staff.find(@request.staff_id)
 		respond_to do |format|
@@ -16,24 +16,34 @@ class StaffsController < ApplicationController
 		@request.comment = params[:request][:comment]
 		@request.status = params[:request][:status]
 		@request.save
-		@room = Room.find_by_location(request.location)
+		@room = Room.find_by_location_and_week(@request.location,@request.week)
+		str = 'day'+@request.day.to_s+'course' + @request.time.to_s
+	    
 	    if @room != nil
-	    	#request status: 1=>permited 2=> rejected 3=>processing
-	    	#room request 0=> 'available', 1=>'in use', 2=>'processing'
 	    	if @request.status == 1
-	    		@room.status = 1
+	    		@room.update_attributes(str=>3)  #room status : wait
 	    	elsif @request.status == 2
-	    		@room.status = 0
+	    		@room.update_attributes(str=>0)
 	    	end
+	    	@room.save
 	    end
+
+
 		@staff = Staff.find(@request.staff_id)
 		redirect_to(staff_requests_path(@staff))
 	end
 	
 	def index	
     end
+
 	def show
+		@staff= Staff.find(params[:id])
+		respond_to do |format|
+	    	format.html # show.html.erb
+	    	format.json{ render json: @staff}
+	    end 
 	end
+
 	def new	
 	end
 	def create
@@ -44,4 +54,5 @@ class StaffsController < ApplicationController
 	end
 	def edit 
 	end
+
 end
