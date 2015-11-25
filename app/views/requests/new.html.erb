@@ -1,35 +1,70 @@
-<h1>Create a New Post</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/index2.css">
+</head>
+<body>
 	<%=form_for @request, :url => applicant_requests_path(@applicant)  do |r|%>
-		<p class = "">
-			<%=r.label :name %><br/>
-			<%=r.text_field :name %>
-		</p>
-		<p>
-			<%=r.label :department %><br/>
-			<%=r.text_field :department %>
-		</p>
-		<p>
-			<%=r.label :location %><br/>
-			<%=r.text_field :location %>
-		</p>
-		<p>
-			<%=r.label :studentid %><br/>
-			<%=r.text_field :studentid %>
-		</p>
-		<p>
-			<%=r.label :phone %><br/>
-			<%=r.text_field :phone %>
-		</p>
-		<p>
-			<%=r.label :description %><br/>
-			<%=r.text_area :description %>
-		</p>
-		<p>
-			<%=r.label :numAttendents %><br/>
-			<%=r.number_field :numAttendents %>
-		</p>
-		//......Need to append other attributes using appropriate form helpers
-		<p>
-			<%=r.submit "Create a New request"%>
-		</p>
+		<p>Classroom reservation application form</p>
+		</br>
+		<span>Name</span>
+		<%=r.label :name %><br/>
+		<%=r.text_field :name %>
+		&nbsp&nbsp&nbsp&nbsp&nbsp;*Fill in your real name
+	</br>
+	</br>
+		<span>Phone</span>
+		<%=r.label :phone %><br/>
+		<%=r.text_field :phone %>
+		&nbsp&nbsp&nbsp&nbsp&nbsp;*Fill in your frequently-used phone number
+	</br>
+	</br>
+		<span>StudentID</span>
+		<%=r.label :studentid %><br/>
+		<%=r.text_field :studentid %>
+		&nbsp&nbsp&nbsp&nbsp&nbsp;*Fill in your real ID in HIT
+	</br>
+	</br>
+		<span>RoomNumber</span>
+		<%=r.label :location %><br/>
+		<%=r.text_field :location %>
+		&nbsp&nbsp&nbsp&nbsp&nbsp;*Fill in the number of the classroom
+	</br>
+	</br>
+		<span>Description</span>
+		<%=r.label :description %><br/>
+		<%=r.text_area :description %>
+		&nbsp&nbsp&nbsp&nbsp&nbsp;*Fill in the reasons of your reservation
+	</br>
+	</br>
+		<span>AttendentsNumber</span>
+		<%=r.label :numAttendents %><br/>
+		<%=r.text_field :numAttendents %>
+		&nbsp&nbsp&nbsp&nbsp&nbsp;*Fill in the number of attendents
+	</br>
+	</br>
+		<%=r.select :building, [['ZhengXin',1],['GeWu',2]] %>
+		*Select the building
+	</br>
+	</br>
+		<%=r.select :size, [["42", 1], ["72", 2], ["120", 3], ["260",4]] %>  
+		*Select the size of the room
+	</br>
+	</br>
+		<%=r.select :media, [["Yes", 1], ["No", 0]] %>  
+		*Use the multi-media?
+	</br>
+	</br>
+		<%=r.select :week,[["week1", 1], ["week2", 2], ["week3", 3], ["week4", 4], ["week5", 5], ["week6", 6], ["week7", 7], ["week8", 8], ["week9", 9], ["week10", 10], ["week11", 11],
+				   ["week12", 12], ["week13", 13], ["week14", 14], ["week15", 15], ["week16", 16], ["week17", 17], ["week18", 18]] %>  
+		*Select the week
+	</br>
+	</br>
+		<%=r.select :time,[["Class1~2", 1], ["Class3~4", 3], ["Class5~6", 5], ["Class7~8", 7], ["Class9~10", 8], ["Class11~12", 11]] %>  
+		*Select the time
+	<%=r.submit "Create a New request"%>
 	<% end %>
+	&copy; Copyright Galieo
+</body>
+</html>
+	

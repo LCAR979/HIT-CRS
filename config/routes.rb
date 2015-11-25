@@ -71,6 +71,11 @@ HITCrs::Application.routes.draw do
     resources :requests
   end
   #-----------------------
+  get '/staffs/:staff_id/requests/:id', to: 'requests#show'
+  get '/staffs/requestProc/:id',to: 'staffs#requestProc'
+  put '/staffs/audit/:id',to: 'staffs#audit'
+
+  #------------------------
   #static pages
   get '/', to: 'static_pages#index' 
   get '/index', to: 'static_pages#index'  

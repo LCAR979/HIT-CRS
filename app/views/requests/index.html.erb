@@ -1,4 +1,4 @@
-<p><%= @staff.name%> is logging!</p>
+    <p><%= @staff.name%> is logging!</p>
 <p> Requests in Processing </p> 
 <table id="requests-list">
   <tr>
@@ -10,7 +10,10 @@
             <td>building: <%= @Buildings[request.building] %></td>
             <td>location: <%= request.location%></td>
             <td>week: <%= request.week %></td>
-            <td><%= link_to 'Show'%></td>
+            ................................................
+           <% str= '/staffs/'+@staff.id.to_s+'/requests/'+request.id.to_s %> 
+            <td><%= link_to 'Show', str, :method => :get%>
+            </td>
         <%end%>
     <%end%>
     </tr>

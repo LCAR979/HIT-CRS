@@ -1,0 +1,22 @@
+<p>
+  <b>Room:</b>
+  location:
+  <%= @request.location %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @roomsize[@request.size] %>
+</p>
+<p>
+  <b> Building</b>
+	<%= @Buildings[@request.building]%>
+</p>
+//need to append new attributes!!
+<%str = '/staffs/audit/'+@request.id.to_s%>
+<%=form_for @request, :url => str  do |r|%>
+		<%=r.label :comment %><br/>
+		<%=r.text_area :comment %>
+		<%=r.select :status, [['permited',1],['rejected',2]] %>
+		<%=r.submit "Audit a new request"%>
+<%end%>

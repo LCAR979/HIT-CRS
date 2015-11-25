@@ -6,12 +6,12 @@ class OverallControllController < ApplicationController
 			Applicant.create(username: params[:username], studentid: params[:studentid], phone: params[:phone], 
 			department: params[:department],email: params[:email], name: params[:name], password: hashpassword, 
 			isvalid:true)
-			redirect_to('/')
+			redirect_to('/login')
 		elsif params[:work] == "staff"
 			hashpassword = secure_hash(params[:password])
 			Staff.create(name: params[:name], username: params[:username], staffid: params[:staffid], phone: params[:phone],
 			email: params[:email], password: hashpassword, isvalid:true)
-			redirect_to("/")
+			redirect_to("/login")
 		else
 			redirect_to("/signup")
 		end
@@ -31,7 +31,7 @@ class OverallControllController < ApplicationController
 			if hashpassword == @searchRe.password
 			#	redirect_to("/home")
 			# 	successful logging in staff to the certain staffs main pages
-				redirect_to staff_path(@searchRe)
+				redirect_to staff_requests_path(@staff)
 			else
 				redirect_to("/login")
 			end

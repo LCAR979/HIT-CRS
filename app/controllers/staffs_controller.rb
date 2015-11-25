@@ -1,21 +1,44 @@
 class StaffsController < ApplicationController
 	#This controller is designed for teacher staff activities
-	def index
-		#list all the in processing request
-		raise params.inspect
+	def requestProc
 		@roomsize = [42, 72, 120, 260]
 		@Buildings = ['ZhengXin', 'GeWu']
-		@attributes = Request.new.attributes.keys - Request.protected_attributes.to_a
-		#@rooms = Room.all  #put the room status testing to the index.html.erb
-		#respond_to do |format|
-	    #  format.html # index.html.erb
-	    #  format.json { render json: @rooms }
-	    #end
-	    @requests = Request.all #put the room status testing to the index.html.erb
-	    respond_to do |format|
-	    	format.html # index.html.erb
-	    	format.json{ render json: @requests }
-	    end 
+		@request = Request.find(params[:id])
+		@staff = Staff.find(@request.staff_id)
+		respond_to do |format|
+	     	format.html # index.html.erb
+	     	format.json{ render json: @staff}
+	   end 	
+	end
+	def audit
+		@request = Request.find(params[:id])
+		@request.comment = params[:request][:comment]
+		@request.status = params[:request][:status]
+		@staff = Staff.find(@request.staff_id)
+		redirect_to(staff_requests_path(@staff))
+	end
+	def index
+		# @roomsize = [42, 72, 120, 260]
+		# @Buildings = ['ZhengXin', 'GeWu']
+		# @attributes = Request.new.attributes.keys - Request.protected_attributes.to_a
+		# @staff = Staff.find(params[:id])
+		# @myrequests = Request.find_all_by_staff_id(params[:id])
+		# respond_to do |format|
+	 #    	format.html # index.html.erb
+	 #    	format.json{ render json: @staff}
+	 #    end 	
+		#---------------------------------------------------------
+		#list all the in processing request
+		# raise params.inspect
+		# @roomsize = [42, 72, 120, 260]
+		# @Buildings = ['ZhengXin', 'GeWu']
+		# @attributes = Request.new.attributes.keys - Request.protected_attributes.to_a
+	 #    @requests = Request.all #put the room status testing to the index.html.erb
+	 #    respond_to do |format|
+	 #    	format.html # index.html.erb
+	 #    	format.json{ render json: @requests }
+	 #    end 
+	    #-------------------------------------------------------
     end
     # def auditrequest
     # 	@request = Request.find(params[:id])
@@ -36,11 +59,16 @@ class StaffsController < ApplicationController
     # 	end	
     # end
 	def show
-		@staff = Staff.find(params[:id])
-		respond_to do |format|
-	    	format.html # index.html.erb
-	    	format.json{ render json: @staff }
-	    end 	
+		#changed !
+		# @roomsize = [42, 72, 120, 260]
+		# @Buildings = ['ZhengXin', 'GeWu']
+		# @attributes = Request.new.attributes.keys - Request.protected_attributes.to_a
+		# @staff = Staff.find(params[:id])
+		# @myrequests = Request.find_all_by_staff_id(params[:id])
+		# respond_to do |format|
+	 #    	format.html # index.html.erb
+	 #    	format.json{ render json: @staff}
+	 #    end 	
 	end
 	def new	
 	end
