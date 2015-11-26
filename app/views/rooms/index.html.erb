@@ -61,17 +61,17 @@
 
 				<% if i%6 == 0 %>
 					<td class="col-lg-1-5 ">
-					<table class="nest-table"><tr>
+					<table class="day-table"><tr>
 				<% end %>
 
 				<% if room.send(attr) == 0%>  <!-- status: free-->
-				  <td class="cell-green cell"></td>
+				  <td class="cell-free cell"></td>
 				<% elsif room.send(attr) ==1 %> <!-- status: class -->
-				  <td class="cell-grey cell"></td>
+				  <td class="cell-class cell"></td>
 				<% elsif room.send(attr) ==2 %> <!-- status: wait -->
-				  <td class="cell-yellow cell"></td>
+				  <td class="cell-wait cell"></td>
 				<% else %> 						<!-- status: resvered -->
-				  <td class="cell-blue cell"></td>
+				  <td class="cell-reserved cell"></td>
 				<% end %>
 
 

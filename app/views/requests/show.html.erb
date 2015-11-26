@@ -12,8 +12,8 @@
   <b> Building</b>
 	<%= @buildings[@request.building]%>
 </p>
-//need to append new attributes!!
+
 <% str='/staffs/requestProc/'+@request.id.to_s%>
-.......................................................................
+<p>.......................................................................</p>
 <td><%= link_to 'Audit', str,:method => :get%></td>
 <%= link_to 'Back', rooms_path %>

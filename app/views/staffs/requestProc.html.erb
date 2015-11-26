@@ -12,7 +12,6 @@
   <b> Building</b>
 	<%= @buildings[@request.building]%>
 </p>
-//need to append new attributes!!
 <%str = '/staffs/audit/'+@request.id.to_s%>
 <%=form_for @request, :url => str  do |r|%>
 		<%=r.label :comment %><br/>
