@@ -1,4 +1,5 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
+ruby '1.9.3'
 gem 'rails', '3.2.16'
 
 
@@ -24,6 +25,10 @@ group :test do
   gem 'capybara' 
 end
 
+group :production do
+  gem 'pg'
+  gem 'thin'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
