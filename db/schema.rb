@@ -11,37 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151219083046) do
+ActiveRecord::Schema.define(:version => 20151125032217) do
 
   create_table "applicants", :force => true do |t|
     t.string  "username"
-    t.string  "studentid"
-    t.string  "phone"
-    t.string  "department"
-    t.string  "email"
-    t.string  "name"
     t.string  "password"
-    t.boolean "isvalid"
-    t.boolean "email_confirmed", :default => false
+    t.string  "name"
+    t.string  "phone"
+    t.string  "email"
+    t.string  "studentid"
+    t.string  "department"
+    t.integer "status",           :default => 0
     t.string  "confirm_token"
+    t.string  "avater_file_name"
+    t.binary  "avater_binary"
   end
 
   create_table "requests", :force => true do |t|
-    t.string  "name"
-    t.string  "department"
-    t.string  "location"
-    t.string  "studentid"
-    t.string  "phone"
-    t.string  "description"
-    t.integer "numAttendents"
+    t.integer "week"
+    t.integer "day"
+    t.integer "time"
     t.integer "building"
+    t.string  "location"
     t.integer "size"
     t.boolean "media"
-    t.integer "week"
-    t.integer "time"
-    t.integer "status"
-    t.integer "day"
-    t.string  "comment"
+    t.string  "description"
+    t.text    "status"
+    t.text    "comment"
     t.string  "teachername"
     t.string  "teacherphone"
     t.integer "applicant_id"
@@ -49,10 +45,10 @@ ActiveRecord::Schema.define(:version => 20151219083046) do
   end
 
   create_table "rooms", :force => true do |t|
-    t.integer "week"
     t.string  "location"
     t.integer "building"
     t.integer "size"
+    t.integer "week"
     t.integer "day1course1"
     t.integer "day1course3"
     t.integer "day1course5"
@@ -98,14 +94,17 @@ ActiveRecord::Schema.define(:version => 20151219083046) do
   end
 
   create_table "staffs", :force => true do |t|
-    t.string  "name",                    :null => false
-    t.string  "staffid",                 :null => false
-    t.string  "phone",                   :null => false
-    t.string  "email",                   :null => false
-    t.string  "username",                :null => false
-    t.string  "password",                :null => false
-    t.boolean "isvalid",                 :null => false
-    t.integer "tasks",    :default => 0
+    t.string  "username"
+    t.string  "password"
+    t.string  "name"
+    t.string  "phone"
+    t.string  "email"
+    t.string  "staffid"
+    t.integer "status",           :default => 0
+    t.string  "confirm_token"
+    t.integer "tasks",            :default => 0
+    t.string  "avater_file_name"
+    t.binary  "avater_binary"
   end
 
 end

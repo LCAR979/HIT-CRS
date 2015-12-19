@@ -1,17 +1,16 @@
 class Applicant < ActiveRecord::Base
 	before_create :confirmation_token
-	attr_accessible :username, :studentid, :phone, :department, :email, :name, :password,:isvalid
+	attr_accessible :username, :password,  :name, :phone,  :email, :studentid,  :department, :status, :confirm_token
 	has_many :requests, dependent: :destroy
-	#private
 
 	def confirmation_token
-		if self.confirmation_token.blank?
-			self.confirmation_token = SecureRandom.urlsafe_base64.to_s
+		if self.confirm_token.blank?
+			self.confirm_token = SecureRandom.urlsafe_base64.to_s
 		end
 	end
 
 	def email_active
-		self.email_confirmed = true
+		self.status = 1
 		self.confirm_token = nil
 	end
 

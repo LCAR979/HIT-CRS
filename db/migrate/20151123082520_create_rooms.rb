@@ -1,12 +1,13 @@
 class CreateRooms < ActiveRecord::Migration
   def up
-  	create_table "rooms" do |t|
-  		t.integer   :week	 		#week is between 1~18
+  	create_table "rooms" do |t|	
   		t.string 	:location		#room location: different building, differet format
   		t.integer   :building 		#building inter[0-?] current: 0=>Zhengxin Building, 1=>GeWu Building, 
   		t.integer 	:size		 	#size is [0~3], 0=>42, 1=>72, 2=>120, 3=>260
-  		#room time using status: 7*12 = 84 interval(we save 42)
+
+  		# the following are room time using status column: 7*12 = 84 interval(we save 42)
   		# 0=> 'free', 1=>'class', 2=>'wait', 3=>'reserved'
+  		t.integer   :week	 		#week is between 1~18
   		t.integer :day1course1      
 		t.integer :day1course3
 		t.integer :day1course5
