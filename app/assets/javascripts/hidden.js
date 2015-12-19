@@ -1,6 +1,5 @@
 function change(){
         var st=document.getElementsByName("identity");
-		//var staff=document.getElementByValue("staff");
 		var dep=document.getElementById("dep");
 		var stNum=document.getElementById("stNum");
 		var staffNum=document.getElementById("staffNum");
@@ -9,7 +8,7 @@ function change(){
 			stNum.style.display="none";
 			staffNum.style.display="block";
         }
-		if(st[1].checked==false){
+		else{
 			dep.style.display="block";
 			stNum.style.display="block";
 			staffNum.style.display="none";

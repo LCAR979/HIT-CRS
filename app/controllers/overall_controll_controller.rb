@@ -1,3 +1,4 @@
+
 require 'digest'
 class OverallControllController < ApplicationController
 	def save
@@ -7,6 +8,10 @@ class OverallControllController < ApplicationController
 				Applicant.create(username: params[:username], studentid: params[:studentid], phone: params[:phone], 
 				department: params[:department],email: params[:email], name: params[:name], password: hashpassword, 
 				isvalid:true)
+				@applicant =  Applicant.find_by_username(params[:username])
+				Mailer.confirmation(@applicant).deliver
+				respond_to do |format|
+				format.html {render 'confirmation_html.erb'}
 				redirect_to '/login'
 			else
 				redirect_to '/signup', notice: 'username is already in use!'
@@ -16,6 +21,10 @@ class OverallControllController < ApplicationController
 				hashpassword = secure_hash(params[:password])
 				Staff.create(name: params[:name], username: params[:username], staffid: params[:staffid], phone: params[:phone],
 				email: params[:email], password: hashpassword, isvalid:true)
+				@staff =  Staff.find_by_username(params[:username])
+				Mailer.confirmation(@staff).deliver
+				respond_to do |format|
+				format.html {render 'confirmation_html.erb'}
 				redirect_to("/login")
 			else
 				redirect_to '/signup', notice: 'username is already in use!'
