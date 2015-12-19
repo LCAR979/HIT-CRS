@@ -1,5 +1,5 @@
 class Mailer < ActionMailer::Base   
-	default from: "shuangchen1994@163.com"  
+	default from: "no-reply@heroku.com"  
 	def confirmation(applicant)     
 		@applicant = applicant     
 		mail(:to => "#{@applicant.name} <#{@applicant.email}>",
