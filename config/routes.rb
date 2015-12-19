@@ -100,7 +100,7 @@ HITCrs::Application.routes.draw do
   post "/staffs/:id/reset", to: 'staffs#reset'
   get "/staffs/:id/modify", to: 'staffs#modify'
   #------Applicant view histroy
-  get "/applicants/:id/histroy", to: 'applicants#histroy'
+  get "/applicants/:id/histroy", to: 'applicants#history'
   #----------------------
   # view detail for applicants/requests
   get "/applicants/:applicant_id/requests/:id/show", to: "applicants#view_detail" 

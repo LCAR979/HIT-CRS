@@ -30,7 +30,7 @@ class ApplicantsController < ApplicationController
 		Digest::SHA2.hexdigest(string)
 	end
 	#----------------------------------------------------------------------
-	def histroy
+	def history
 		@applicant = Applicant.find(params[:id])
 		@roomsize = [42, 72, 120, 260]
 		@buildings = ['ZhengXin', 'GeWu']
