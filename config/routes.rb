@@ -79,7 +79,7 @@ HITCrs::Application.routes.draw do
 
   resources :applicants do
     member do
-      get :confirm_email
+      get :confirm_email5
     end
   end
   #static pages
