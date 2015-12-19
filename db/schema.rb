@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151125032217) do
+ActiveRecord::Schema.define(:version => 20151219083046) do
 
   create_table "applicants", :force => true do |t|
     t.string  "username"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.string  "name"
     t.string  "password"
     t.boolean "isvalid"
+    t.boolean "email_confirmed", :default => false
+    t.string  "confirm_token"
   end
 
   create_table "requests", :force => true do |t|
