@@ -1,18 +1,18 @@
-
 require 'digest'
 class OverallControllController < ApplicationController
 	def save
 		if params[:identity] == "student"
 			if Applicant.find_by_username(params[:username]) == nil
 				hashpassword = secure_hash(params[:password])
-				Applicant.create(username: params[:username], studentid: params[:studentid], phone: params[:phone], 
+				@applicant = Applicant.new(username: params[:username], studentid: params[:studentid], phone: params[:phone], 
 				department: params[:department],email: params[:email], name: params[:name], password: hashpassword, 
 				isvalid:true)
-				@applicant =  Applicant.find_by_username(params[:username])
-				Mailer.confirmation(@applicant).deliver
-				respond_to do |format|
-					format.html {render 'confirmation_html.erb'}
-					redirect_to '/login'
+				if @applicant.save
+					Mailer.confirmation(@applicant).deliver
+					respond_to do |format|
+						format.html {render 'confirmation_html.erb'}
+						redirect_to '/login'
+					end
 				end
 			else
 				redirect_to '/signup', notice: 'username is already in use!'
