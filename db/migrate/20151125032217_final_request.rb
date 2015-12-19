@@ -16,7 +16,7 @@ def up
       t.string    :description  #description for use
       t.integer   :numAttendents  #number of Attendents
 
-  		t.integer   :status   		#status: 1=>permited, 2=> rejected, 3=>wait
+  		t.integer   :status   		#status: 1=>permited, 2=> rejected, 3=>wait, 4=> revocation
   		
       #response from teachers 
   		t.string	  :comment 		#comment feedback
