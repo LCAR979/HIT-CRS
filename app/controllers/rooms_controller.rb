@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
 		@search = Room.new
 		@rooms = Room.all
 		@roomsize = [42, 72, 120, 260]
-		@Buildings = ['ZhengXin', 'GeWu']
+		@buildings = ['ZhengXin', 'GeWu']
 		arr = Room.new.attributes.keys - Room.protected_attributes.to_a
 		@attributes = arr[4..arr.length]
 		if params[:applicant_id]
