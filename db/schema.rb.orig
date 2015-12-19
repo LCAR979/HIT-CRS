@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
   end
 
   create_table "requests", :force => true do |t|
+<<<<<<< HEAD
+    t.string  "name"
+    t.string  "department"
+    t.string  "studentid"
+    t.string  "phone"
+=======
+>>>>>>> reorganize database structure
     t.integer "week"
     t.integer "day"
     t.integer "time"
@@ -36,8 +43,14 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.integer "size"
     t.boolean "media"
     t.string  "description"
+<<<<<<< HEAD
+    t.integer "numAttendents"
+    t.integer "status"
+    t.string  "comment"
+=======
     t.text    "status"
     t.text    "comment"
+>>>>>>> reorganize database structure
     t.string  "teachername"
     t.string  "teacherphone"
     t.integer "applicant_id"

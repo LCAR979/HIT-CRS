@@ -1,3 +1,4 @@
 class Staff < ActiveRecord::Base
-	attr_accessible :name, :staffid, :phone, :email, :username, :password,:isvalid, :tasks
+	attr_accessible    :username, :password, :name, :phone, :email,
+					:staffid, :status, :confirm_token, :tasks
 end

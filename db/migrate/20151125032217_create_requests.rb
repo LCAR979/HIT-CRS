@@ -1,25 +1,19 @@
-class FinalRequest < ActiveRecord::Migration
-def up
-  	create_table 'requests' do |t|
-  		t.string	:name			#student name
-  		t.string 	:department		#department name   		
-  		t.string 	:studentid		#student id number 
-  		t.string 	:phone			#phone number 
-  		
+class CreateRequests < ActiveRecord::Migration
+  def up
+  	create_table 'requests' do |t|	
   		t.integer   :week	 		#week is between 1~18
       t.integer   :day      #[1~7]
   		t.integer   :time			#time is odd: time~time+1 interval[1~11]
       t.integer   :building     #build inter[1-?] current: 1=>zhengxin, 2=>GeWu
       t.string    :location   #room location: different building, differet format
-      t.integer   :size     #size is [1~4], 1=>42, 2=>72, 3=>120, 4=>260
+      t.integer   :size     #size is [0-3], 0=>42, 1=>72, 2=>120, 3=>260
       t.boolean   :media      #media = 1, use multi-media
       t.string    :description  #description for use
-      t.integer   :numAttendents  #number of Attendents
 
-  		t.integer   :status   		#status: 1=>permited, 2=> rejected, 3=>wait, 4=> revocation
+  		t.text   :status   		#status: 0=>permited, 1=> rejected, 2=>wait
   		
       #response from teachers 
-  		t.string	  :comment 		#comment feedback
+  		t.text	  :comment 		#comment feedback
   		t.string    :teachername	#corrresponding teacher 
   		t.string 	  :teacherphone	#corrresponding teacher phone
 

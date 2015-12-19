@@ -2,11 +2,12 @@ require 'digest'
 class OverallControllController < ApplicationController
 	def save
 		if params[:identity] == "student"
-			if Applicant.find_by_username(params[:username]) == nil
+			if Applicant.find_by_email(params[:email]) == nil
 				hashpassword = secure_hash(params[:password])
-				@applicant = Applicant.new(username: params[:username], studentid: params[:studentid], phone: params[:phone], 
-				department: params[:department],email: params[:email], name: params[:name], password: hashpassword, 
-				isvalid:true)
+				@applicant = Applicant.new(username: params[:username], studentid: params[:studentid], 
+					phone: params[:phone], department: params[:department],
+					email: params[:email], name: params[:name], password: hashpassword, 
+					isvalid:true)
 				if @applicant.save
 					Mailer.confirmation(@applicant).deliver
 					respond_to do |format|
@@ -15,7 +16,7 @@ class OverallControllController < ApplicationController
 					end
 				end
 			else
-				redirect_to '/signup', notice: 'username is already in use!'
+				redirect_to '/signup', notice: 'Email is already taken!'
 			end
 		elsif params[:identity] == "staff"
 			if Staff.find_by_username(params[:username]) == nil
@@ -40,6 +41,8 @@ class OverallControllController < ApplicationController
 			hashpassword = secure_hash(params[:password])
 			@searchRe = Applicant.find_by_username(params[:username])
 			if @searchRe == nil || (hashpassword != @searchRe.password)
+				raise @searchRe == nil
+
 			#if hashpassword == @searchRe.password
 				redirect_to("/login")
 			elsif hashpassword == @searchRe.password
