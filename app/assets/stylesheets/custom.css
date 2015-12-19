@@ -73,7 +73,8 @@ p {
   width: 300px;
 }
 .help-block{
-  padding-left: 145px;
+  padding-left: -50px;
+  margin-left: 50px;
 }
 textarea{
   height: 20px;
