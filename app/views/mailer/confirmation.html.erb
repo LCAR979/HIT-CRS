@@ -1,0 +1,5 @@
+<html> 	
+	Hi <%= @applicant.name %>, 	
+	Thanks for registering! To confirm your registration click the URL below. 	
+	<%= confirm_email_applicant_url(@applicant.confirm_token) %> 
+</html>

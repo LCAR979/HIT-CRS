@@ -77,6 +77,11 @@ HITCrs::Application.routes.draw do
   get '/rooms/applicant/:applicant_id', to: 'rooms#index'
   get '/rooms/staff/:staff_id', to: 'rooms#index'
 
+  resources :applicants do
+    member do
+      get :confirm_email
+    end
+  end
   #static pages
   get '/', to: 'static_pages#index' 
   get '/index', to: 'static_pages#index'  
