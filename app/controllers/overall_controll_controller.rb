@@ -11,8 +11,9 @@ class OverallControllController < ApplicationController
 				@applicant =  Applicant.find_by_username(params[:username])
 				Mailer.confirmation(@applicant).deliver
 				respond_to do |format|
-				format.html {render 'confirmation_html.erb'}
-				redirect_to '/login'
+					format.html {render 'confirmation_html.erb'}
+					redirect_to '/login'
+				end
 			else
 				redirect_to '/signup', notice: 'username is already in use!'
 			end
@@ -24,8 +25,9 @@ class OverallControllController < ApplicationController
 				@staff =  Staff.find_by_username(params[:username])
 				Mailer.confirmation(@staff).deliver
 				respond_to do |format|
-				format.html {render 'confirmation_html.erb'}
-				redirect_to("/login")
+					format.html {render 'confirmation_html.erb'}
+					redirect_to("/login")
+				end
 			else
 				redirect_to '/signup', notice: 'username is already in use!'
 			end
