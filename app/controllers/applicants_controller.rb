@@ -54,8 +54,9 @@ class ApplicantsController < ApplicationController
 	    end  
 	end
 
-	def confirm_email     	
-		applicant = Applicant.find_by_confirm_token(params[:confirm_token])
+	def confirm_email  
+		raise
+		applicant = Applicant.find_by_confirm_token(params[:id])
 		if applicant	    		      
 			applicant.email_activate 	      
 			flash[:notice] = "Welcome to HIT-CRS! Your email has been confirmed.Please sign in to continue." 	      
