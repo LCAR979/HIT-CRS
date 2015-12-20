@@ -9,15 +9,15 @@ class OverallControllController < ApplicationController
 					email: params[:email], name: params[:name], password: hashpassword, 
 					status:0)
 				if @applicant.save
-					Mailer.confirmation(@applicant).deliver
+					Mailer.applicant_confirmation(@applicant).deliver
 					flash[:notice] = "Please confirm your email to continue"
 					redirect_to '/login'
 				else
-					falsh[:notice] = "Ooooppss, something went wrong"
+					flash[:notice] = "Ooooppss, something went wrong"
 					redirect_to '/signup'
 				end
 			else
-				falsh[:notice] = "Email address is already taken!"
+				flash[:notice] = "Email address is already taken!"
 				redirect_to '/signup'
 			end
 		elsif params[:identity] == "staff"
@@ -26,19 +26,19 @@ class OverallControllController < ApplicationController
 				@staff  = Staff.new(name: params[:name], username: params[:username], staffid: params[:staffid],
 				 phone: params[:phone], email: params[:email], password: hashpassword, status:0)
 				if @staff.save
-					Mailer.confirmation(@staff).deliver
+					Mailer.staff_confirmation(@staff).deliver
 					flash[:notice] = "Please confirm your email to continue"
 					redirect_to '/login'
 				else
-					falsh[:notice] = "Ooooppss, something went wrong"
+					flash[:notice] = "Ooooppss, something went wrong"
 					redirect_to '/signup'
 				end
 			else
-				falsh[:notice] = "Email address is already taken!"
+				flash[:notice] = "Email address is already taken!"
 				redirect_to '/signup'
 			end
 		else
-			redirect_to("/signup")
+			redirect_to "/signup"
 		end
 	end
 
@@ -47,7 +47,7 @@ class OverallControllController < ApplicationController
 		if params[:identity] == "student"
 			hashpassword = secure_hash(params[:password])
 			@searchRe = Applicant.find_by_email(params[:email])
-			if @searchRe == nil || (hashpassword != @searchRe.password) || (@searchRe.status != 1)
+			if (@searchRe == nil) || (hashpassword != @searchRe.password) || (@searchRe.status != 1)
 				redirect_to("/login")
 			elsif hashpassword == @searchRe.password
 				redirect_to applicant_path(@searchRe)
@@ -55,7 +55,7 @@ class OverallControllController < ApplicationController
 		elsif params[:identity] == "staff"
 			hashpassword = secure_hash(params[:password])
 			@searchRe = Staff.find_by_email(params[:email])
-			if @searchRe == nil || (hashpassword != @searchRe.password)|| (@searchRe.status != 1)
+			if (@searchRe == nil) || (hashpassword != @searchRe.password)|| (@searchRe.status != 1)
 				redirect_to("/login")
 			elsif hashpassword == @searchRe.password
 				redirect_to staff_path(@searchRe)
