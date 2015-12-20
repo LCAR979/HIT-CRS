@@ -1,7 +1,7 @@
-<%@permitedlist=Request.find_all_by_status_and_staff_id(1, @applicant.id)%>
-<%@rejectedlist=Request.find_all_by_status(2, @applicant.id)%>
-<%@watinglist=Request.find_all_by_status(3, @applicant.id)%>
-<%@cancellist=Request.find_all_by_status(4, @applicant.id)%>
+<%@permitedlist=Request.find_all_by_status_and_staff_id(0, @applicant.id)%>
+<%@rejectedlist=Request.find_all_by_status(1, @applicant.id)%>
+<%@watinglist=Request.find_all_by_status(2, @applicant.id)%>
+<%@cancellist=Request.find_all_by_status(3, @applicant.id)%>
 <table id="requests-list">
   <tr>
     <p>waiting list</p>

@@ -15,7 +15,7 @@ def generate_seed
 			name: "xx#{i}",  staffid: "12345#{i}", phone: "1232132#{i}",
 			email: "staff00#{i}@qq.com",  status: 1, confirm_token: nil, tasks: 0)
 
-		Room.create(week:i, location:"20#{i}",building:rand(0..1),size:rand(0..3),
+		Room.create(week:i+1, location:"20#{i}",building:rand(0..1),size:rand(0..3),
 			day1course1:rand(0..1), day1course3:rand(0..1), day1course5:rand(0..1),
 			day1course7:rand(0..1), day1course9:rand(0..1), day1course11:rand(0..1),
 			day2course1:rand(0..1), day2course3:rand(0..1), day2course5:rand(0..1),

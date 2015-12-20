@@ -4,8 +4,7 @@
 			<%=s.label :week, class:"control-label col-md-1"  %>
 			<div class="col-md-1">
 	        	<%=s.select :week, [["week1", 1], ["week2", 2], ["week3", 3], ["week4", 4], ["week5", 5], ["week6", 6], ["week7", 7], ["week8", 8], ["week9", 9], ["week10", 10], ["week11", 11],
-					["week12", 12], ["week13", 13], ["week14", 14], ["week15", 15], ["week16", 16], 
-					["week17", 17], ["week18", 18]],class:"form-control" %>
+					["week12", 12], ["week13", 13], ["week14", 14], ["week15", 15], ["week16", 16], ["week17", 17], ["week18", 18]],class:"form-control" %>
 			</div>
 
 	        <%=s.label :building, class:"control-label col-md-1"  %>
@@ -66,9 +65,7 @@
 
 				<% if room.send(attr) == 0%>  <!-- status: free-->
 				  <%/day(\d)course(\d{1,2})/ =~ attr%>
-				  <%str="/applicants/"+@applicant.id.to_s+"/rooms/"+room.id.to_s+"/"+$1.to_s+"/"+$2.to_s+"/"%>
 				  <td class="cell-free cell">
-				  <a href=<%=str%>>a</a>
 				  </td>
 				<% elsif room.send(attr) ==1 %> <!-- status: class -->
 				  <td class="cell-class cell"></td>
