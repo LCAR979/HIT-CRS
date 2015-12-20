@@ -50,7 +50,7 @@ class RequestsController < ApplicationController
 		    @request.staff_id = @staff.id
 		    @staff.tasks = @staff.tasks + 1
 		    @staff.save
-
+		end 
 	    @staff = assignTasks()
 	    @request.staff_id = @staff.id
 	    @staff.tasks = @staff.tasks + 1

@@ -9,11 +9,11 @@ def generate_seed
 	5.times do |i|
 		Applicant.create(username: "st00#{i}",password: secure_hash("123456"),
 			 studentid: "12345#{i}", phone: "12324512345#{i}", department: "Dep #{i}",
-			email: "123242142#{i}@qq.com", name: "student#{i}",  status: 1, confirm_token: nil)
+			email: "st00#{i}@qq.com", name: "student#{i}",  status: 1, confirm_token: nil)
 
 		Staff.create(username: "staff00#{i}", password: secure_hash("123456"), 
 			name: "xx#{i}",  staffid: "12345#{i}", phone: "1232132#{i}",
-			email: "123242142#{i}@qq.com",  status: 1, confirm_token: nil, tasks: 0)
+			email: "staff00#{i}@qq.com",  status: 1, confirm_token: nil, tasks: 0)
 
 		Room.create(week:i, location:"20#{i}",building:rand(0..1),size:rand(0..3),
 			day1course1:rand(0..1), day1course3:rand(0..1), day1course5:rand(0..1),
