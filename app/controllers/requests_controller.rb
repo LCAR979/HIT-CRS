@@ -41,8 +41,9 @@ class RequestsController < ApplicationController
 	    @request.applicant_id = params[:applicant_id]
 	    @applicant = Applicant.find(params[:applicant_id])
 	    @request.status = 2  	 #	request-status 0=>permited, 1=> rejected, 2=>wait 
-	    @room = Room.find_by_building_and_location_and_week(@request.building, @request.location, @request.week)
-	    str = 'day'+@request.day.to_s+'course' + @request.time.to_s	    
+	    #@room = Room.find_by_building_and_location_and_week(@request.building, @request.location, @request.week)
+	    @room = Room.find_by_location_and_week(@request.location,@request.week)
+	    str = 'day'+@request.day.to_s+'course' + @request.time.to_s	 
 	    if @room != nil
 	    	@room.update_attributes(str=>2)  #room-status 0=> 'free', 1=>'class', 2=>'wait', 3=>'reserved'
 	    	@room.save
@@ -50,20 +51,18 @@ class RequestsController < ApplicationController
 		    @request.staff_id = @staff.id
 		    @staff.tasks = @staff.tasks + 1
 		    @staff.save
-
-	    @staff = assignTasks()
-	    @request.staff_id = @staff.id
-	    @staff.tasks = @staff.tasks + 1
-	    @staff.save
-
-	    respond_to do |format|
-	      if @request.save
-	        format.html { redirect_to applicant_path(@applicant) , notice: 'request was successfully created.' }
-	        format.json { render json: @request, status: :created, location: @request }
-	      else
-	        format.html { render action: "new" }
-	        format.json { render json: @request.errors, status: :unprocessable_entity }
-	      end
+	    	respond_to do |format|
+		      	if @request.save
+		        	format.html { redirect_to applicant_path(@applicant) , notice: 'request was successfully created.' }
+		        	format.json { render json: @request, status: :created, location: @request }
+		      	else
+		        	format.html { render action: "new" }
+		       		format.json { render json: @request.errors, status: :unprocessable_entity }
+		      	end
+		    end
+		else
+			#error branch 
+			redirect_to new_applicant_request_path(@applicant), notice: 'room does not exit!'
 	    end
   	end
 
@@ -90,7 +89,7 @@ class RequestsController < ApplicationController
   		@applicant = Applicant.find(params[:applicant_id])
   		@request = Request.find(params[:id])
   		#change request status
-  		@request.status = 4
+  		@request.status = 3
   		#change room status
   		@room = Room.find_by_location_and_week(@request.location,@request.week)
 	    str = 'day'+@request.day.to_s+'course' + @request.time.to_s

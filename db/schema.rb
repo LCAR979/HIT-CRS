@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.integer "size"
     t.boolean "media"
     t.string  "description"
-    t.text    "status"
+    t.integer "status"
     t.text    "comment"
     t.string  "teachername"
     t.string  "teacherphone"

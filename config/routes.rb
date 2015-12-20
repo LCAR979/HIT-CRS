@@ -70,7 +70,7 @@ HITCrs::Application.routes.draw do
   put '/staffs/audit/:id',to: 'staffs#audit'
 
   get '/rooms/applicant/:applicant_id', to: 'rooms#index'
-  get '/rooms/staff/:staff_id', to: 'rooms#index'
+  get '/rooms/staff/:staff_id', to: 'rooms#staff_room'
 
   resources :applicants do
     member do
