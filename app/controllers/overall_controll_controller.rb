@@ -10,10 +10,11 @@ class OverallControllController < ApplicationController
 					status:0)
 				if @applicant.save
 					Mailer.confirmation(@applicant).deliver
-					respond_to do |format|
-						format.html {render 'confirmation_html.erb'}
-						redirect_to '/login'
-					end
+					flash[:success] = "Please confirm your email to continue"
+					redirect_to '/login'
+				else
+					falsh[:error] = "Ooooppss, something went wrong"
+					redirect_to '/signup'
 				end
 			else
 				redirect_to '/signup', notice: 'Email is already taken!'
@@ -25,10 +26,11 @@ class OverallControllController < ApplicationController
 				 phone: params[:phone], email: params[:email], password: hashpassword, status:0)
 				if @staff.save
 					Mailer.confirmation(@staff).deliver
-					respond_to do |format|
-						format.html {render 'confirmation_html.erb'}
-						redirect_to("/login")
-					end
+					flash[:success] = "Please confirm your email to continue"
+					redirect_to '/login'
+				else
+					falsh[:error] = "Ooooppss, something went wrong"
+					redirect_to '/signup'
 				end
 			else
 				redirect_to '/signup', notice: 'Email is already taken!'
