@@ -54,10 +54,11 @@ class ApplicantsController < ApplicationController
 		applicant = Applicant.find_by_confirm_token(params[:confirm_token])
 		if applicant 	    		      
 			applicant.email_activate 	      
-			flash[:success] = "Welcome to HIT-CRS! Your email has been confirmed. 	      Please sign in to continue." 	      
+			flash[:notice] = "Welcome to HIT-CRS! Your email has been confirmed.Please sign in to continue." 	      
 			redirect_to '/login' 	    
-		else 	      
-			flash[:error] = "Sorry. User does not exist." 	      
+		else 
+			raise	      
+			flash[:notice] = "Sorry. User does not exist." 	      
 			redirect_to '/signup' 	    
 		end 	
 	end

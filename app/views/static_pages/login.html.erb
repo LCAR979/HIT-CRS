@@ -1,4 +1,11 @@
-﻿<form class="form-horizontal" action="/check_login" method="post" role="form" data-toggle="validator">
+﻿<% if flash[:notice]%>
+  <div class="alert alert-danger fade in col-xs-8">
+    <a href="/" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+    <%=flash[:notice]%>
+  </div>
+<%end%>
+
+<form class="form-horizontal" action="/check_login" method="post" role="form" data-toggle="validator">
   <div class="form-group">
     <label for="email" class="control-label col-xs-2" >Email</label>
     <div class="col-xs-10">
