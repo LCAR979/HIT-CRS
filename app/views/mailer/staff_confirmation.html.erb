@@ -1,0 +1,9 @@
+<html> 
+	<head>
+	</head>
+	<body>
+		<p>Hi <%= @staff.name %>, 	</p>
+		<p>Thanks for registering! To confirm your registration click the URL below. </p>	
+		<p> <%= confirm_email_staff_url(@staff.confirm_token) %> </p> 
+	</body>
+</html>

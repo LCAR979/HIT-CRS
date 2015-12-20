@@ -10,14 +10,15 @@ class OverallControllController < ApplicationController
 					status:0)
 				if @applicant.save
 					Mailer.confirmation(@applicant).deliver
-					flash[:success] = "Please confirm your email to continue"
+					flash[:notice] = "Please confirm your email to continue"
 					redirect_to '/login'
 				else
-					falsh[:error] = "Ooooppss, something went wrong"
+					falsh[:notice] = "Ooooppss, something went wrong"
 					redirect_to '/signup'
 				end
 			else
-				redirect_to '/signup', notice: 'Email is already taken!'
+				falsh[:notice] = "Email address is already taken!"
+				redirect_to '/signup'
 			end
 		elsif params[:identity] == "staff"
 			if Staff.find_by_email(params[:email]) == nil
@@ -26,14 +27,15 @@ class OverallControllController < ApplicationController
 				 phone: params[:phone], email: params[:email], password: hashpassword, status:0)
 				if @staff.save
 					Mailer.confirmation(@staff).deliver
-					flash[:success] = "Please confirm your email to continue"
+					flash[:notice] = "Please confirm your email to continue"
 					redirect_to '/login'
 				else
-					falsh[:error] = "Ooooppss, something went wrong"
+					falsh[:notice] = "Ooooppss, something went wrong"
 					redirect_to '/signup'
 				end
 			else
-				redirect_to '/signup', notice: 'Email is already taken!'
+				falsh[:notice] = "Email address is already taken!"
+				redirect_to '/signup'
 			end
 		else
 			redirect_to("/signup")
@@ -45,7 +47,7 @@ class OverallControllController < ApplicationController
 		if params[:identity] == "student"
 			hashpassword = secure_hash(params[:password])
 			@searchRe = Applicant.find_by_email(params[:email])
-			if @searchRe == nil || (hashpassword != @searchRe.password)
+			if @searchRe == nil || (hashpassword != @searchRe.password) || (@searchRe.status != 1)
 				redirect_to("/login")
 			elsif hashpassword == @searchRe.password
 				redirect_to applicant_path(@searchRe)
@@ -53,7 +55,7 @@ class OverallControllController < ApplicationController
 		elsif params[:identity] == "staff"
 			hashpassword = secure_hash(params[:password])
 			@searchRe = Staff.find_by_email(params[:email])
-			if @searchRe == nil || (hashpassword != @searchRe.password)
+			if @searchRe == nil || (hashpassword != @searchRe.password)|| (@searchRe.status != 1)
 				redirect_to("/login")
 			elsif hashpassword == @searchRe.password
 				redirect_to staff_path(@searchRe)

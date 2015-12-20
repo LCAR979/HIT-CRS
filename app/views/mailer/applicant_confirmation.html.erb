@@ -1,0 +1,9 @@
+<html> 
+	<head>
+	</head>
+	<body>
+		<p>Hi <%= @applicant.name %>, 	</p>
+		<p>Thanks for registering! To confirm your registration click the URL below. </p>	
+		<p> <%= confirm_email_applicant_url(@applicant.confirm_token) %> </p> 
+	</body>
+</html>

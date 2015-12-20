@@ -7,6 +7,7 @@ class ApplicantsController < ApplicationController
 	    	format.json{ render json: @applicant}
 	    end 	
 	end
+
 	#------------------------For reset password-----------------------
 	def modify
 		@applicant = Applicant.find(params[:id])
@@ -21,14 +22,15 @@ class ApplicantsController < ApplicationController
 		if oldpassword == secure_hash(params[:oldpassword])
 			newpassword = secure_hash(params[:newpassword])
 			@applicant.update_attributes(password:newpassword)
-			redirect_to applicant_path(@applicant), notice: 'password modify successfully!'
+			redirect_to applicant_path(@applicant), notice: 'Password modify successfully!'
 		else 
-			redirect_to "/applicants/"+@applicant.id.to_s+"/modify/", notice: 'old password is not correct!'
+			redirect_to "/applicants/"+@applicant.id.to_s+"/modify/", notice: 'Wrong password'
 		end
 	end
 	def secure_hash(string)
 		Digest::SHA2.hexdigest(string)
 	end
+
 	#----------------------------------------------------------------------
 	def history
 		@applicant = Applicant.find(params[:id])
@@ -39,6 +41,7 @@ class ApplicantsController < ApplicationController
 	    	format.json{ render json: @applicant}
 	    end  
 	end
+
 	#view request details
 	def view_detail
 		@roomsize = [42, 72, 120, 260]
@@ -50,14 +53,14 @@ class ApplicantsController < ApplicationController
 	    	format.json{ render json: @applicant}
 	    end  
 	end
+
 	def confirm_email     	
 		applicant = Applicant.find_by_confirm_token(params[:confirm_token])
-		if applicant 	    		      
-			applicant.email_activate 	      
+		if applicant	    		      
+			applicants.email_activate 	      
 			flash[:notice] = "Welcome to HIT-CRS! Your email has been confirmed.Please sign in to continue." 	      
 			redirect_to '/login' 	    
-		else 
-			raise	      
+		else 	      
 			flash[:notice] = "Sorry. User does not exist." 	      
 			redirect_to '/signup' 	    
 		end 	

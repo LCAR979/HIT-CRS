@@ -66,6 +66,18 @@ class StaffsController < ApplicationController
 		Digest::SHA2.hexdigest(string)
 	end
 	#-------------------------------------------------------------------------------
+	def confirm_email     	
+		staff = Staff.find_by_confirm_token(params[:confirm_token])
+		if staff	    		      
+			staff.email_activate 	      
+			flash[:notice] = "Welcome to HIT-CRS! Your email has been confirmed.Please sign in to continue." 	      
+			redirect_to '/login' 	    
+		else 	      
+			flash[:notice] = "Sorry. User does not exist." 	      
+			redirect_to '/signup' 	    
+		end 	
+	end
+
 	def new	
 	end
 	def create
