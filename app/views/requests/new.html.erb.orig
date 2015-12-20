@@ -8,6 +8,41 @@
 	<p class="col-lg-10 col-lg-offset-1 text-capitalize">Classroom reservation application form</p>
 	
 	<div class="form-group">
+<<<<<<< HEAD
+		<%=r.label :name, class:"control-label col-lg-2" %>
+		<div class="col-lg-10">
+			<%=r.text_field :name , class:"form-control", value:@applicant.username,disabled:true %>
+		</div>
+		<span class="help-block with-errors"></span>
+	</div>
+
+	<div class="form-group">
+		<%=r.label :studentid, class:"control-label col-lg-2"  %>
+		<div class="col-lg-10">
+			<%=r.text_field :studentid , class:"form-control",value:@applicant.studentid ,disabled:true %>
+		</div>
+		<span class="help-block with-errors"></span>
+	</div>
+
+	<div class="form-group">
+		<%=r.label :phone, class:"control-label col-lg-2" %>
+		<div class="col-lg-10">
+			<%=r.number_field :phone , class:"form-control",value:@applicant.phone ,disabled:true %>
+		</div>
+		<span class="help-block with-errors"></span>
+	</div>
+
+	<div class="form-group">
+		<%=r.label :department, class:"control-label col-lg-2" %>
+		<div class="col-lg-10">
+			<%=r.text_field :department , class:"form-control",value:@applicant.department ,disabled:true %>
+		</div>
+		<span class="help-block with-errors"></span>
+	</div>
+
+	<div class="form-group">
+=======
+>>>>>>> prepare for merge
 		<%=r.label :description, class:"control-label col-lg-2" %>
 		<div class="col-lg-10">
 			<%=r.text_area :description , class:"form-control",placeholder:"Description" %>
@@ -15,6 +50,10 @@
 		<span class="help-block with-errors"></span>
 	</div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> prepare for merge
 	<div class="form-group">
 		<%=r.label :week, class:"control-label col-lg-2"  %>
 		<!-- <label class="col-lg-3 control-label">Building</label> -->
@@ -47,7 +86,11 @@
 		<%=r.label :building, class:"control-label col-lg-2"  %>
 		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
+<<<<<<< HEAD
         	<%=r.select :building, [['ZhengXin',1],['GeWu',2]],class:"form-control",selected:@room.building,disabled:true%>
+=======
+        	<%=r.select :building, [['ZhengXin',0],['GeWu',1]],class:"form-control" %>
+>>>>>>> prepare for merge
         </div>
 	</div>
 
@@ -63,7 +106,11 @@
 		<%=r.label :size, class:"control-label col-lg-2"  %>
 		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
+<<<<<<< HEAD
         	<%=r.select :size, [["42", 1], ["72", 2], ["120", 3], ["260",4]],class:"form-control", selected:@room.size%>
+=======
+        	<%=r.select :size, [["42", 0], ["72", 1], ["120", 2], ["260",3]],class:"form-control" %>
+>>>>>>> prepare for merge
         </div>
 	</div>
 
