@@ -10,7 +10,7 @@ class CreateRequests < ActiveRecord::Migration
       t.boolean   :media      #media = 1, use multi-media
       t.string    :description  #description for use
 
-  		t.integer   :status   		#status: 0=>permited, 1=> rejected, 2=>wait
+  		t.integer   :status   		#status: 0=>permited, 1=> rejected, 2=>wait,3=>cancelled
 
   		
       #response from teachers 
