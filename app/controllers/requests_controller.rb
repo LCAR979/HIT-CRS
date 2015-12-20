@@ -20,7 +20,14 @@ class RequestsController < ApplicationController
 	#go to new request page
 	def new
 	  @request = Request.new
+	  #------------------------Added infor-----------
 	  @applicant = Applicant.find(params[:applicant_id])
+	  @room = Room.find(params[:room_id])
+	  @day = params[:day].to_i
+	  @course = params[:course].to_i
+	  #-----------------------------------------------
+	  #raise params
+	  
       respond_to do |format|
 	      format.html { render layout:"form"}# new.html.erb
 	      format.json { render json: @request }
@@ -39,8 +46,11 @@ class RequestsController < ApplicationController
 	    if @room != nil
 	    	@room.update_attributes(str=>2)  #room-status 0=> 'free', 1=>'class', 2=>'wait', 3=>'reserved'
 	    	@room.save
-	    end
-
+		    @staff = assignTasks()
+		    @request.staff_id = @staff.id
+		    @staff.tasks = @staff.tasks + 1
+		    @staff.save
+		end 
 	    @staff = assignTasks()
 	    @request.staff_id = @staff.id
 	    @staff.tasks = @staff.tasks + 1
@@ -74,5 +84,21 @@ class RequestsController < ApplicationController
   		min_tasks = tasks_vals.min
   		staff_with_min_tasks = Staff.find_by_tasks(min_tasks)
   		return staff_with_min_tasks
+  	end
+  	#cancel a request
+  	def cancel
+  		@applicant = Applicant.find(params[:applicant_id])
+  		@request = Request.find(params[:id])
+  		#change request status
+  		@request.status = 4
+  		#change room status
+  		@room = Room.find_by_location_and_week(@request.location,@request.week)
+	    str = 'day'+@request.day.to_s+'course' + @request.time.to_s
+	    if @room != nil
+	    	@room.update_attributes(str=>0)  #room status : free
+	    	@room.save
+	    end
+	    @request.save
+	    redirect_to "/applicants/"+@applicant.id.to_s+'/histroy/'
   	end
 end

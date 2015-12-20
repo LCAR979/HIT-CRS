@@ -2,7 +2,7 @@
 <% if flash[:notice]%>
   <div class="alert alert-success fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
-    <strong>Success!</strong> <%=flash[:notice]%>
+    <%=flash[:notice]%>
   </div>
 <%end%>
 <div class="container">
@@ -12,6 +12,8 @@
         <!-- <div class="col-lg-2"><%= link_to 'Reservation history ', '#' %></div> -->
         <div class="col-lg-2"><%= link_to 'Room available status', '/rooms/staff/'+ @staff.id.to_s %></div>
          <div class="col-lg-2"><%= link_to 'View Request Pool', staff_requests_path(@staff) %></div>
+          <div class="col-lg-2"><%= link_to 'Modify password', 
+          '/staffs/'+@staff.id.to_s+'/modify/'%></div>
       </div>
     </div>
     <!-- <div class="span4">...</div> -->

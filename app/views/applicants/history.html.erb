@@ -1,0 +1,62 @@
+<%@permitedlist=Request.find_all_by_status_and_staff_id(1, @applicant.id)%>
+<%@rejectedlist=Request.find_all_by_status(2, @applicant.id)%>
+<%@watinglist=Request.find_all_by_status(3, @applicant.id)%>
+<%@cancellist=Request.find_all_by_status(4, @applicant.id)%>
+<table id="requests-list">
+  <tr>
+    <p>waiting list</p>
+  </tr>
+  <% @watinglist.each do |request| %> 
+  <tr>
+        <!-- status :waiting list -->
+            <!-- <td>Room status: waiting </td> -->
+            <td>Week: <%= request.week %></td> 
+            <td>Building: <%= @buildings[request.building] %></td>
+            <td>Location: <%= request.location %></td>
+            <td>Time Interval: <%= request.time %></td>
+            <td>Size: <%= @roomsize[request.size] %></td>
+            <% str= '/applicants/'+@applicant.id.to_s+'/requests/'+request.id.to_s+'/show/' %> 
+            <td><%= link_to 'View detail', str, :method => :get %>
+            </td>
+    </tr>
+    <%end%>
+    <tr>
+       <p> canceled list </p>
+    </tr>
+    <% @cancellist.each do |request| %> 
+     <tr>
+        <!-- status :Canceld list -->
+            <td>Week: <%= request.week %></td> 
+            <td>Building: <%= @buildings[request.building] %></td>
+            <td>Location: <%= request.location %></td>
+            <td>Time Interval: <%= request.time %></td>
+            <td>Size: <%= @roomsize[request.size] %></td>
+    </tr>
+    <%end%>
+    <p>
+     permited list
+    </p>
+    <% @permitedlist.each do |request| %> 
+     <tr>
+        <!-- status :permited list -->
+            <td>Week: <%= request.week %></td> 
+            <td>Building: <%= @buildings[request.building] %></td>
+            <td>Location: <%= request.location %></td>
+            <td>Time Interval: <%= request.time %></td>
+            <td>Size: <%= @roomsize[request.size] %></td>
+    </tr>
+    <%end%>
+    <p>
+        rejected list
+    </p>
+    <% @rejectedlist.each do |request| %> 
+    <tr>
+        <!-- status :rejected list -->
+            <td>Week: <%= request.week %></td> 
+            <td>Building: <%= @buildings[request.building] %></td>
+            <td>Location: <%= request.location %></td>
+            <td>Time Interval: <%= request.time %></td>
+            <td>Size: <%= @roomsize[request.size] %></td>
+    </tr>
+    <%end%>
+</table>

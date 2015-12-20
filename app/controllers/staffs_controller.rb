@@ -43,7 +43,29 @@ class StaffsController < ApplicationController
 	    	format.json{ render json: @staff}
 	    end 
 	end
-
+	#--------------------------For reset password----------------------------
+	def modify
+		@staff = Staff.find(params[:id])
+		respond_to do |format|
+			format.html
+			format.json{ render json: @staff}
+		end
+	end
+	def reset
+		@staff = Staff.find(params[:id])
+		oldpassword = @staff.password
+		if oldpassword == secure_hash(params[:oldpassword])
+			newpassword = secure_hash(params[:newpassword])
+			@staff.update_attributes(password:newpassword)
+			redirect_to staff_path(@staff), notice: 'password modify successfully!'
+		else 
+			redirect_to "/staffs/"+@staff.id.to_s+"/modify/", notice: 'old password is not correct!'
+		end
+	end
+	def secure_hash(string)
+		Digest::SHA2.hexdigest(string)
+	end
+	#-------------------------------------------------------------------------------
 	def new	
 	end
 	def create

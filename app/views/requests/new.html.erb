@@ -1,52 +1,16 @@
-<%=form_for @request, :url => applicant_requests_path(@applicant),
- :html => {class:'form-horizontal', 'role'=>'form', 'data-toggle'=>'validator' }  do |r|%>
+<% if flash[:notice]%>
+  <div class="alert alert-danger fade in col-xs-8">
+    <strong>Error!</strong> <%=flash[:notice]%>
+  </div>
+<%end%>
+<%=form_for @request, url: {action: "create"},:html => {class:'form-horizontal', 'role'=>'form', 'data-toggle'=>'validator'}  do |r|%>
 
 	<p class="col-lg-10 col-lg-offset-1 text-capitalize">Classroom reservation application form</p>
 	
 	<div class="form-group">
-		<%=r.label :name, class:"control-label col-lg-2" %>
-		<div class="col-lg-10">
-			<%=r.text_field :name , class:"form-control", value:@applicant.username %>
-		</div>
-		<span class="help-block with-errors"></span>
-	</div>
-
-	<div class="form-group">
-		<%=r.label :studentid, class:"control-label col-lg-2"  %>
-		<div class="col-lg-10">
-			<%=r.text_field :studentid , class:"form-control",value:@applicant.studentid %>
-		</div>
-		<span class="help-block with-errors"></span>
-	</div>
-
-	<div class="form-group">
-		<%=r.label :phone, class:"control-label col-lg-2" %>
-		<div class="col-lg-10">
-			<%=r.number_field :phone , class:"form-control",value:@applicant.phone %>
-		</div>
-		<span class="help-block with-errors"></span>
-	</div>
-
-	<div class="form-group">
-		<%=r.label :department, class:"control-label col-lg-2" %>
-		<div class="col-lg-10">
-			<%=r.text_field :department , class:"form-control",value:@applicant.department %>
-		</div>
-		<span class="help-block with-errors"></span>
-	</div>
-
-	<div class="form-group">
 		<%=r.label :description, class:"control-label col-lg-2" %>
 		<div class="col-lg-10">
 			<%=r.text_area :description , class:"form-control",placeholder:"Description" %>
-		</div>
-		<span class="help-block with-errors"></span>
-	</div>
-
-	<div class="form-group">
-		<%=r.label :numAttendents,class:"control-label col-lg-2"  %>
-		<div class="col-lg-10">
-			<%=r.text_field :numAttendents , class:"form-control", placeholder:"Number of Attendants" %>
 		</div>
 		<span class="help-block with-errors"></span>
 	</div>
@@ -57,7 +21,7 @@
         <div class="col-lg-10 selectContainer">
         	<%=r.select :week, [["week1", 1], ["week2", 2], ["week3", 3], ["week4", 4], ["week5", 5], ["week6", 6], ["week7", 7], ["week8", 8], ["week9", 9], ["week10", 10], ["week11", 11],
 				["week12", 12], ["week13", 13], ["week14", 14], ["week15", 15], ["week16", 16], 
-				["week17", 17], ["week18", 18]],class:"form-control" %>
+				["week17", 17], ["week18", 18]],class:"form-control", value:@room.week,disabled:true %>
         </div>
 	</div>
 
@@ -66,7 +30,7 @@
 		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
         	<%=r.select :day,  [["Mon", 1], ["Tues", 2], ["Wed", 3], ["Thur",4],["Fri",5],
-		["Sat",6],["Sun",7]], class:"form-control" %>
+		["Sat",6],["Sun",7]], class:"form-control", selected:@day%>
         </div>
 	</div>
 
@@ -74,7 +38,7 @@
 		<%=r.label :time, class:"control-label col-lg-2"  %>
 		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
-        	<%=r.select :time, [["Class1~2", 1], ["Class3~4", 3], ["Class5~6", 5], ["Class7~8", 7], ["Class9~10", 8], ["Class11~12", 11]],class:"form-control" %>
+        	<%=r.select :time, [["Class1~2", 1], ["Class3~4", 3], ["Class5~6", 5], ["Class7~8", 7], ["Class9~10", 8], ["Class11~12", 11]],class:"form-control",selected:@course%>
         </div>
 	</div>
 
@@ -83,14 +47,14 @@
 		<%=r.label :building, class:"control-label col-lg-2"  %>
 		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
-        	<%=r.select :building, [['ZhengXin',1],['GeWu',2]],class:"form-control" %>
+        	<%=r.select :building, [['ZhengXin',1],['GeWu',2]],class:"form-control",selected:@room.building,disabled:true%>
         </div>
 	</div>
 
 	<div class="form-group">
 		<%=r.label :location, class:"control-label col-lg-2"  %>
 		<div class="col-lg-10">
-			<%=r.text_field :location , class:"form-control",placeholder:"Location" %>
+			<%=r.text_field :location , class:"form-control",placeholder:"Location", value:@room.location%>
 		</div>
 		<span class="help-block with-errors"></span>
 	</div>
@@ -99,7 +63,7 @@
 		<%=r.label :size, class:"control-label col-lg-2"  %>
 		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
-        	<%=r.select :size, [["42", 1], ["72", 2], ["120", 3], ["260",4]],class:"form-control" %>
+        	<%=r.select :size, [["42", 1], ["72", 2], ["120", 3], ["260",4]],class:"form-control", selected:@room.size%>
         </div>
 	</div>
 
@@ -107,10 +71,9 @@
 		<%=r.label :media, class:"control-label col-lg-2"  %>
 		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
-        	<%=r.select :media, [["Yes", 1], ["No", 0]] ,class:"form-control" %>
+        	<%=r.select :media, [["Yes", 1], ["No", 0]] ,class:"form-control"%>
         </div>
 	</div>
-
 	<div class="form-group">
 		<div class="control-label col-lg-2"></div>
         <div class="col-lg-10 selectContainer">
