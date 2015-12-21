@@ -10,17 +10,15 @@ class CreateRequests < ActiveRecord::Migration
       t.boolean   :media      #media = 1, use multi-media
       t.string    :description  #description for use
 
-  		t.integer   :status   		#status: 0=>permited, 1=> rejected, 2=>wait,3=>cancelled
-
-  		
+  		t.integer   :status   		#status: 0=>permited, 1=> rejected, 2=>wait,3=>cancelled  		
       #response from teachers 
   		t.text	  :comment 		#comment feedback
-  		t.string    :teachername	#corrresponding teacher 
-  		t.string 	  :teacherphone	#corrresponding teacher phone
-
+      #image 
+      t.string :image
   	  #foreigh key association
   		t.belongs_to :applicant
   		t.belongs_to :staff
+      
   	end
   end
   def down

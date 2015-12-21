@@ -96,7 +96,10 @@ class RequestsController < ApplicationController
 	    str = 'day'+@request.day.to_s+'course' + @request.time.to_s
 	    if @room != nil
 	    	@room.update_attributes(str=>0)  #room status : free
-	    	@room.save
+	    	# cancel num + 1
+	    	@applicant.cancel_num = @applicant.cancel_num + 1
+	    	@applicant.save
+	    	#@room.save
 	    end
 	    @request.save
 	    redirect_to "/applicants/"+@applicant.id.to_s+'/histroy/'

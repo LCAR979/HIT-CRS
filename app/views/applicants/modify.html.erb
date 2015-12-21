@@ -4,6 +4,15 @@
     <strong>Failed!</strong> <%=flash[:notice]%>
   </div>
 <%end%>
+
+
+<%=form_for @applicant, url: {action: "uploadimage"} do |f|%>
+  <%=f.file_field :image%>
+<br/>
+<br/>
+  <%=f.submit "uploadimage"%>
+<%end%>
+
 <form action=<%="/applicants/"+@applicant.id.to_s+'/reset/'%> method='post'
 	role="form" data-toggle="validator">
 	 <div class="form-group">

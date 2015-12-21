@@ -11,9 +11,11 @@ class CreateStaffs < ActiveRecord::Migration
                 # 0 not verified, 1 verified and normal , 2 closed
       t.string :confirm_token
       t.integer :tasks, :default => 0
-      
+
       t.string :avater_file_name
       t.binary :avater_binary
+      #image 
+      t.string :image
   	end
   end
 

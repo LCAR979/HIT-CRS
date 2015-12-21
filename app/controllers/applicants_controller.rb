@@ -65,5 +65,9 @@ class ApplicantsController < ApplicationController
 			redirect_to '/signup' 	    
 		end 	
 	end
+	def uploadimage
+		@applicant = Applicant.find(params[:id])
+		@applicant.update_attributes(params[:applicant])
+	end
 
 end
