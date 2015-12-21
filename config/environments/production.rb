@@ -10,8 +10,7 @@ HITCrs::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
-  
-  config.assets.precompile = ['*.js', '*.css', '**/*.js', '**/*.css']
+  #config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
