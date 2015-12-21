@@ -10,7 +10,8 @@ HITCrs::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
-
+  
+  config.assets.precompile = ['*.js', '*.css', '**/*.js', '**/*.css']
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
@@ -20,7 +21,7 @@ HITCrs::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
   
-  config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
+  
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
