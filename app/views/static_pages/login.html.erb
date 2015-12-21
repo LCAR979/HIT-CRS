@@ -1,9 +1,4 @@
-﻿<% if flash[:notice]%>
-  <div class="alert alert-danger fade in col-xs-8">
-    <a href="/" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
-    <%=flash[:notice]%>
-  </div>
-<%end%>
+﻿<%= render 'layouts/notice' %>
 
 <form class="form-horizontal" action="/check_login" method="post" role="form" data-toggle="validator">
   <div class="form-group">
