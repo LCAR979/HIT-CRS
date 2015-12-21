@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
 	layout "basic"
 
+	#staff_requests GET    /staffs/:staff_id/requests(.:format) 
 	#call by staff only
 	#show the request waiting to be processed belongs to certain staff
 	def index    		
@@ -10,7 +11,7 @@ class RequestsController < ApplicationController
 		@staff = Staff.find(params[:staff_id])
 		@all_requests = Request.find_all_by_staff_id(params[:staff_id])
 		respond_to do |format|
-	    	format.html{ render layout:"basic"}
+	    	format.html
 	    	format.json{ render json: @staff}
 	    end 
 	end
@@ -45,7 +46,6 @@ class RequestsController < ApplicationController
 	    str = 'day'+@request.day.to_s+'course' + @request.time.to_s	    
 	    if @room != nil
 	    	@room.update_attributes(str=>2)  #room-status 0=> 'free', 1=>'class', 2=>'wait', 3=>'reserved'
-	    	@room.save
 		    @staff = assignTasks()
 		    @request.staff_id = @staff.id
 		    @staff.tasks = @staff.tasks + 1

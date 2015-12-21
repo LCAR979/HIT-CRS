@@ -1,9 +1,6 @@
-<% if flash[:notice]%>
-  <div class="alert alert-danger fade in col-xs-8">
-    <strong>Error!</strong> <%=flash[:notice]%>
-  </div>
-<%end%>
-<%=form_for @request, url: {action: "create"},:html => {class:'form-horizontal', 'role'=>'form', 'data-toggle'=>'validator'}  do |r|%>
+<%= render 'layouts/notice' %>
+
+<%=form_for @request, url: {action: "create"},:html => {class:'form-horizontal col-lg-12', 'role'=>'form', 'data-toggle'=>'validator'}  do |r|%>
 	<p class="col-lg-10 col-lg-offset-1 text-capitalize">Classroom reservation application form</p>
 	<div class="form-group">
 		<%=r.label :description, class:"control-label col-lg-2" %>
@@ -14,7 +11,6 @@
 	</div>
 	<div class="form-group">
 		<%=r.label :week, class:"control-label col-lg-2"  %>
-		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg@room.week-10 selectContainer">
         	<%=r.select :week, [["week1", 1], ["week2", 2], ["week3", 3], ["week4", 4], ["week5", 5], ["week6", 6], ["week7", 7], ["week8", 8], ["week9", 9], ["week10", 10], ["week11", 11],
 				["week12", 12], ["week13", 13], ["week14", 14], ["week15", 15], ["week16", 16], 
@@ -24,7 +20,6 @@
 
 	<div class="form-group">
 		<%=r.label :day, class:"control-label col-lg-2"  %>
-		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
         	<%=r.select :day,  [["Mon", 1], ["Tues", 2], ["Wed", 3], ["Thur",4],["Fri",5],
 		["Sat",6],["Sun",7]], class:"form-control", selected:@day %>
@@ -33,7 +28,6 @@
 
 	<div class="form-group">
 		<%=r.label :time, class:"control-label col-lg-2"  %>
-		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
         	<%=r.select :time, [["Class1~2", 1], ["Class3~4", 3], ["Class5~6", 5], ["Class7~8", 7], ["Class9~10", 8], ["Class11~12", 11]],class:"form-control", selected:@course %>
         </div>
@@ -42,9 +36,8 @@
 
 	<div class="form-group">
 		<%=r.label :building, class:"control-label col-lg-2"  %>
-		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
-        	<%=r.select :building, [['ZhengXin',1],['GeWu',2]],class:"form-control",selected:@room.building%>
+        	<%=r.select :building, [['ZhengXin',0],['GeWu',1]],class:"form-control",selected:@room.building%>
         </div>
 	</div>
 
@@ -58,7 +51,6 @@
 	
 	<div class="form-group">
 		<%=r.label :size, class:"control-label col-lg-2"  %>
-		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
         	<%=r.select :size, [["42", 1], ["72", 2], ["120", 3], ["260",4]],class:"form-control", selected:@room.size%>
         </div>
@@ -66,7 +58,6 @@
 
 	<div class="form-group">
 		<%=r.label :media, class:"control-label col-lg-2"  %>
-		<!-- <label class="col-lg-3 control-label">Building</label> -->
         <div class="col-lg-10 selectContainer">
         	<%=r.select :media, [["Yes", 1], ["No", 0]] ,class:"form-control"%>
         </div>

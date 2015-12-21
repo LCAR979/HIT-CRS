@@ -1,0 +1,21 @@
+<%= render 'layouts/notice' %>
+
+<form action=<%="/staffs/"+@staff.id.to_s+'/reset/'%> method='post'
+	role="form" data-toggle="validator">
+	 <div class="form-group">
+    <label for="oldpassword" class="control-label col-xs-2">Old password:</label>
+    <div class="col-xs-10">
+        <input type="password" class="form-control" id="password" name="oldpassword" placeholder="Password" pattern="^\w{6,}" data-error="Minimum of 6 characters"  required>
+  	</div>
+  	<label for="newpassword" class="control-label col-xs-2">new password:</label>
+    <div class="col-xs-10">
+        <input type="password" class="form-control" id="password" name="newpassword" placeholder="Password" pattern="^\w{6,}" data-error="Minimum of 6 characters"  required>
+  	</div>
+    <span class="help-block with-errors"></span>
+ 	 </div>
+ 	<div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+            <button type="submit"  class="btn btn-primary">Modify</button>
+        </div>
+ 	 </div>
+</form>

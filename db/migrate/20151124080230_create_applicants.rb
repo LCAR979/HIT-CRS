@@ -11,9 +11,8 @@ class CreateApplicants < ActiveRecord::Migration
   		t.integer   :status,  :default => 0
                   # 0 not verified, 1 verified and normal , 2 closed
       t.string  :confirm_token
-      t.integer :cancel_num,  :default => 0  # cancelled numbers
-      #image 
       t.string :image
+      t.integer :cancel_num,  :default => 0  # cancelled numbers
 	 end  
   end
 

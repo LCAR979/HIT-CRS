@@ -10,7 +10,7 @@ HITCrs::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
-
+  #config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
@@ -19,7 +19,8 @@ HITCrs::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
-
+  
+  
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
@@ -65,6 +66,7 @@ HITCrs::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   Rails.application.routes.default_url_options[:host] = 'hitcrs.herokuapp.com'   
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp   
   config.action_mailer.perform_deliveries = true   
   config.action_mailer.smtp_settings = {

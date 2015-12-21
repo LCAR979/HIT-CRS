@@ -3,7 +3,6 @@
   <tr>
   </tr>
   <% @myrequests.each do |request| %> 
-
         <% if request.status ==3%> 
             <td>Room status: processing </td>
             <td>size: <%= @roomsize[request.size] %></td>

@@ -1,5 +1,5 @@
-$(document).ready(function(){
+$(function(){
   setTimeout(function(){
     $('.alert').remove();
-  }, 5000);
+  }, 4000);
  })

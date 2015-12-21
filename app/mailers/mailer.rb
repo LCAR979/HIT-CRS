@@ -11,4 +11,10 @@ class Mailer < ActionMailer::Base
 		mail(:to => "#{@staff.name} <#{@staff.email}>",
 		     :subject => "HITCRS Registration Confirmation")   
 	end
+
+	def inform_request_status(applicant, request)
+		@applicant = applicant
+		@request = request
+		mail(:to => "#{@applicant.name} <#{@applicant.email}>",
+		     :subject => "Resevation Request Status Changed")   
 end 

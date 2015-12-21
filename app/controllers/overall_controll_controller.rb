@@ -61,6 +61,7 @@ class OverallControllController < ApplicationController
 				redirect_to("/login")
 			elsif hashpassword == @searchRe.password
 				flash[:success] = "Welcome"
+				cookies[:username] = Applicant.find_by_username(@searchRe.username)
 				redirect_to applicant_path(@searchRe)
 			end
 		elsif params[:identity] == "staff"
@@ -80,7 +81,8 @@ class OverallControllController < ApplicationController
 				redirect_to("/login")
 			elsif hashpassword == @searchRe.password
 				flash[:success] = "Welcome"
-				redirect_to applicant_path(@searchRe)
+				cookies[:username] = Staff.find_by_username(@searchRe.username)
+				redirect_to staff_path(@searchRe)
 			end
 		else
 			redirect_to("/login")
