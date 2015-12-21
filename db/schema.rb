@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.string  "confirm_token"
     t.string  "avater_file_name"
     t.binary  "avater_binary"
+    t.integer "cancel_num",       :default => 0
   end
 
   create_table "requests", :force => true do |t|
@@ -38,8 +39,7 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.string  "description"
     t.integer "status"
     t.text    "comment"
-    t.string  "teachername"
-    t.string  "teacherphone"
+    t.string  "image"
     t.integer "applicant_id"
     t.integer "staff_id"
   end
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.integer "tasks",            :default => 0
     t.string  "avater_file_name"
     t.binary  "avater_binary"
+    t.string  "image"
   end
 
 end

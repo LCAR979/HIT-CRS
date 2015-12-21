@@ -1,5 +1,8 @@
 class RoomsController < ApplicationController
 	layout "basic"
+
+	#rooms 
+	#GET    /rooms(.:format)
 	def index
 		@search = Room.new
 		@rooms = Room.all
@@ -18,8 +21,8 @@ class RoomsController < ApplicationController
 	      format.json { render json: @rooms, json: @roomsize}
 	  	end
     end
-    def show 
-    end 
+
+    #GET    /rooms/staff/:staff_id(.:format) 
     def staff_room
 		@search = Room.new
 		@rooms = Room.all

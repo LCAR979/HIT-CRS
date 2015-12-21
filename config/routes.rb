@@ -47,13 +47,14 @@ HITCrs::Application.routes.draw do
   post '/save', to: 'overall_controll#save'
   post '/check_login', to: 'overall_controll#check_login' 
   get 'logout', to: 'overall_controll#logout'
+
   #modify password
   #applicant
   post "/applicants/:id/reset", to: 'applicants#reset'
-  get "/applicants/:id/modify", to: 'applicants#modify'
+  get "/applicants/:id/setting", to: 'applicants#setting'
   #staff
   post "/staffs/:id/reset", to: 'staffs#reset'
-  get "/staffs/:id/modify", to: 'staffs#modify'
+  get "/staffs/:id/setting", to: 'staffs#setting'
   #------Applicant view histroy
   get "/applicants/:id/histroy", to: 'applicants#history'
   #----------------------
@@ -63,6 +64,8 @@ HITCrs::Application.routes.draw do
   get "/applicants/:applicant_id/requests/:id/cancel", to: "requests#cancel"
   # click to reserve
   get "/applicants/:applicant_id/rooms/:room_id/:day/:course", to: "requests#new"
+  # save applicant image
+  put "/applicants/:id/upload", to: "applicants#uploadimage"
 end
 
  # The priority is based upon order of creation:

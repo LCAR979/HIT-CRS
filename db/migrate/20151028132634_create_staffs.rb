@@ -8,12 +8,10 @@ class CreateStaffs < ActiveRecord::Migration
       t.string :email 
       t.string :staffid
   		t.integer :status,  :default => 0  
-                # 0 not verified, 1 verified and normal , 2 closed
+                # 0 not verified, 1 verified and normal , 2 shut down
       t.string :confirm_token
       t.integer :tasks, :default => 0
-      
-      t.string :avater_file_name
-      t.binary :avater_binary
+      t.string :image
   	end
   end
 
