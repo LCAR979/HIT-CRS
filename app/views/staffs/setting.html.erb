@@ -1,9 +1,5 @@
-<% if flash[:notice]%>
-  <div class="alert alert-success fade in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
-    <strong>Failed!</strong> <%=flash[:notice]%>
-  </div>
-<%end%>
+<%= render 'layouts/notice' %>
+
 <form action=<%="/staffs/"+@staff.id.to_s+'/reset/'%> method='post'
 	role="form" data-toggle="validator">
 	 <div class="form-group">

@@ -1,0 +1,24 @@
+<html> 
+	<head>
+	</head>
+	<body>
+		<p>Hi <%= @applicant.name %>, 	</p>
+		<p> Your reservation request: </p>
+		Week: <%=  @request.week %> <br />
+		Day: <%= @request.day %> <br />
+		Time Interval: From course <%= @request.time %> to course <%= @request.time + 1 %> </br>
+        Building: <%= @buildings[request.building] %></br>
+        Location: <%= @request.location %></br>
+        has been 
+        <bold>
+		<% if @request.status == 0 %>
+			<green> Permitted </green>
+		<% elsif @request.status == 1 %>
+			<red> Rejected </red>
+		<% else %>
+		 <p>
+		 	Login to check details:
+		 	<a href="hitcrs.herokuapp.com/login"> HIT Classroom Reservation System</a>
+		</p>
+	</body>
+</html>
