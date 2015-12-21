@@ -69,7 +69,8 @@ class StaffsController < ApplicationController
 	def confirm_email     	
 		staff = Staff.find_by_confirm_token(params[:id])
 		if staff	    		      
-			staff.email_active	      
+			staff.email_active	
+			staff.save      
 			flash[:success] = "Welcome to HIT-CRS! Your email has been confirmed.Please sign in to continue." 	      
 			redirect_to '/login' 	    
 		else 	      
