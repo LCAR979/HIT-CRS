@@ -68,6 +68,6 @@ class ApplicantsController < ApplicationController
 	def uploadimage
 		@applicant = Applicant.find(params[:id])
 		@applicant.update_attributes(params[:applicant])
+		redirect_to applicant_path(@applicant)
 	end
-
 end
