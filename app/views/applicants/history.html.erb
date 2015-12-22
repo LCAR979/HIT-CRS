@@ -1,62 +1,66 @@
-<% @permitted_list=Request.find_all_by_status_and_staff_id(0, @applicant.id)%>
-<% @rejected_list=Request.find_all_by_status_and_staff_id(1, @applicant.id)%>
-<% @waiting_list=Request.find_all_by_status_and_staff_id(2, @applicant.id)%>
-<% @cancelled_list=Request.find_all_by_status_and_staff_id(3, @applicant.id)%>
+<% @permitted_list=Request.find_all_by_status_and_applicant_id(0, @applicant.id)%>
+<% @rejected_list=Request.find_all_by_status_and_applicant_id(1, @applicant.id)%>
+<% @waiting_list=Request.find_all_by_status_and_applicant_id(2, @applicant.id)%>
+<% @cancelled_list=Request.find_all_by_status_and_applicant_id(3, @applicant.id)%>
 <table id="requests-list">
-  <tr>
+  <%if @waiting_list != nil%>
     <p>waiting list</p>
-  </tr>
-  <% @watinglist.each do |request| %> 
-  <tr>
-        <!-- status :waiting list -->
-            <!-- <td>Room status: waiting </td> -->
-            <td>Week: <%= request.week %></td> 
-            <td>Building: <%= @buildings[request.building] %></td>
-            <td>Location: <%= request.location %></td>
-            <td>Time Interval: <%= request.time %></td>
-            <td>Size: <%= @roomsize[request.size] %></td>
-            <% str= '/applicants/'+@applicant.id.to_s+'/requests/'+request.id.to_s+'/show/' %> 
-            <td><%= link_to 'View detail', str, :method => :get %>
-            </td>
-    </tr>
+      <% @waiting_list.each do |request| %> 
+      <tr>
+            <!-- status :waiting list -->
+                <!-- <td>Room status: waiting </td> -->
+                <td>Week: <%= request.week %></td> 
+                <td>Building: <%= @buildings[request.building] %></td>
+                <td>Location: <%= request.location %></td>
+                <td>Time Interval: <%= request.time %></td>
+                <td>Size: <%= @roomsize[request.size] %></td>
+                <% str= '/applicants/'+@applicant.id.to_s+'/requests/'+request.id.to_s+'/show/' %> 
+                <td><%= link_to 'View detail', str, :method => :get %>
+                </td>
+        </tr>
+        <%end%>
     <%end%>
-    <tr>
-       <p> canceled list </p>
-    </tr>
-    <% @cancellist.each do |request| %> 
-     <tr>
-        <!-- status :Canceld list -->
-            <td>Week: <%= request.week %></td> 
-            <td>Building: <%= @buildings[request.building] %></td>
-            <td>Location: <%= request.location %></td>
-            <td>Time Interval: <%= request.time %></td>
-            <td>Size: <%= @roomsize[request.size] %></td>
-    </tr>
+    <%if @cancelled_list != nil%>
+       <p> cancelled_list  </p>
+        <% @cancelled_list.each do |request| %> 
+         <tr>
+            <!-- status :Canceld list -->
+                <td>Week: <%= request.week %></td> 
+                <td>Building: <%= @buildings[request.building] %></td>
+                <td>Location: <%= request.location %></td>
+                <td>Time Interval: <%= request.time %></td>
+                <td>Size: <%= @roomsize[request.size] %></td>
+        </tr>
+        <%end%>
     <%end%>
-    <p>
-     permited list
-    </p>
-    <% @permitedlist.each do |request| %> 
-     <tr>
-        <!-- status :permited list -->
-            <td>Week: <%= request.week %></td> 
-            <td>Building: <%= @buildings[request.building] %></td>
-            <td>Location: <%= request.location %></td>
-            <td>Time Interval: <%= request.time %></td>
-            <td>Size: <%= @roomsize[request.size] %></td>
-    </tr>
-    <%end%>
-    <p>
-        rejected list
-    </p>
-    <% @rejectedlist.each do |request| %> 
-    <tr>
-        <!-- status :rejected list -->
-            <td>Week: <%= request.week %></td> 
-            <td>Building: <%= @buildings[request.building] %></td>
-            <td>Location: <%= request.location %></td>
-            <td>Time Interval: <%= request.time %></td>
-            <td>Size: <%= @roomsize[request.size] %></td>
-    </tr>
+    <%if @permitedlist != nil%>
+        <p>
+         permited list
+        </p>
+        <% @permitedlist.each do |request| %> 
+         <tr>
+            <!-- status :permited list -->
+                <td>Week: <%= request.week %></td> 
+                <td>Building: <%= @buildings[request.building] %></td>
+                <td>Location: <%= request.location %></td>
+                <td>Time Interval: <%= request.time %></td>
+                <td>Size: <%= @roomsize[request.size] %></td>
+        </tr>
+        <%end%>
+    <% end %>
+    <% if @rejected_list != nil%>
+        <p>
+            rejected_list 
+        </p>
+        <% @rejected_list.each do |request| %> 
+        <tr>
+            <!-- status :rejected list -->
+                <td>Week: <%= request.week %></td> 
+                <td>Building: <%= @buildings[request.building] %></td>
+                <td>Location: <%= request.location %></td>
+                <td>Time Interval: <%= request.time %></td>
+                <td>Size: <%= @roomsize[request.size] %></td>
+        </tr>
+        <%end%>
     <%end%>
 </table>

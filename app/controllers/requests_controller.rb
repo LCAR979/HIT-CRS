@@ -51,11 +51,6 @@ class RequestsController < ApplicationController
 		    @staff.tasks = @staff.tasks + 1
 		    @staff.save
 		end 
-	    @staff = assignTasks()
-	    @request.staff_id = @staff.id
-	    @staff.tasks = @staff.tasks + 1
-	    @staff.save
-
 	    respond_to do |format|
 	      if @request.save
 	        format.html { redirect_to applicant_path(@applicant) , notice: 'request was successfully created.' }
