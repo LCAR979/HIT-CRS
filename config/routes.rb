@@ -52,20 +52,26 @@ HITCrs::Application.routes.draw do
   #applicant
   post "/applicants/:id/reset", to: 'applicants#reset'
   get "/applicants/:id/setting", to: 'applicants#setting'
-  #staff
-  post "/staffs/:id/reset", to: 'staffs#reset'
-  get "/staffs/:id/setting", to: 'staffs#setting'
   #------Applicant view histroy
   get "/applicants/:id/histroy", to: 'applicants#history'
   #----------------------
   # view detail for applicants/requests
   get "/applicants/:applicant_id/requests/:id/show", to: "applicants#view_detail" 
-  # cancel a request
-  get "/applicants/:applicant_id/requests/:id/cancel", to: "requests#cancel"
   # click to reserve
   get "/applicants/:applicant_id/rooms/:room_id/:day/:course", to: "requests#new"
+  # cancel a request
+  get "/applicants/:applicant_id/requests/:id/cancel", to: "requests#cancel"
+
+
+  #staff
+  post "/staffs/:id/reset", to: 'staffs#reset'
+  get "/staffs/:id/setting", to: 'staffs#setting'
+
+  
+  
   # save applicant image
   put "/applicants/:id/upload", to: "applicants#uploadimage"
+  put "/staffs/:id/upload", to: "staffs#uploadimage"
 end
 
  # The priority is based upon order of creation:
