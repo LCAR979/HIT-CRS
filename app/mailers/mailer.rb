@@ -17,4 +17,5 @@ class Mailer < ActionMailer::Base
 		@request = request
 		mail(:to => "#{@applicant.name} <#{@applicant.email}>",
 		     :subject => "Resevation Request Status Changed")   
+	end
 end 
