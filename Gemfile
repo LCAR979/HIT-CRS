@@ -1,5 +1,5 @@
-#source 'https://ruby.taobao.org'
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
+#source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '3.2.16'
 
@@ -14,7 +14,7 @@ end
 
 gem 'jquery-rails','2.0.2'
 gem 'bootstrap-sass'
-
+gem 'will_paginate'
 group :development, :test do
   gem 'sqlite3','1.3.5'
   gem "rspec-rails",">=2.0.1"

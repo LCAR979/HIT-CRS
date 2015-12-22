@@ -18,9 +18,7 @@
           <% if @myrequests != nil %>
             <% @myrequests.each do |request| %> 
               <% if request.status ==3%> 
-                <tr>
-                  <!-- status :waiting list -->
-                    <!-- <td>Room status: cancelled </td> -->                                 
+                <tr>                              
                   <td><%= request.week %></td> 
                   <td><%= @days[request.day] %></td>
                   <td>Course <%=request.time %> ~ <%=request.time + 1%></td>

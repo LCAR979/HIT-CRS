@@ -53,6 +53,7 @@ HITCrs::Application.routes.draw do
   get "/applicants/:applicant_id/rooms/:room_id/:day/:course", to: "requests#new"
   # cancel a request
   get "/applicants/:applicant_id/requests/:id/cancel", to: "requests#cancel"
+  get "/applicants/:id/shut_down", to: "applicants#shut_down"
   
 
   #staff
@@ -62,6 +63,7 @@ HITCrs::Application.routes.draw do
   get '/staffs/:staff_id/requests/:id', to: 'requests#show'
   get '/staffs/requestProc/:id',to: 'staffs#requestProc'
   put '/staffs/audit/:id',to: 'staffs#audit'
+  get '/staffs/:id/shut_down',to: 'staffs#shut_down'
 
   get '/rooms/applicant/:applicant_id', to: 'rooms#index'
   get '/rooms/staff/:staff_id', to: 'rooms#staff_room'

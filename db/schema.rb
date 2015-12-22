@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.string  "email"
     t.string  "studentid"
     t.string  "department"
-    t.integer "status",           :default => 0
+    t.integer "status",        :default => 0
     t.string  "confirm_token"
     t.string  "image"
-    t.integer "cancel_num",       :default => 0
+    t.integer "cancel_num",    :default => 0
   end
 
   create_table "requests", :force => true do |t|
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.string  "location"
     t.integer "size"
     t.boolean "media"
-    t.text  "description"
+    t.text    "description"
     t.integer "status"
     t.text    "comment"
     t.integer "applicant_id"
@@ -98,9 +98,9 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.string  "phone"
     t.string  "email"
     t.string  "staffid"
-    t.integer "status",           :default => 0
+    t.integer "status",        :default => 0
     t.string  "confirm_token"
-    t.integer "tasks",            :default => 0
+    t.integer "tasks",         :default => 0
     t.string  "image"
   end
 

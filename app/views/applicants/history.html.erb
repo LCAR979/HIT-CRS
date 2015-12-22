@@ -1,13 +1,15 @@
-<% @permitted_list=Request.find_all_by_status_and_applicant_id(0, @applicant.id)%>
-<% @rejected_list=Request.find_all_by_status_and_applicant_id(1, @applicant.id)%>
-<% @waiting_list=Request.find_all_by_status_and_applicant_id(2, @applicant.id)%>
-<% @cancelled_list=Request.find_all_by_status_and_applicant_id(3, @applicant.id)%>
+<% @permitted_list=Request.find_all_by_status_and_applicant_id(0, @applicant.id,:order=>'week desc, day desc, time desc')%>
+<% @rejected_list=Request.find_all_by_status_and_applicant_id(1, @applicant.id,:order=>'week desc, day desc, time desc')%>
+<% @waiting_list=Request.find_all_by_status_and_applicant_id(2, @applicant.id,:order=>'week desc, day desc, time desc')%>
+<% @cancelled_list=Request.find_all_by_status_and_applicant_id(3, @applicant.id,:order=>'week desc, day desc, time desc')%>
 <% @buildings = Request.buildings %>
 <% @days = Request.days %>
 <div class="col-xs-offset-2 col-xs-8">
 	<div class="row">
 		<div class="panel panel-default col-xs-12">
-			<div class="panel-heading">Reservation Request History</div>
+			<div class="panel-heading">
+				<h3>Reservation Request <span class="label label-info">Waiting </span></h3>
+			</div>
 			<table class="table" id="requests-list">  
 				<thead>
 					<tr>      
@@ -15,7 +17,7 @@
 						<th>Day</th>
 						<th>Time</th>
 						<th>Building</th>
-						<th>Location</th>
+						<th>Room</th>
 						<th>Details</th>
 					</tr>
 				<thead>
@@ -43,7 +45,9 @@
 
   <div class="row">
 		<div class="panel panel-default col-xs-12">
-			<div class="panel-heading">Reservation Request History</div>
+			<div class="panel-heading">
+				<h3>Reservation Request <span class="label label-success">Permitted</span></h3>
+			</div>
 			<table class="table" id="requests-list">  
 				<thead>
 					<tr>      
@@ -51,7 +55,7 @@
 						<th>Day</th>
 						<th>Time</th>
 						<th>Building</th>
-						<th>Location</th>
+						<th>Room</th>
 						<th>Details</th>
 					</tr>
 				<thead>
@@ -79,7 +83,9 @@
 
   <div class="row">
 		<div class="panel panel-default col-xs-12">
-			<div class="panel-heading">Reservation Request History</div>
+			<div class="panel-heading">
+				<h3>Reservation Request <span class="label label-danger">Rejected</span></h3>
+			</div>
 			<table class="table" id="requests-list">  
 				<thead>
 					<tr>      
@@ -117,7 +123,9 @@
 	
   <div class="row">
 		<div class="panel panel-default col-xs-12">
-			<div class="panel-heading">Reservation Request History</div>
+			<div class="panel-heading">
+				<h3>Reservation Request <span class="label label-default">Cancelled </span></h3>
+			</div>
 			<table class="table" id="requests-list">  
 				<thead>
 					<tr>      
@@ -125,7 +133,7 @@
 						<th>Day</th>
 						<th>Time</th>
 						<th>Building</th>
-						<th>Location</th>
+						<th>Room</th>
 						<th>Details</th>
 					</tr>
 				<thead>
