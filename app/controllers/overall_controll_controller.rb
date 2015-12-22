@@ -22,15 +22,20 @@ class OverallControllController < ApplicationController
 			end
 		elsif params[:identity] == "staff"
 			if Staff.find_by_email(params[:email]) == nil
-				hashpassword = secure_hash(params[:password])
-				@staff  = Staff.new(name: params[:name], username: params[:username], staffid: params[:staffid],
-				 phone: params[:phone], email: params[:email], password: hashpassword, status:0)
-				if @staff.save
-					Mailer.staff_confirmation(@staff).deliver
-					flash[:success] = "Please confirm your email to continue"
-					redirect_to '/login'
-				else
-					flash[:error] = "Ooooppss, something went wrong"
+				if params[:invitation_code] == secure_hash(params[:username])[0,8]
+					hashpassword = secure_hash(params[:password])
+					@staff  = Staff.new(name: params[:name], username: params[:username], staffid: params[:staffid],
+					 phone: params[:phone], email: params[:email], password: hashpassword, status:0)
+					if @staff.save
+						Mailer.staff_confirmation(@staff).deliver
+						flash[:success] = "Please confirm your email to continue"
+						redirect_to '/login'
+					else
+						flash[:error] = "Ooooppss, something went wrong"
+						redirect_to '/signup'
+					end
+				else 
+					flash[:error] = "invitation_code is not valid, please contact Administrators"
 					redirect_to '/signup'
 				end
 			else
@@ -94,6 +99,6 @@ class OverallControllController < ApplicationController
 	end
 
 	def secure_hash(string)
-		Digest::SHA2.hexdigest(string)
+		return Digest::SHA2.hexdigest(string)
 	end
 end
