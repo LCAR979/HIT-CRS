@@ -10,16 +10,11 @@ HITCrs::Application.routes.draw do
   resources :staffs do
     resources :requests
   end
+
    resources :applicants do
     resources :requests
   end
-  get '/staffs/:staff_id/requests/:id', to: 'requests#show'
-  get '/staffs/requestProc/:id',to: 'staffs#requestProc'
-  put '/staffs/audit/:id',to: 'staffs#audit'
-
-  get '/rooms/applicant/:applicant_id', to: 'rooms#index'
-  get '/rooms/staff/:staff_id', to: 'rooms#staff_room'
-
+  
   resources :applicants do
     member do
       get :confirm_email
@@ -40,7 +35,6 @@ HITCrs::Application.routes.draw do
   get '/help', to: 'static_pages#help'  
   get '/signup', to: 'static_pages#signup'
   get '/login', to: 'static_pages#login'
-  #get '/home', to: 'static_pages#home'
 
 
   #about signup and login
@@ -48,30 +42,30 @@ HITCrs::Application.routes.draw do
   post '/check_login', to: 'overall_controll#check_login' 
   get 'logout', to: 'overall_controll#logout'
 
-  #modify password
   #applicant
   post "/applicants/:id/reset", to: 'applicants#reset'
   get "/applicants/:id/setting", to: 'applicants#setting'
-  #------Applicant view histroy
+  put "/applicants/:id/upload", to: "applicants#uploadimage"
   get "/applicants/:id/histroy", to: 'applicants#history'
-  #----------------------
   # view detail for applicants/requests
   get "/applicants/:applicant_id/requests/:id/show", to: "applicants#view_detail" 
   # click to reserve
   get "/applicants/:applicant_id/rooms/:room_id/:day/:course", to: "requests#new"
   # cancel a request
   get "/applicants/:applicant_id/requests/:id/cancel", to: "requests#cancel"
-
+  
 
   #staff
   post "/staffs/:id/reset", to: 'staffs#reset'
   get "/staffs/:id/setting", to: 'staffs#setting'
-
-  
-  
-  # save applicant image
-  put "/applicants/:id/upload", to: "applicants#uploadimage"
   put "/staffs/:id/upload", to: "staffs#uploadimage"
+  get '/staffs/:staff_id/requests/:id', to: 'requests#show'
+  get '/staffs/requestProc/:id',to: 'staffs#requestProc'
+  put '/staffs/audit/:id',to: 'staffs#audit'
+
+  get '/rooms/applicant/:applicant_id', to: 'rooms#index'
+  get '/rooms/staff/:staff_id', to: 'rooms#staff_room'
+
 end
 
  # The priority is based upon order of creation:
