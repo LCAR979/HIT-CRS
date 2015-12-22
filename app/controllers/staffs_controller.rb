@@ -108,7 +108,11 @@ class StaffsController < ApplicationController
 		@staff.update_attributes('status'=>2)
 		redirect_to '/index'
 	end
-
+	def uploadimage
+  		@staff = Staff.find(params[:id])
+		@staff.update_attributes(params[:staff])
+		redirect_to staff_path(@staff)
+  	end
 	def new	
 	end
 	def create

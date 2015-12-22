@@ -66,6 +66,7 @@ HITCrs::Application.routes.draw do
   get "/applicants/:applicant_id/rooms/:room_id/:day/:course", to: "requests#new"
   # save applicant image
   put "/applicants/:id/upload", to: "applicants#uploadimage"
+  put "/staffs/:id/upload", to: "staffs#uploadimage"
 end
 
  # The priority is based upon order of creation:

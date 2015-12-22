@@ -1,5 +1,10 @@
 <%= render 'layouts/notice' %>
-
+<%=form_for @staff, url: {action: "uploadimage"} do |f|%>
+  <%=f.file_field :image%>
+<br/>
+<br/>
+  <%=f.submit "uploadimage"%>
+<%end%>
 <form action=<%="/staffs/"+@staff.id.to_s+'/reset/'%> method='post'
 	role="form" data-toggle="validator">
 	 <div class="form-group">
