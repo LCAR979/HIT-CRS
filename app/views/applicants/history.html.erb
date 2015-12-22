@@ -1,7 +1,7 @@
-<% @permitted_list=Request.find_all_by_status_and_staff_id(0, @applicant.id)%>
-<% @rejected_list=Request.find_all_by_status_and_staff_id(1, @applicant.id)%>
-<% @waiting_list=Request.find_all_by_status_and_staff_id(2, @applicant.id)%>
-<% @cancelled_list=Request.find_all_by_status_and_staff_id(3, @applicant.id)%>
+<% @permitted_list=Request.find_all_by_status_and_applicant_id(0, @applicant.id)%>
+<% @rejected_list=Request.find_all_by_status_and_applicant_id(1, @applicant.id)%>
+<% @waiting_list=Request.find_all_by_status_and_applicant_id(2, @applicant.id)%>
+<% @cancelled_list=Request.find_all_by_status_and_applicant_id(3, @applicant.id)%>
 
 <div class="col-xs-offset-2 col-xs-8">
     <div class="panel panel-default">
@@ -93,3 +93,23 @@
         </div>
     /div>
 </div>
+
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

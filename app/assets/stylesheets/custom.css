@@ -79,9 +79,9 @@ p {
 textarea{
   height: 20px;
 }
-table, td, th {
+/*table, td, th {
     border: 1px solid black;
-}
+}*/
 .day-table{
   width:100%;
   border: 0px;

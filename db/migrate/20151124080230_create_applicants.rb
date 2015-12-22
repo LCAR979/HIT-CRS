@@ -8,7 +8,7 @@ class CreateApplicants < ActiveRecord::Migration
    		t.string 	:email	
    		t.string 	:studentid
   		t.string 	:department	
-  		t.integer   :status,  :default => 0
+  		t.integer :status,  :default => 0
                   # 0 not verified, 1 verified and normal , 2 closed
       t.string  :confirm_token
 

@@ -8,7 +8,7 @@ class CreateRequests < ActiveRecord::Migration
       t.string    :location   #room location: different building, differet format
       t.integer   :size     #size is [0-3], 0=>42, 1=>72, 2=>120, 3=>260
       t.boolean   :media      #media = 1, use multi-media
-      t.string    :description  #description for use
+      t.text    :description  #description for use
 
   		t.integer   :status   		#status: 0=>permitted, 1=> rejected, 2=>wait,3=>cancelled		
       #response from teachers 

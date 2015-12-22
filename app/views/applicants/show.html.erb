@@ -1,43 +1,39 @@
+<%= render 'layouts/notice' %>
 
-<% if flash[:notice]%>
-  <div class="alert alert-success fade in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
-     <%=flash[:notice]%>
-  </div>
-<%end%>
 <div class="container">
   <div class="row">
-    <div class=".col-lg-6">
+    <div class="col-lg-8 col-lg-offset-2">
+
       <div class="row">
-        <div class="col-lg-2"><%= link_to 'Reservation history ', '/applicants/'+@applicant.id.to_s+'/histroy/' %></div>
-        <div class="col-lg-2"><%= link_to 'Room available status', '/rooms/applicant/'+ @applicant.id.to_s %></div>
-        <div class="col-lg-2"><%= link_to 'Modify password', 
-          '/applicants/'+@applicant.id.to_s+'/modify/'%>
+        <div class="col-lg-5 jumbotron">
+           <p>View datailed reservation history</p>
+           <h5> Show all your reservation request in a list form </h5>
+           <%= link_to 'View', '/applicants/'+@applicant.id.to_s+'/histroy/',
+            class: "btn btn-primary", role:"button" %>
+        </div>
+
+        <div class="col-lg-5 col-lg-offset-1 jumbotron">
+           <p>View rooms available information</p>
+           <h5>Display the status of all classrooms, 
+            search and make a new reservation request</h5>
+           <%= link_to 'View', '/rooms/applicant/'+ @applicant.id.to_s, 
+            class: "btn btn-primary", role:"button" %>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-lg-5 jumbotron">
+           <p>Account Settings</p>
+           <h5>Reset password, change avater and delete your account</h5>
+           <%= link_to 'Settings', '/applicants/'+@applicant.id.to_s+'/setting/', 
+            class: "btn btn-primary", role:"button" %>
+        </div>
+      </div>
+
     </div>
-    <!-- <div class="span4">...</div> -->
   </div>
 </div>
 
-<nav>
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+
 
 

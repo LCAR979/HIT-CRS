@@ -1,12 +1,41 @@
-<% if flash[:notice]%>
-  <div class="alert alert-success fade in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
-    <strong>Failed!</strong> <%=flash[:notice]%>
-  </div>
-<%end%>
+<%= render 'layouts/notice' %>
+<div class="panel panel-primary">
+  <div class="panel-heading ">Account Information</div>
+  <table class="table">
+    <tbody>
+      <tr class="row"> 
+        <td class="col-xs-5"> Username </td> 
+        <td class="col-xs-7"> <%= @applicant.username %></td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Real Name </td> 
+        <td class="col-xs-7"> <%= @applicant.name %></td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Email </td> 
+        <td class="col-xs-7"> <%= @applicant.email %></td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> phone </td> 
+        <td class="col-xs-7"> <%= @applicant.phone %></td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Student ID</td> 
+        <td class="col-xs-7"> <%= @applicant.studentid %></td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Department </td> 
+        <td class="col-xs-7"> <%= @applicant.department %></td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Account bonus </td> 
+        <td class="col-xs-7"> <%= 100 - @applicant.cancel_num * 25 %></td>
+      </tr>
 
-
-<%=form_for @applicant, url: {action: "uploadimage"} do |f|%>
+    </tbody>
+  </table>
+</div>
+<%=form_for @applicant, url: {action: "uploadimage"},:html => {class:'form-horizontal col-lg-12'} do |f|%>
   <%=f.file_field :image%>
 <br/>
 <br/>
