@@ -2,7 +2,7 @@ class ApplicantsController < ApplicationController
 	layout "basic"
 
 	#GET    /applicants/:id(.:format)
-	#render applicants/show.html 
+	#render applicants/show.html, applicant home page
 	def show
 		@applicant = Applicant.find(params[:id])
 		respond_to do |format|
@@ -42,9 +42,15 @@ class ApplicantsController < ApplicationController
 	end
 
 	#GET    /applicants/:id/histroy(.:format) 
-	#render applicants/history.html
+	#render applicants/history.html, history reservation page
 	def history
 		@applicant = Applicant.find(params[:id])
+		# @permitted_list=Request.find_all_by_status_and_applicant_id(0, @applicant.id,:order=>'week desc, day desc, time desc')
+		# @rejected_list=Request.find_all_by_status_and_applicant_id(1, @applicant.id,:order=>'week desc, day desc, time desc')
+		@waiting_list=Request.find_all_by_status_and_applicant_id(2, @applicant.id,:order=>'week desc, day desc, time desc')
+		# @cancelled_list=Request.find_all_by_status_and_applicant_id(3, @applicant.id,:order=>'week desc, day desc, time desc')
+		# @waiting_list = @waiting_list.paginate(page: params[:page], per_page:3)
+		@waiting_list = @waiting_list.paginate(page: params[:page], per_page:3)
 		respond_to do |format|
 	    	format.html 
 	    	format.json{ render json: @applicant}

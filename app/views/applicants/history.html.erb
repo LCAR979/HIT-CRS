@@ -1,12 +1,26 @@
+<% if false %>
 <% @permitted_list=Request.find_all_by_status_and_applicant_id(0, @applicant.id,:order=>'week desc, day desc, time desc')%>
 <% @rejected_list=Request.find_all_by_status_and_applicant_id(1, @applicant.id,:order=>'week desc, day desc, time desc')%>
 <% @waiting_list=Request.find_all_by_status_and_applicant_id(2, @applicant.id,:order=>'week desc, day desc, time desc')%>
 <% @cancelled_list=Request.find_all_by_status_and_applicant_id(3, @applicant.id,:order=>'week desc, day desc, time desc')%>
+<% end %>
 <% @buildings = Request.buildings %>
 <% @days = Request.days %>
 <div class="col-xs-offset-2 col-xs-8">
+	<ul class="nav nav-tabs">
+	    <li class="active"><a href="#aaa">AAA</a></li>
+	    <li><a href="#bbb" >BBB</a></li>
+	    <li><a href="#ccc" >CCC</a></li>
+	    <li><a href="#ddd" >DDD</a></li>
+	</ul>
+	<div class="tab-content" id="tabs">
+	    <div class="tab-pane fade active" id="aaa">.aaaa</div>
+	    <div class="tab-pane fade" id="bbb">..dddd...</div>
+	    <div class="tab-pane fade" id="ccc">...cccc</div>
+	    <div class="tab-pane fade" id="ddd">...ddd</div>
+	</div>
 	<div class="row">
-		<div class="panel panel-default col-xs-12">
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3>Reservation Request <span class="label label-info">Waiting </span></h3>
 			</div>
@@ -40,11 +54,12 @@
 					<%end%>
 				</tbody>
 			</table>
+			<%= will_paginate @waiting_list %>
 		</div>
   </div>
-
+<% if false %>
   <div class="row">
-		<div class="panel panel-default col-xs-12">
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3>Reservation Request <span class="label label-success">Permitted</span></h3>
 			</div>
@@ -82,7 +97,7 @@
 	</div>
 
   <div class="row">
-		<div class="panel panel-default col-xs-12">
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3>Reservation Request <span class="label label-danger">Rejected</span></h3>
 			</div>
@@ -122,7 +137,7 @@
 
 	
   <div class="row">
-		<div class="panel panel-default col-xs-12">
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3>Reservation Request <span class="label label-default">Cancelled </span></h3>
 			</div>
@@ -158,9 +173,10 @@
 			</table>
 		</div>
 	</div>
+	<% end %>
 </div>
 
-<nav>
+<!-- <nav>
   <ul class="pagination">
 	<li>
 	  <a href="#" aria-label="Previous">
@@ -178,4 +194,4 @@
 	  </a>
 	</li>
   </ul>
-</nav>
+</nav> -->
