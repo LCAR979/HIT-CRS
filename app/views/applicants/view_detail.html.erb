@@ -1,17 +1,44 @@
-<p>
-  <b>Room:</b>
-  location:
-  <%= @request.location %>
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading ">Reservation details</div>
+</div>
 
-<p>
-  <b>Size:</b>
-  <%= @roomsize[@request.size] %>
-</p>
-<p>
-  <b> Building</b>
-	<%= @buildings[@request.building]%>
-</p>
+<div>
+  <table class="table">
+    <tbody>
+      <tr class="row"> 
+        <td class="col-xs-5"> Week </td> 
+        <td class="col-xs-7"> <%= @request.week %></td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Day </td> 
+        <td class="col-xs-7"> <%= @request.day %></td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Time </td> 
+        <td class="col-xs-7"> Course <%= @request.time %> ~ Course <%= @request.time + 1 %>
+        </td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Building </td> 
+        <td class="col-xs-7"> <%= @buildings[@request.building] %></td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Room</td> 
+        <td class="col-xs-7"> <%= @request.location %></td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Size </td> 
+        <td class="col-xs-7"> <%= @request.size %></td>
+      </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Media</td> 
+        <td class="col-xs-7"> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 <% str='/applicants/'+@applicant.id.to_s+'/requests/'+@request.id.to_s+'/cancel/'%>
 <p>.......................................................................</p>

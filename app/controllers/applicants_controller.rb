@@ -1,6 +1,18 @@
 class ApplicantsController < ApplicationController
 	layout "basic"
 
+	def self.days
+		 ['PlaceHolder','Monday', 'Tuesday','Wednesday',
+		 	'Thursday','Friday','Saturday','Sunday']
+	end
+
+	def self.buildings
+		['ZhengXin','Gewu']
+	end
+
+	def self.roomsize
+		[42, 72, 120, 260]
+	end
 	#GET    /applicants/:id(.:format)
 	#render applicants/show.html 
 	def show
@@ -29,11 +41,11 @@ class ApplicantsController < ApplicationController
 		if oldpassword == secure_hash(params[:oldpassword])
 			newpassword = secure_hash(params[:newpassword])
 			@applicant.update_attributes(password:newpassword)
-			flash[:success] = "password modify successfully!"
+			flash[:success] = "Password modified successfully!"
 			redirect_to applicant_path(@applicant)
 		else 
-			flash[:error] = "old password is not correct!"
-			redirect_to "/applicants/"+@applicant.id.to_s+"/modify/"
+			flash[:error] = "Old password is not correct!"
+			redirect_to "/applicants/"+@applicant.id.to_s+"/setting/"
 		end
 	end
 
@@ -47,6 +59,7 @@ class ApplicantsController < ApplicationController
 		@applicant = Applicant.find(params[:id])
 		@roomsize = [42, 72, 120, 260]
 		@buildings = ['ZhengXin', 'GeWu']
+
 		respond_to do |format|
 	    	format.html 
 	    	format.json{ render json: @applicant}

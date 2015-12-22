@@ -1,20 +1,23 @@
-<% if flash[:error]%>
-  <div class="alert alert-danger fade in col-xs-8">
-    <a href="" class="close" data-dismiss="alert" aria-label="close"></a> 
-    <%=flash[:error]%>
-  </div>
-<%end%>
-<% if flash[:success]%>
-  <div class="alert alert-success fade in col-xs-8">
-    <a href="" class="close" data-dismiss="alert" aria-label="close"></a> 
-    <%=flash[:success]%>
-  </div>
-<%end%>
+<div class="row">
+  <% if flash[:error]%>
+    <div class="alert alert-danger fade in col-lg-offset-3 col-lg-6">
+      <a href="" class="close" data-dismiss="alert" aria-label="close"></a> 
+      <%=flash[:error]%>
+    </div>
+  <%end%>
+  
+  <% if flash[:success]%>
+    <div class="alert alert-success fade in col-lg-offset-3 col-lg-6">
+      <a href="" class="close" data-dismiss="alert" aria-label="close"></a> 
+      <%=flash[:success]%>
+    </div>
+  <%end%>
 
-<% if flash[:info]%>
-  <div class="alert alert-info fade in col-xs-8">
-    <a href="" class="close" data-dismiss="alert" aria-label="close"></a> 
-    <%=flash[:info]%>
-  </div>
-<%end%>
+  <% if flash[:info]%>
+    <div class="alert alert-info fade in col-lg-offset-3 col-lg-6">
+      <a href="" class="close" data-dismiss="alert" aria-label="close"></a> 
+      <%=flash[:info]%>
+    </div>
+  <%end%>
+</div>
 

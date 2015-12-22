@@ -1,6 +1,10 @@
 <%= render 'layouts/notice' %>
+
 <div class="panel panel-primary">
-  <div class="panel-heading ">Account Information</div>
+  <div class="panel-heading ">Account information</div>
+</div>
+
+<div>
   <table class="table">
     <tbody>
       <tr class="row"> 
@@ -31,33 +35,72 @@
         <td class="col-xs-5"> Account bonus </td> 
         <td class="col-xs-7"> <%= 100 - @applicant.cancel_num * 25 %></td>
       </tr>
-
     </tbody>
   </table>
 </div>
-<%=form_for @applicant, url: {action: "uploadimage"},:html => {class:'form-horizontal col-lg-12'} do |f|%>
-  <%=f.file_field :image%>
-<br/>
-<br/>
-  <%=f.submit "uploadimage"%>
-<%end%>
+
+<div class="panel panel-primary">
+  <div class="panel-heading ">Upload new avater</div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4">
+    <a href="#" class="thumbnail">
+      <img src="..." alt="current avater">
+    </a>
+  </div>
+
+  <%=form_for @applicant, url: {action: "uploadimage"},:html => {class:'form-horizontal 
+     col-lg-8'} do |f|%>
+    <div class="form-group row">
+      <%=f.label :image, class:"control-label col-lg-2"  %>
+      <div class="col-lg-10">
+        <%=f.file_field :image %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-xs-offset-1 col-xs-4">
+        <%=f.submit "Upload", class:"btn btn-info"%>
+      </div>
+    </div>
+  <%end%>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Reset Password</div>
+</div>
 
 <form action=<%="/applicants/"+@applicant.id.to_s+'/reset/'%> method='post'
-	role="form" data-toggle="validator">
-	 <div class="form-group">
-    <label for="oldpassword" class="control-label col-xs-2">Old password:</label>
-    <div class="col-xs-10">
+	role="form" data-toggle="validator" class="col-xs-12">
+	 <div class="form-group row">
+    <label for="oldpassword" class="control-label col-xs-3">Old password:</label>
+    <div class="col-xs-9">
         <input type="password" class="form-control" id="password" name="oldpassword" placeholder="Password" pattern="^\w{6,}" data-error="Minimum of 6 characters"  required>
   	</div>
-  	<label for="newpassword" class="control-label col-xs-2">new password:</label>
-    <div class="col-xs-10">
-        <input type="password" class="form-control" id="password" name="newpassword" placeholder="Password" pattern="^\w{6,}" data-error="Minimum of 6 characters"  required>
+   </div>
+
+   <div class="form-group row">
+  	<label for="newpassword" class="control-label col-xs-3">New password:</label>
+    <div class="col-xs-9">
+        <input type="password" class="form-control" id="password" name="newpassword" placeholder="New password" pattern="^\w{6,}" data-error="Minimum of 6 characters"  required>
   	</div>
-    <span class="help-block with-errors"></span>
+      <span class="help-block with-errors"></span>
  	 </div>
- 	<div class="form-group">
-        <div class="col-xs-offset-2 col-xs-10">
-            <button type="submit"  class="btn btn-primary">Modify</button>
-        </div>
+
+ 	  <div class="form-group row">
+      <div class="col-xs-offset-4 col-xs-4">
+          <button type="submit"  class="btn btn-primary">Reset</button>
+      </div>
  	 </div>
 </form>
+
+
+<div class="panel panel-danger" style="overflow:hidden">
+  <div class="panel-heading">Delete Account</div>
+</div>
+<div class="row">
+  <div class="col-xs-offset-4 col-xs-4">
+      <%= link_to 'Delete Account', '/applicants/'+@applicant.id.to_s+'/shut_down/',
+              class: "btn btn-danger", role:"button" %>
+  </div>
+</div>
