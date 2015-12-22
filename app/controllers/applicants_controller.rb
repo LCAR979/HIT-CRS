@@ -1,20 +1,8 @@
 class ApplicantsController < ApplicationController
 	layout "basic"
 
-	def self.days
-		 ['PlaceHolder','Monday', 'Tuesday','Wednesday',
-		 	'Thursday','Friday','Saturday','Sunday']
-	end
-
-	def self.buildings
-		['ZhengXin','Gewu']
-	end
-
-	def self.roomsize
-		[42, 72, 120, 260]
-	end
 	#GET    /applicants/:id(.:format)
-	#render applicants/show.html 
+	#render applicants/show.html, applicant homepage
 	def show
 		@applicant = Applicant.find(params[:id])
 		respond_to do |format|
@@ -57,9 +45,6 @@ class ApplicantsController < ApplicationController
 	#render applicants/history.html
 	def history
 		@applicant = Applicant.find(params[:id])
-		@roomsize = [42, 72, 120, 260]
-		@buildings = ['ZhengXin', 'GeWu']
-
 		respond_to do |format|
 	    	format.html 
 	    	format.json{ render json: @applicant}
@@ -70,8 +55,6 @@ class ApplicantsController < ApplicationController
 	#render applicants/view_detail.html
 	#view request details
 	def view_detail
-		@roomsize = [42, 72, 120, 260]
-		@buildings = ['ZhengXin', 'GeWu']
 		@request = Request.find(params[:id])
 		@applicant = Applicant.find(params[:applicant_id])
 		respond_to do |format|

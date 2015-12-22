@@ -5,8 +5,6 @@ class RequestsController < ApplicationController
 	#call by staff only
 	#show the request waiting to be processed belongs to certain staff
 	def index    		
-		@roomsize = [42, 72, 120, 260]
-		@buildings = ['ZhengXin', 'GeWu']
 		@attributes = Request.new.attributes.keys - Request.protected_attributes.to_a
 		@staff = Staff.find(params[:staff_id])
 		@all_requests = Request.find_all_by_staff_id(params[:staff_id])
@@ -17,24 +15,23 @@ class RequestsController < ApplicationController
 	end
 
 
+	#new_applicant_request 
+	#GET    /applicants/:applicant_id/requests/new(.:format) 
 	#call by applicant 
 	#go to new request page
 	def new
 	  @request = Request.new
-	  #------------------------Added infor-----------
 	  @applicant = Applicant.find(params[:applicant_id])
 	  @room = Room.find(params[:room_id])
 	  @day = params[:day].to_i
 	  @course = params[:course].to_i
-	  #-----------------------------------------------
-	  #raise params
-	  
       respond_to do |format|
 	      format.html { render layout:"form"}# new.html.erb
 	      format.json { render json: @request }
       end
   	end
 
+  	#POST   /applicants/:applicant_id/requests(.:format)   
   	#call by applicant
   	#try to create request object and save
   	def create
@@ -64,8 +61,6 @@ class RequestsController < ApplicationController
 
   	#show the detail of the request
   	def show 
-		@roomsize = [42, 72, 120, 260]
-		@buildings = ['ZhengXin', 'GeWu']
 	    @request = Request.find(params[:id])
 	    respond_to do |format|
 	      format.html # show.html.erb

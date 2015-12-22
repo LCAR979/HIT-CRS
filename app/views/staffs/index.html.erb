@@ -1,16 +1,39 @@
-<p> Requests in Processing </p> 
-<table id="requests-list">
-  <tr>
-  </tr>
-  <% @myrequests.each do |request| %> 
-        <% if request.status ==3%> 
-            <td>Room status: processing </td>
-            <td>size: <%= @roomsize[request.size] %></td>
-            <td>building: <%= @buildings[request.building] %></td>
-            <td>location: <%= request.location%></td>
-            <td>week: <%= request.week %></td>
-            <td><%= link_to 'Show', request %></td>
-        <%end%>
-    <%end%>
-    </tr>
-</table>
+<% @buildings = Request.buildings %>
+<% @days = Request.days %>
+<div class="row">
+    <div class="panel panel-default col-xs-12">
+      <div class="panel-heading">Requests wait to be processed</div>
+      <table class="table" id="requests-list">  
+        <thead>
+          <tr>      
+            <th>Week</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Building</th>
+            <th>Location</th>
+            <th>Details</th>
+          </tr>
+        <thead>
+        <tbody>
+          <% if @myrequests != nil %>
+            <% @myrequests.each do |request| %> 
+              <% if request.status ==3%> 
+                <tr>
+                  <!-- status :waiting list -->
+                    <!-- <td>Room status: cancelled </td> -->                                 
+                  <td><%= request.week %></td> 
+                  <td><%= @days[request.day] %></td>
+                  <td>Course <%=request.time %> ~ <%=request.time + 1%></td>
+                  <td><%= @buildings[request.building] %></td>
+                  <td><%= request.location %></td>                              
+                  <td><%= link_to 'View detail', request %>
+                  </td>
+                </tr>
+              <%end%>
+            <%end%>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

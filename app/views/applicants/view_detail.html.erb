@@ -1,8 +1,10 @@
+<% @buildings = Request.buildings %>
+<% @days = Request.days %>
+<% @roomsize = Request.roomsize %>
+<% @media = Request.media %>
 <div class="panel panel-primary">
   <div class="panel-heading ">Reservation details</div>
-</div>
 
-<div>
   <table class="table">
     <tbody>
       <tr class="row"> 
@@ -11,7 +13,7 @@
       </tr>
       <tr class="row"> 
         <td class="col-xs-5"> Day </td> 
-        <td class="col-xs-7"> <%= @request.day %></td>
+        <td class="col-xs-7"> <%= @days[@request.day] %></td>
       </tr>
       <tr class="row"> 
         <td class="col-xs-5"> Time </td> 
@@ -33,13 +35,42 @@
       <tr class="row"> 
         <td class="col-xs-5"> Media</td> 
         <td class="col-xs-7"> 
+        	<% if @request.media==true %>
+        		<%= "Use" %>
+        	<% else %>
+        		<%= "Not use" %>
+        	<% end %>
         </td>
       </tr>
+      <tr class="row"> 
+        <td class="col-xs-5"> Discription</td> 
+        <td class="col-xs-7"> <%= @request.description %>
+        </td>
+      </tr>
+      <% if @request.comment!= nil %>
+	      <tr class="row"> 
+	        <td class="col-xs-5"> Staff comment</td> 
+	        <td class="col-xs-7"> <%= @request.comment%>
+	        </td>
+	      </tr>
+	    <% end %>
     </tbody>
   </table>
 </div>
 
-
 <% str='/applicants/'+@applicant.id.to_s+'/requests/'+@request.id.to_s+'/cancel/'%>
-<p>.......................................................................</p>
+
+<div class="row">
+  <div class="col-xs-offset-2 col-xs-3">
+      <%= link_to 'Cancel Reservation', str,
+              class: "btn btn-info", role:"button" %>
+  </div>
+   <div class="col-xs-offset-2 col-xs-3">
+      <%= link_to 'Home', applicant_path(@applicant),
+              class: "btn btn-primary", role:"button" %>
+  </div>
+</div>
+
+
+
 <td><%= link_to 'cancel', str,:method => :get%></td>

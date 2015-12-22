@@ -2,37 +2,41 @@
 
 <div class="container">
   <div class="row">
-    <div class=".col-lg-6">
+    <div class="col-lg-8 col-lg-offset-2">
+
       <div class="row">
-        <!-- <div class="col-lg-2"><%= link_to 'Reservation history ', '#' %></div> -->
-        <div class="col-lg-2"><%= link_to 'Room available status', '/rooms/staff/'+ @staff.id.to_s %></div>
-         <div class="col-lg-2"><%= link_to 'View Request Pool', staff_requests_path(@staff) %></div>
-          <div class="col-lg-2"><%= link_to 'Modify password', 
-          '/staffs/'+@staff.id.to_s+'/modify/'%></div>
+        <div class="col-lg-5 jumbotron">
+           <p>View reservation request pool </p>
+           <h5>View and audit reservation requests online.</h5>
+           <%= link_to 'View', staff_requests_path(@staff),
+            class: "btn btn-primary", role:"button" %>
+        </div>
+
+        <div class="col-lg-5 col-lg-offset-1 jumbotron">
+           <p>View rooms available information</p>
+           <h5>Display the status of all classrooms, 
+            search and make a new reservation request</h5>
+           <%= link_to 'View', '/rooms/staff/'+ @staff.id.to_s, 
+            class: "btn btn-primary", role:"button" %>
+        </div>
       </div>
+
+      <div class="row">
+        <div class="col-lg-5 jumbotron">
+           <p>Account Settings</p>
+           <h5>Reset password, change avater and delete your account</h5>
+           <%= link_to 'Settings', '/staff/'+@staff.id.to_s+'/setting/', 
+            class: "btn btn-primary", role:"button" %>
+        </div>
+      </div>
+
     </div>
-    <!-- <div class="span4">...</div> -->
   </div>
 </div>
 
-<nav>
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+
+
+
+
 
 

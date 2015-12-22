@@ -58,8 +58,8 @@ class StaffsController < ApplicationController
 	    end 
 	end
 
-    #GET    /staffs/:id/modify(.:format)
-    #render staff/modify.html   
+    #GET    /staffs/:id/setting(.:format)
+    #render staff/setting.html   
 	def setting
 		@staff = Staff.find(params[:id])
 		respond_to do |format|
