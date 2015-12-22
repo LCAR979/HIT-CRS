@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   layout "scroll"
-  def index
+  def index   
   end
   def home
   end

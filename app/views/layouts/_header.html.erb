@@ -29,9 +29,11 @@
     	</ul>
       <ul class="nav navbar-nav navbar-right">     
           <% if @applicant != nil %>
+            <li><%= image_tag @applicant.image_url(), :size => "50x40" if @applicant.image?%> </li>
             <li><a href="#"><%= @applicant.username%></a></li>
             <li><a href="/logout">Logout</a></li>
           <% elsif @staff != nil %>
+            <li><%= image_tag @staff.image_url(), :size => "50x40" if @staff.image?%> </li>
             <li><a href="#"><%= @staff.username%></a></li>
             <li><a href="/logout">Logout</a></li>
           <% else %>

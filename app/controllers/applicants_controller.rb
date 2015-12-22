@@ -2,7 +2,7 @@ class ApplicantsController < ApplicationController
 	layout "basic"
 
 	#GET    /applicants/:id(.:format)
-	#render applicants/show.html, applicant homepage
+	#render applicants/show.html 
 	def show
 		@applicant = Applicant.find(params[:id])
 		respond_to do |format|
@@ -80,6 +80,7 @@ class ApplicantsController < ApplicationController
 	def uploadimage
 		@applicant = Applicant.find(params[:id])
 		@applicant.update_attributes(params[:applicant])
+		redirect_to applicant_path(@applicant)
 	end
 
 	def shut_down

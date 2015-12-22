@@ -11,6 +11,7 @@ class CreateStaffs < ActiveRecord::Migration
                 # 0 not verified, 1 verified and normal , 2 shut down
       t.string :confirm_token
       t.integer :tasks, :default => 0
+      #image 
       t.string :image
   	end
   end
