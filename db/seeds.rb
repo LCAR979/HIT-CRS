@@ -36,7 +36,7 @@ def generate_seed
 
 	Staff.create(username: "staff001", password: secure_hash("123456"), 
 			name: "001",  staffid: "000001", phone: "12321321",
-			email: "staff001@qq.com",  status: 1, confirm_token: nil, tasks: 0,unread: 0)
+			email: "staff001@qq.com",  status: 1, confirm_token: nil, remember_token: "assdgsdsdsadfa235",tasks: 0,unread: 0)
 	
 
 

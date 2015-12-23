@@ -1,8 +1,8 @@
 class StaffsController < ApplicationController
 	layout "basic"
-	before_filter :signed_in_user, only: [:show, :setting, :index, 
+	before_filter :signed_in_user, only: [ :setting, :index, 
     				:requestProc, :audit, :reset, :shut_down, :uploadimage ]
-    before_filter :correct_user,   only: [:show, :setting, :index, 
+    before_filter :correct_user,   only: [ :setting, :index, 
     				:requestProc, :audit, :reset, :shut_down, :uploadimage]
 
     #staff_request 		GET /staffs/:staff_id/requests/:id(.:format)
@@ -133,17 +133,17 @@ class StaffsController < ApplicationController
 
 	private
 	def signed_in_user
-		# unless signed_in?
-		#   store_location
-	 #      flash[:info] = "Please log in." 
-	 #      redirect_to login_path
-	 #    end
+		unless signed_in?
+		  store_location
+	      flash[:info] = "Please log in." 
+	      redirect_to login_path
+	    end
     end
 
     def correct_user
-      # @user = Staff.find(params[:id])
-      # flash[:info] = "Please log in to continue."
-      # redirect_to login_path unless current_user?(@user)
+      @user = Staff.find(params[:id])
+      flash[:info] = "Please log in to continue."
+      redirect_to login_path unless current_user?(@user)
     end
 
 end
