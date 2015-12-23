@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-offset-4 col-xs-4">
+  	<% if signed_in? %>
+      <% if current_group == "Applicant"%>
+          <%= link_to 'Home', applicant_path(current_user),
+              class: "btn btn-primary", role:"button" %>
+      <% else %>
+          <%= link_to 'Home', staff_path(current_user),
+              class: "btn btn-primary", role:"button" %>
+      <% end %>
+    <%end%>
+      
+  </div>
+</div>

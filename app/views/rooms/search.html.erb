@@ -45,5 +45,7 @@
 		<%end%>
 	</tr>
 <%else%>
-	Room Not Found!!!
+	<% flash[:info] = "No such room" %>
+	<%= render 'layouts/notice' %>
+	<%= render 'layouts/home_btn' %>
 <%end%>

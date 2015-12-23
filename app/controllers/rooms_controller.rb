@@ -6,8 +6,6 @@ class RoomsController < ApplicationController
 	def index
 		@search = Room.new
 		@rooms = Room.all
-		@roomsize = [42, 72, 120, 260]
-		@buildings = ['ZhengXin', 'GeWu']
 		arr = Room.new.attributes.keys - Room.protected_attributes.to_a
 		@attributes = arr[4..arr.length]
 		if params[:applicant_id]
@@ -18,7 +16,7 @@ class RoomsController < ApplicationController
 		end
 		respond_to do |format|
 	      format.html		 # index.html.erb
-	      format.json { render json: @rooms, json: @roomsize}
+	      format.json { render json: @rooms}
 	  	end
     end
 

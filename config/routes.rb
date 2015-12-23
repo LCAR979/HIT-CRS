@@ -69,7 +69,8 @@ HITCrs::Application.routes.draw do
   get '/staffs/:id/shut_down',to: 'staffs#shut_down'
 
   get '/rooms/applicant/:applicant_id', to: 'rooms#index'
-  get '/rooms/staff/:staff_id', to: 'rooms#staff_room'
+  #get '/rooms/staff/:staff_id', to: 'rooms#staff_room'
+  get '/rooms/staff/:staff_id', to: 'rooms#index'
 
   # import files
   put '/staffs/:id/import', to: 'staffs#import'
