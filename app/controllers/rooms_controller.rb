@@ -38,6 +38,16 @@ class RoomsController < ApplicationController
     end
 
     def search
-
+    	@search = Room.new
+		@rooms = Room.all
+		@roomsize = [42, 72, 120, 260]
+		@buildings = ['ZhengXin', 'GeWu']
+		arr = Room.new.attributes.keys - Room.protected_attributes.to_a
+		@attributes = arr[4..arr.length]
+    	@room = Room.find_by_week_and_building_and_location(params[:room][:week], params[:room][:building], params[:room][:location])
+		respond_to do |format|
+	      format.html		 # index.html.erb
+	      format.json { render json: @rooms, json: @roomsize}
+	  	end
     end
 end

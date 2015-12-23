@@ -15,11 +15,21 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     	<ul class="nav navbar-nav">
       	<!-- <li class="active"> -->
-				<li>
-					<a href="/index">Home
-					<!-- <span class="sr-only">(current)</span> -->
-					</a>
-				</li>
+        <% if signed_in? %>
+            <% if current_group == "Applicant"%>
+        				<li>
+                      <%= link_to 'Home', applicant_path(current_user)%>
+        				</li>
+            <% else %>
+                <li>
+                      <%= link_to 'Home', staff_path(current_user)%>
+                </li>
+            <% end %>
+        <% else %>
+               <li>
+                  <a href="/index">Home</a>
+                </li>
+        <%end%>
 				<li><a href="/feature">Feature</a></li>
 				<li><a href="/help">Help</a></li>
 				<li><a href="/about">About</a></li>

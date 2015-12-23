@@ -75,6 +75,8 @@ HITCrs::Application.routes.draw do
   # import files
   put '/staffs/:id/import', to: 'staffs#import'
   get '/staffs/:id/uploadrooms', to: 'staffs#uploadrooms'
+  post 'rooms/search', to: 'rooms#search'
+  #post '//:id/search', to: 'rooms#search_for_staff'
 end
 
  # The priority is based upon order of creation:
