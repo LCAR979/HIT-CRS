@@ -85,24 +85,3 @@
       </div>
    </div>
 </form>
-
-
-<div class="panel panel-danger" style="overflow:hidden">
-  <div class="panel-heading">Delete Account</div>
-</div>
-<div class="row">
-  <div class="col-xs-offset-4 col-xs-4">
-      <%= link_to 'Delete Account', '/staffs/'+@staff.id.to_s+'/shut_down/',
-              class: "btn btn-danger", role:"button" %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-offset-2 col-xs-3">
-      <%= link_to 'Home', staff_path(@staff),
-              class: "btn btn-primary", role:"button" %>
-  </div>
-   <div class="col-xs-offset-2 col-xs-3">
-      <%= link_to 'New Request', '#',
-              class: "btn btn-primary", role:"button" %>
-  </div>
-</div>

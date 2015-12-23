@@ -90,7 +90,20 @@ class StaffsController < ApplicationController
 		@staff.update_attributes(image:params[:staff][:image])
 		redirect_to staff_path(@staff)
   	end
-
+	
+  	def uploadrooms
+  		@staff = Staff.find(params[:id])
+		respond_to do |format|
+			format.html{ render layout:"form"}
+			format.json{ render json: @staff}
+		end
+  	end
+  	def import
+	 	 #Staff.import(params[:file])
+	 	 Staff.import(params[:staff][:file])
+		 @staff = Staff.find(params[:id])
+		 flash[:success] = "rooms status imported."
+		 redirect_to staff_path(@staff)
 	# confirm_email_staff GET    
 	#/staffs/:id/confirm_email(.:format) 
 	def confirm_email     	
@@ -110,7 +123,7 @@ class StaffsController < ApplicationController
 	def shut_down
 		@staff = Staff.find(params[:id])
 		@staff.update_attributes('status'=>2)
-		redirect_to root_path
+		redirect_to '/index'
 	end
 
   	def secure_hash(string)

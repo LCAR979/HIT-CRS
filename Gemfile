@@ -1,5 +1,5 @@
-source 'https://ruby.taobao.org'
-#source 'https://rubygems.org'
+#source 'https://ruby.taobao.org'
+source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '3.2.16'
 
@@ -46,3 +46,6 @@ end
 # gem 'debugger'
 # saving images
 gem 'carrierwave'
+# read excel file
+gem 'roo'
+gem 'rack-utf8_sanitizer'

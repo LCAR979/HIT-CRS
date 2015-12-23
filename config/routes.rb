@@ -10,7 +10,6 @@ HITCrs::Application.routes.draw do
   resources :staffs do
     resources :requests
   end
-
    resources :applicants do
     resources :requests
   end
@@ -49,6 +48,7 @@ HITCrs::Application.routes.draw do
   get "/applicants/:id/setting", to: 'applicants#setting'
   put "/applicants/:id/upload", to: "applicants#uploadimage"
   get "/applicants/:id/histroy", to: 'applicants#history'
+  #----------------------
   # view detail for applicants/requests
   get "/applicants/:applicant_id/requests/:id/show", to: "applicants#view_detail" 
   # click to reserve
@@ -70,6 +70,9 @@ HITCrs::Application.routes.draw do
   get '/rooms/applicant/:applicant_id', to: 'rooms#index'
   get '/rooms/staff/:staff_id', to: 'rooms#staff_room'
 
+  # import files
+  put '/staffs/:id/import', to: 'staffs#import'
+  get '/staffs/:id/uploadrooms', to: 'staffs#uploadrooms'
 end
 
  # The priority is based upon order of creation:
