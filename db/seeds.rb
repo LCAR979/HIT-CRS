@@ -10,7 +10,7 @@ def generate_seed
 		t = Applicant.create!(username: "st00#{i}",password: secure_hash("123456"),
 			 studentid: "12345#{i}", phone: "12324512345#{i}", department: "Dep #{i}",
 			email: "st00#{i}@qq.com", name: "student#{i}",  status: 1, confirm_token: nil,
-			remember_token: "assdgadfa235#{iii}")
+			remember_token: "assdgadfa235#{i}#{i+1}#{i+7}", unread: 0)
 		20.times do |j|
 			t.requests.create!(week:rand(1..18),day:rand(1..7),time:timeArr[rand(0..5)],
 					building:rand(0..1), location:'2'+j.to_s, size:rand(0..3), media:rand(0..1),
@@ -36,7 +36,7 @@ def generate_seed
 
 	Staff.create(username: "staff001", password: secure_hash("123456"), 
 			name: "001",  staffid: "000001", phone: "12321321",
-			email: "staff001@qq.com",  status: 1, confirm_token: nil, tasks: 0)
+			email: "staff001@qq.com",  status: 1, confirm_token: nil, tasks: 0,unread: 0)
 	
 
 

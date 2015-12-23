@@ -14,6 +14,7 @@ class CreateApplicants < ActiveRecord::Migration
       t.string :remember_token
       t.string :image
       t.integer :cancel_num,  :default => 0  # cancelled numbers
+      t.integer :unread
 	  end 
 
     add_index :applicants, :email

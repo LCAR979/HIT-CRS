@@ -1,10 +1,39 @@
 class StaffsController < ApplicationController
 	layout "basic"
-	#This controller is designed for staff activities
+	before_filter :signed_in_user, only: [:show, :setting, :index, 
+    				:requestProc, :audit, :reset, :shut_down, :uploadimage ]
+    before_filter :correct_user,   only: [:show, :setting, :index, 
+    				:requestProc, :audit, :reset, :shut_down, :uploadimage]
+
+    #staff_request 		GET /staffs/:staff_id/requests/:id(.:format)
+    #render staff/show.html  show staff home page
+	def show
+		@staff= Staff.find(params[:id])
+		respond_to do |format|
+	    	format.html # show.html.erb
+	    	format.json{ render json: @staff}
+	    end 
+	end
+
+	#GET    /staffs/:id/setting(.:format)
+    #render staff/setting.html   
+	def setting
+		@staff = Staff.find(params[:id])
+		respond_to do |format|
+			format.html{ render layout:"form"}
+			format.json{ render json: @staff}
+		end
+	end
+
+    #staff_requests_path
+	#GET    /staffs/:staff_id/requests(.:format)
+	#render staffs/index.html  -- requests to be processed
+	def index	
+    end
 
 	# GET    /staffs/requestProc/:id(.:format)
 	#render staffs/requestProc.html
-	# goto request auditing page
+	# goto specific request auditing page
 	def requestProc
 		@roomsize = [42, 72, 120, 260]
 		@buildings = ['ZhengXin', 'GeWu']
@@ -17,15 +46,14 @@ class StaffsController < ApplicationController
 	end
 
     # PUT    /staffs/audit/:id(.:format)
-    # auditing request
+    # save auditing request
 	def audit
 		@request = Request.find(params[:id])
 		@request.comment = params[:request][:comment]
 		@request.status = params[:request][:status]
 		@request.save
 		@room = Room.find_by_building_and_location_and_week(@request.building, @request.location,@request.week)
-		str = 'day'+@request.day.to_s+'course' + @request.time.to_s
-	    
+		str = 'day'+@request.day.to_s+'course' + @request.time.to_s	    
 	    if @room != nil
 	    	if @request.status == 0 			 #request permitted 0-> room reserved 3
 	    		@room.update_attributes(str=>3)  #room status : reserved
@@ -34,39 +62,12 @@ class StaffsController < ApplicationController
 	    	end
 	    	@room.save
 	    end
-
 	    @applicant = Applicant.find_by_id(@request.applicant_id)
 	    Mailer.inform_request_status(@applicant, @request).deliver
 		@staff = Staff.find(@request.staff_id)
 		redirect_to(staff_requests_path(@staff))
 	end
 	
-	#staff_requests_path
-	#GET    /staffs/:staff_id/requests(.:format)
-	#render staffs/index.html  -- request to be processed
-	def index	
-    end
-
-    #staff_request 
-    #GET /staffs/:staff_id/requests/:id(.:format)
-    #render staff/show.html
-	def show
-		@staff= Staff.find(params[:id])
-		respond_to do |format|
-	    	format.html # show.html.erb
-	    	format.json{ render json: @staff}
-	    end 
-	end
-
-    #GET    /staffs/:id/setting(.:format)
-    #render staff/setting.html   
-	def setting
-		@staff = Staff.find(params[:id])
-		respond_to do |format|
-			format.html{ render layout:"form"}
-			format.json{ render json: @staff}
-		end
-	end
 
 	#POST   /staffs/:id/reset(.:format) 
 	# 			from staff/modify.html
@@ -84,10 +85,12 @@ class StaffsController < ApplicationController
 		end
 	end
 
-	def secure_hash(string)
-		Digest::SHA2.hexdigest(string)
-	end
-	
+	def uploadimage
+  		@staff = Staff.find(params[:id])		
+		@staff.update_attributes(image:params[:staff][:image])
+		redirect_to staff_path(@staff)
+  	end
+
 	# confirm_email_staff GET    
 	#/staffs/:id/confirm_email(.:format) 
 	def confirm_email     	
@@ -107,25 +110,26 @@ class StaffsController < ApplicationController
 	def shut_down
 		@staff = Staff.find(params[:id])
 		@staff.update_attributes('status'=>2)
-		redirect_to '/index'
+		redirect_to root_path
 	end
 
-	def uploadimage
-  		@staff = Staff.find(params[:id])
-  		#raise params[:staff]		
-		@staff.update_attributes(image:params[:staff][:image])
-		#raise
-		redirect_to staff_path(@staff)
-  	end
-	def new	
+  	def secure_hash(string)
+		Digest::SHA2.hexdigest(string)
 	end
-	def create
-	end
-	def update 
-	end
-	def destroy
-	end
-	def edit 
-	end
+
+	private
+	def signed_in_user
+		unless signed_in?
+		  store_location
+	      flash[:info] = "Please log in." 
+	      redirect_to login_path
+	    end
+    end
+
+    def correct_user
+      @user = Staff.find(params[:id])
+      flash[:info] = "Please log in to continue."
+      redirect_to login_path unless current_user?(@user)
+    end
 
 end

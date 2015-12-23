@@ -47,57 +47,6 @@ class OverallControllController < ApplicationController
 		end
 	end
 
-
-	def check_login
-		if params[:identity] == "student"
-			hashpassword = secure_hash(params[:password])
-			@searchRe = Applicant.find_by_email(params[:email])
-			if @searchRe == nil
-				flash[:error] = "User does not exist"
-				redirect_to("/login")
-			elsif @searchRe.status == 0
-				flash[:error] = "Account has not been activated"
-				redirect_to("/login")
-			elsif @searchRe.status == 2
-				flash[:error] = "Account has been shut down"
-				redirect_to("/login")
-			elsif hashpassword != @searchRe.password
-				flash[:error] = "Wrong password"
-				redirect_to("/login")
-			elsif hashpassword == @searchRe.password
-				flash[:success] = "Welcome"
-				cookies[:username] = Applicant.find_by_username(@searchRe.username)
-				redirect_to applicant_path(@searchRe)
-			end
-		elsif params[:identity] == "staff"
-			hashpassword = secure_hash(params[:password])
-			@searchRe = Staff.find_by_email(params[:email])
-			if @searchRe == nil
-				flash[:error] = "User does not exist"
-				redirect_to("/login")
-			elsif @searchRe.status == 0
-				flash[:error] = "Account has not been activated"
-				redirect_to("/login")
-			elsif @searchRe.status == 2
-				flash[:error] = "Account has been shut down"
-				redirect_to("/login")
-			elsif hashpassword != @searchRe.password
-				flash[:error] = "Wrong password"
-				redirect_to("/login")
-			elsif hashpassword == @searchRe.password
-				flash[:success] = "Welcome"
-				cookies[:username] = Staff.find_by_username(@searchRe.username)
-				redirect_to staff_path(@searchRe)
-			end
-		else
-			redirect_to("/login")
-		end 
-	end
-	
-	def logout
-		redirect_to("/index")
-	end
-
 	def secure_hash(string)
 		return Digest::SHA2.hexdigest(string)
 	end

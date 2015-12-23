@@ -14,6 +14,7 @@ class CreateStaffs < ActiveRecord::Migration
       t.integer :tasks, :default => 0
       #image 
       t.string :image
+      t.integer :unread
   	end
 
     add_index :staffs, :email

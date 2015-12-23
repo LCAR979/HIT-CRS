@@ -5,13 +5,6 @@ HITCrs::Application.routes.draw do
   resources :rooms
   resources :requests
   resources :applicants
-
-  resources :sessions, only: [:new, :create, :destroy]
-  #login_path  create new session page --> (login)
-  match '/login', to: 'sessions#new'
-  #logout_path delete session -->(logout)   
-  match '/logout', to: 'sessions#destroy', via: :delete
-
   #-----------------------
   #nested routes
   resources :staffs do
@@ -41,14 +34,16 @@ HITCrs::Application.routes.draw do
   get '/about', to: 'static_pages#about'
   get '/help', to: 'static_pages#help'  
   get '/signup', to: 'static_pages#signup'
-  #get '/login', to: 'static_pages#login'
 
-
-  #about signup and login
   post '/save', to: 'overall_controll#save'
-  post '/check_login', to: 'overall_controll#check_login' 
-  #get '/logout', to: 'overall_controll#logout'
 
+  resources :sessions, only: [:new, :create, :destroy]
+  #login_path  create new session page --> (login)
+  match '/login', to: 'sessions#new'
+  #logout_path delete session -->(logout)   
+  match '/logout', to: 'sessions#destroy'
+
+  
   #applicant
   post "/applicants/:id/reset", to: 'applicants#reset'
   get "/applicants/:id/setting", to: 'applicants#setting'

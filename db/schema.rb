@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.string  "remember_token"
     t.string  "image"
     t.integer "cancel_num",     :default => 0
+    t.integer "unread"
   end
 
   add_index "applicants", ["confirm_token"], :name => "index_applicants_on_confirm_token"
@@ -108,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.string  "remember_token"
     t.integer "tasks",          :default => 0
     t.string  "image"
+    t.integer "unread"
   end
 
   add_index "staffs", ["confirm_token"], :name => "index_staffs_on_confirm_token"

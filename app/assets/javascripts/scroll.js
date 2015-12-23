@@ -12,6 +12,32 @@ window.onload = function() {
 		var i, len,
 			body = document.querySelector("body");
 
+		// theme-nav 
+		len = themeNavUlLis.length;
+		for(i = 0; i < len; i++) {
+			themeNavUlLis[i].addEventListener("click", function() {
+				var nextPage = this.dataset.page,
+					localContentNavUlLis = document.querySelectorAll(".a" + currentArticlePage + " nav ul li"),
+					articles = document.querySelectorAll("article");
+				// reset current article section
+				if(localContentNavUlLis.length != 0) {
+					localContentNavUlLis[0].click();
+				}
+				// reset current section page
+				currentSectionPage = 1;
+				// active btn
+				clearActive(themeNavUlLis);
+				addClass(this, "active");
+				// change page
+				if(nextPage == currentArticlePage) {
+					return ;
+				}else {
+					changePages(articles, nextPage, articles.length, currentArticlePage, "move-left", "move-right");
+					currentArticlePage = nextPage;
+				}
+			}, false);
+		}
+
 		// content-nav
 		len = contentNavUlLis.length;
 		for(i = 0; i < len; i++) {

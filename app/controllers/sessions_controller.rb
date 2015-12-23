@@ -4,16 +4,24 @@ class SessionsController < ApplicationController
     #login	/login(.:format) 
     #GET    /sessions/new(.:format)        				sessions#new
 	def new
-		respond_to do |format|
+		if @searchRe = Applicant.find_by_remember_token(cookies[:remember_token])
+		  log_in @searchRe
+		  redirect_to applicant_path(@searchRe)
+		elsif @searchRe = Staff.find_by_remember_token(cookies[:remember_token])
+		  log_in @searchRe
+		  redirect_to staff_path(@searchRe)
+		else
+		  respond_to do |format|
 	     	format.html{ render layout:"form"}
 	     	format.json
-	   end 	
+	     end 
+	    end 	
 	end
 
 
 	#sessions_path
 	#POST   /sessions(.:format)               sessions#create
-	def create
+	def create		
 		if params[:session][:identity] == "student"
 			hashpassword = secure_hash(params[:session][:password])
 			@searchRe = Applicant.find_by_email(params[:session][:email].downcase)
@@ -65,7 +73,7 @@ class SessionsController < ApplicationController
 	#DELETE /sessions/:id(.:format)            sessions#destroy
 	def destroy
 		log_out
-		redirect_to root_path
+		redirect_to '/index'
 	end
 
 	def secure_hash(string)

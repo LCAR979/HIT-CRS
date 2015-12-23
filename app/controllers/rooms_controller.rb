@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
 	layout "basic"
 
-	#rooms 
+	#rooms_path
 	#GET    /rooms(.:format)
 	def index
 		@search = Room.new
@@ -35,5 +35,9 @@ class RoomsController < ApplicationController
 	      format.html		 # index.html.erb
 	      format.json { render json: @rooms, json: @roomsize}
 	  	end
+    end
+
+    def search
+
     end
 end

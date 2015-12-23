@@ -1,6 +1,7 @@
 class Applicant < ActiveRecord::Base
 	
-	attr_accessible :username, :password,  :name, :phone,  :email, :studentid,  :department, :status, :confirm_token, :cancel_num,:image
+	attr_accessible :username, :password,  :name, :phone,  :email, 
+	:studentid,  :department, :status, :confirm_token, :cancel_num,:image, :unread, :remember_token
 	has_many :requests, dependent: :destroy
 	# for saving images
 	mount_uploader :image, ImageUploader

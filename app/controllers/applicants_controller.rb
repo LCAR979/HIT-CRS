@@ -1,6 +1,9 @@
 class ApplicantsController < ApplicationController
 	layout "basic"
-                      
+    before_filter :signed_in_user, only: [:show, :setting, :history, 
+    				:view_detail, :reset, :shut_down, :uploadimage ]
+    before_filter :correct_user,   only: [:show, :setting, :history, 
+    				:view_detail, :reset, :shut_down, :uploadimage]
 	#applicant_path GET    /applicants/:id(.:format)            applicants#show
 	#render applicants/show.html, applicant home page
 	def show
@@ -96,4 +99,19 @@ class ApplicantsController < ApplicationController
 	def secure_hash(string)
 		Digest::SHA2.hexdigest(string)
 	end
+
+	private
+	def signed_in_user
+		unless signed_in?
+		  store_location
+	      flash[:info] = "Please log in." 
+	      redirect_to login_path
+	    end
+    end
+
+    def correct_user
+      @user = Applicant.find(params[:id])
+      #flash[:info] = "Please log in to continue."
+      redirect_to login_path unless current_user?(@user)
+    end
 end

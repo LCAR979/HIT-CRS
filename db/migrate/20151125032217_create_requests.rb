@@ -17,6 +17,7 @@ class CreateRequests < ActiveRecord::Migration
   	  #foreigh key association
   		t.belongs_to :applicant
   		t.belongs_to :staff
+      
   	end
   end
   def down

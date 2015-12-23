@@ -1,7 +1,7 @@
 class Staff < ActiveRecord::Base
 	
 	attr_accessible    :username, :password, :name, :phone, :email,
-					:staffid, :status, :confirm_token, :tasks, :image
+					:staffid, :status, :confirm_token, :tasks, :image, :unread,:remember_token
 	# for saving images
 	mount_uploader :image, ImageUploader
 	before_save { |staff| staff.email = email.downcase }
