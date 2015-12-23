@@ -1,52 +1,17 @@
 <%= render 'layouts/notice' %>
 
 <div class="panel panel-primary">
-  <div class="panel-heading ">Account information</div>
-</div>
-
-<div>
-  <table class="table">
-    <tbody>
-      <tr class="row"> 
-        <td class="col-xs-5"> Username </td> 
-        <td class="col-xs-7"> <%= @applicant.username %></td>
-      </tr>
-      <tr class="row"> 
-        <td class="col-xs-5"> Real Name </td> 
-        <td class="col-xs-7"> <%= @applicant.name %></td>
-      </tr>
-      <tr class="row"> 
-        <td class="col-xs-5"> Email </td> 
-        <td class="col-xs-7"> <%= @applicant.email %></td>
-      </tr>
-      <tr class="row"> 
-        <td class="col-xs-5"> Phone </td> 
-        <td class="col-xs-7"> <%= @applicant.phone %></td>
-      </tr>
-      <tr class="row"> 
-        <td class="col-xs-5"> Student ID</td> 
-        <td class="col-xs-7"> <%= @applicant.studentid %></td>
-      </tr>
-      <tr class="row"> 
-        <td class="col-xs-5"> Department </td> 
-        <td class="col-xs-7"> <%= @applicant.department %></td>
-      </tr>
-      <tr class="row"> 
-        <td class="col-xs-5"> Account bonus </td> 
-        <td class="col-xs-7"> <%= 100 - @applicant.cancel_num * 25 %></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="panel panel-primary">
   <div class="panel-heading ">Upload new avater</div>
 </div>
 
 <div class="row">
   <div class="col-lg-4">
     <a href="#" class="thumbnail">
-      <img src="..." alt="current avater">
+      <% if current_user.image? %>
+      <%= image_tag current_user.image_url(),class:"avater", :size => "50x40" %>
+      <% else %>
+      <%= image_tag '/assets/default_avater.jpg' ,class:"avater", :size => "50x40" %>
+      <% end %> 
     </a>
   </div>
 

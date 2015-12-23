@@ -25,6 +25,16 @@ class StaffsController < ApplicationController
 		end
 	end
 
+	#GET    /staffs/:id/profile(.:format)
+    #render staff/profile.html   
+	def profile
+		@staff = Staff.find(params[:id])
+		respond_to do |format|
+			format.html{ render layout:"form"}
+			format.json{ render json: @staff}
+		end
+	end
+
     #staff_requests_path
 	#GET    /staffs/:staff_id/requests(.:format)
 	#render staffs/index.html  -- requests to be processed

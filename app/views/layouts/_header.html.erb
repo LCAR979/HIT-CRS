@@ -25,15 +25,21 @@
 				<li><a href="/about">About</a></li>
         <% if signed_in? %>
           <li><a href="#">Requests             
-                  <% if current_user.unread != 0 %>
-                    <span class="badge">  <%= current_user.unread %></span>
-                  <% end %>              
-                </a></li>        
-          <% end %>             
+            <% if current_user.unread != 0 %>
+              <span class="badge">  <%= current_user.unread %></span>
+            <% end %>              
+          </a></li>        
+        <% end %>             
     	</ul>
       <ul class="nav navbar-nav navbar-right">         
           <% if signed_in? %>
-            <li><%= image_tag current_user.image_url(),class:"avater", :size => "50x40" if current_user.image?  %> </li>
+            <li>
+              <% if current_user.image? %>
+              <%= image_tag current_user.image_url(),class:"avater", :size => "50x40" %>
+              <% else %>
+              <%= image_tag '/assets/default_avater.jpg' ,class:"avater", :size => "50x40" %>
+              <% end %> 
+            </li>
             <li>
               <% if current_group ==  "Applicant" %>
                 <%= link_to current_user.username, applicant_path(current_user) %>

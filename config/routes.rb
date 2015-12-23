@@ -46,6 +46,7 @@ HITCrs::Application.routes.draw do
   #applicant
   post "/applicants/:id/reset", to: 'applicants#reset'
   get "/applicants/:id/setting", to: 'applicants#setting'
+  get "/applicants/:id/profile", to: 'applicants#profile'
   put "/applicants/:id/upload", to: "applicants#uploadimage"
   get "/applicants/:id/histroy", to: 'applicants#history'
   #----------------------
@@ -61,6 +62,7 @@ HITCrs::Application.routes.draw do
   #staff
   post "/staffs/:id/reset", to: 'staffs#reset'
   get "/staffs/:id/setting", to: 'staffs#setting'
+  get "/staffs/:id/profile", to: 'staffs#profile'
   put "/staffs/:id/upload", to: "staffs#uploadimage"
   get '/staffs/:staff_id/requests/:id', to: 'requests#show'
   get '/staffs/requestProc/:id',to: 'staffs#requestProc'

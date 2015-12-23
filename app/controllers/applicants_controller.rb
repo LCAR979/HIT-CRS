@@ -24,6 +24,16 @@ class ApplicantsController < ApplicationController
 		end
 	end
 
+	#GET    /applicants/:id/profile(.:format)      applicants#profile
+	#render applicants/profile.html                                               
+	def profile
+		@applicant = Applicant.find(params[:id])
+		respond_to do |format|
+			format.html{ render layout:"form"}
+			format.json{ render json: @applicant}
+		end
+	end
+
 	#GET    /applicants/:id/histroy(.:format)        applicants#history
 	#render applicants/history.html, history reservation page
 	def history
