@@ -21,11 +21,16 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.string  "email"
     t.string  "studentid"
     t.string  "department"
-    t.integer "status",        :default => 0
+    t.integer "status",         :default => 0
     t.string  "confirm_token"
+    t.string  "remember_token"
     t.string  "image"
-    t.integer "cancel_num",    :default => 0
+    t.integer "cancel_num",     :default => 0
   end
+
+  add_index "applicants", ["confirm_token"], :name => "index_applicants_on_confirm_token"
+  add_index "applicants", ["email"], :name => "index_applicants_on_email"
+  add_index "applicants", ["remember_token"], :name => "index_applicants_on_remember_token"
 
   create_table "requests", :force => true do |t|
     t.integer "week"
@@ -98,10 +103,15 @@ ActiveRecord::Schema.define(:version => 20151125032217) do
     t.string  "phone"
     t.string  "email"
     t.string  "staffid"
-    t.integer "status",        :default => 0
+    t.integer "status",         :default => 0
     t.string  "confirm_token"
-    t.integer "tasks",         :default => 0
+    t.string  "remember_token"
+    t.integer "tasks",          :default => 0
     t.string  "image"
   end
+
+  add_index "staffs", ["confirm_token"], :name => "index_staffs_on_confirm_token"
+  add_index "staffs", ["email"], :name => "index_staffs_on_email"
+  add_index "staffs", ["remember_token"], :name => "index_staffs_on_remember_token"
 
 end

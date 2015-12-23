@@ -1,0 +1,41 @@
+﻿<%= render 'layouts/notice' %>
+<%= form_for :session, url: sessions_path,html:{class:'form-horizontal col-lg-12','role'=>'form', 'data-toggle'=>'validator'} do |f| %>
+    <div class="form-group">
+      <%=f.label :email, class:"control-label col-lg-2" %>
+      <div class="col-lg-10">
+        <%=f.text_field :email , class:"form-control",placeholder:"Email" %>
+      </div>
+      <span class="help-block with-errors"></span>
+    </div>
+
+    <div class="form-group">
+      <%=f.label :password, class:"control-label col-lg-2" %>
+      <div class="col-lg-10">
+        <%=f.password_field :password , class:"form-control",placeholder:"Password" %>
+      </div>
+      <span class="help-block with-errors"></span>
+    </div>
+
+    <div class="form-inline" id="Identity">
+      <label for="identity" class="control-label col-xs-2 radio inline">Identity</label>
+      <div class="col-xs-10">
+        
+        <%= f.radio_button :identity, 'student', class:"form-control radio",
+          onclick:"change()", :checked => true %> 
+        <%= label :identity, 'student',class:"radio inline" %>
+        
+        <%= f.radio_button :identity, 'staff', class:"form-control radio",
+          onclick:"change()" %>
+        <%= label :identity, 'staff',class:"radio inline" %>
+        </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-offset-2 col-xs-10">
+          <%= f.submit "Log in", class: "btn btn-large btn-primary" %>
+      </div>
+    </div>
+      
+<% end %>
+<div class="col-lg-8 col-lg-offset-2">
+  New user? <%= link_to "Sign up now!", signup_path %></p>
+</div>

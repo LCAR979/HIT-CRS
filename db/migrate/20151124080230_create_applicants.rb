@@ -11,10 +11,15 @@ class CreateApplicants < ActiveRecord::Migration
   		t.integer :status,  :default => 0
                   # 0 not verified, 1 verified and normal , 2 closed
       t.string  :confirm_token
+      t.string :remember_token
       t.string :image
       t.integer :cancel_num,  :default => 0  # cancelled numbers
-	 end  
-  end
+	  end 
+
+    add_index :applicants, :email
+    add_index :applicants, :confirm_token 
+    add_index :applicants, :remember_token
+  end 
 
   def down
   	drop_table 'applicants'

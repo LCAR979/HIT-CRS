@@ -23,11 +23,46 @@
 				<li><a href="/feature">Feature</a></li>
 				<li><a href="/help">Help</a></li>
 				<li><a href="/about">About</a></li>
+        <% if false %>
           <% if @applicant != nil || @staff != nil%>
             <li><a href="#">Requests <span class="badge">42</span></a></li>
-          <% end %>              
+          <% end %>       
+        <% end %>       
     	</ul>
-      <ul class="nav navbar-nav navbar-right">     
+      <ul class="nav navbar-nav navbar-right">         
+          <% if signed_in? %>
+            <li><%= image_tag current_user.image_url(),class:"avater", :size => "50x40" if current_user.image?  %> </li>
+            <li>
+              <% if current_group ==  "Applicant" %>
+                <%= link_to current_user.username, applicant_path(current_user) %>
+              <% else %>
+                <%= link_to current_user.username, staff_path(current_user) %>
+              <% end %>
+            </li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <% if current_group ==  "Applicant" %>
+                   <li><%= link_to "Profile", '#' %></li>
+                    <li><%= link_to "Settings", '#' %></li>
+                <% else %>
+                   <li><%= link_to "Profile", '#' %></li>
+                  <li><%= link_to "Settings", '#' %></li>
+                <% end %>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Log out", logout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><a href="/guest">Guest</a></li>
+            <li><%= link_to "Log in", login_path %></li>
+            <li><%= link_to "Sign up", signup_path %></li>
+          <% end %>
+<!-- 
           <% if @applicant != nil %>
             <li><%= image_tag @applicant.image_url(),class:"avater", :size => "50x40" if @applicant.image?  %> </li>
             <li><a href="#"><%= @applicant.username%></a></li>
@@ -40,7 +75,7 @@
             <li><a href="/guest">Guest</a></li>
             <li><a href="/login">Login</a></li>
             <li><a href="/signup">Signup</a></li>
-          <% end %>
+          <% end %> -->
       </ul>
 		</div><!-- /.navbar-collapse -->
 

@@ -80,7 +80,7 @@ class StaffsController < ApplicationController
 			redirect_to staff_path(@staff)
 		else 
 			flash[:error] = "old password is not correct!"
-			redirect_to "/staffs/"+@staff.id.to_s+"/modify/"
+			redirect_to "/staffs/"+@staff.id.to_s+"/setting/"
 		end
 	end
 
@@ -94,9 +94,10 @@ class StaffsController < ApplicationController
 		staff = Staff.find_by_confirm_token(params[:id])
 		if staff	    		      
 			staff.email_active	
-			staff.save      
-			flash[:success] = "Welcome to HIT-CRS! Your email has been confirmed.Please sign in to continue." 	      
-			redirect_to '/login' 	    
+			staff.save   
+			log_in staff   
+			flash[:success] = "Welcome to HIT-CRS! Your email has been confirmed." 	      
+			redirect_to staff_path(staff)	    
 		else 	      
 			flash[:error] = "Sorry. User does not exist." 	      
 			redirect_to '/signup' 	    
@@ -108,9 +109,12 @@ class StaffsController < ApplicationController
 		@staff.update_attributes('status'=>2)
 		redirect_to '/index'
 	end
+
 	def uploadimage
   		@staff = Staff.find(params[:id])
-		@staff.update_attributes(params[:staff])
+  		#raise params[:staff]		
+		@staff.update_attributes(image:params[:staff][:image])
+		#raise
 		redirect_to staff_path(@staff)
   	end
 	def new	

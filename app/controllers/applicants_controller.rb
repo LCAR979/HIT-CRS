@@ -1,7 +1,7 @@
 class ApplicantsController < ApplicationController
 	layout "basic"
-
-	#GET    /applicants/:id(.:format)
+                      
+	#applicant_path GET    /applicants/:id(.:format)            applicants#show
 	#render applicants/show.html, applicant home page
 	def show
 		@applicant = Applicant.find(params[:id])
@@ -11,8 +11,7 @@ class ApplicantsController < ApplicationController
 	    end 	
 	end
 
-	#------------------------For reset password-----------------------
-	# POST   /applicants/:id/setting(.:format) 
+	#GET    /applicants/:id/setting(.:format)      applicants#setting
 	#render applicants/setting.html                                               
 	def setting
 		@applicant = Applicant.find(params[:id])
@@ -22,26 +21,7 @@ class ApplicantsController < ApplicationController
 		end
 	end
 
-	# GET    /applicants/:id/reset(.:format)  
-	def reset
-		@applicant = Applicant.find(params[:id])
-		oldpassword = @applicant.password
-		if oldpassword == secure_hash(params[:oldpassword])
-			newpassword = secure_hash(params[:newpassword])
-			@applicant.update_attributes(password:newpassword)
-			flash[:success] = "Password modified successfully!"
-			redirect_to applicant_path(@applicant)
-		else 
-			flash[:error] = "Old password is not correct!"
-			redirect_to "/applicants/"+@applicant.id.to_s+"/setting/"
-		end
-	end
-
-	def secure_hash(string)
-		Digest::SHA2.hexdigest(string)
-	end
-
-	#GET    /applicants/:id/histroy(.:format) 
+	#GET    /applicants/:id/histroy(.:format)        applicants#history
 	#render applicants/history.html, history reservation page
 	def history
 		@applicant = Applicant.find(params[:id])
@@ -69,30 +49,51 @@ class ApplicantsController < ApplicationController
 	    end  
 	end
 
-	#confirm_email_applicant 
-	#GET    /applicants/:id/confirm_email(.:format)
-	def confirm_email  
-		applicant = Applicant.find_by_confirm_token(params[:id])
-		if applicant	    		      
-			applicant.email_active
-			applicant.save	      
-			flash[:success] = "Welcome to HIT-CRS! Your email has been confirmed.Please sign in to continue." 	      
-			redirect_to '/login' 	    
-		else 	      
-			flash[:error] = "Sorry. User does not exist." 	      
-			redirect_to '/signup' 	    
-		end 	
+	#POST   /applicants/:id/reset(.:format)         applicants#reset
+	def reset
+		@applicant = Applicant.find(params[:id])
+		oldpassword = @applicant.password
+		if oldpassword == secure_hash(params[:oldpassword])
+			newpassword = secure_hash(params[:newpassword])
+			@applicant.update_attributes(password:newpassword)
+			flash[:success] = "Password modified successfully!"
+			redirect_to applicant_path(@applicant)
+		else 
+			flash[:error] = "Old password is not correct!"
+			redirect_to "/applicants/"+@applicant.id.to_s+"/setting/"
+		end
 	end
+
+	#PUT    /applicants/:id/upload(.:format)        applicants#uploadimage
 	def uploadimage
 		@applicant = Applicant.find(params[:id])
 		@applicant.update_attributes(params[:applicant])
 		redirect_to applicant_path(@applicant)
 	end
 
+	# GET    /applicants/:id/shut_down(.:format)     applicants#shut_down
 	def shut_down
 		@applicant = Applicant.find(params[:id])
 		@applicant.update_attributes('status'=>2)
 		redirect_to '/index'
 	end
-
+	
+	#confirm_email_applicant GET    /applicants/:id/confirm_email(.:format)       applicants#confirm_email
+	def confirm_email  
+		applicant = Applicant.find_by_confirm_token(params[:id])
+		if applicant	    		      
+			applicant.email_active
+			applicant.save	 
+			log_in applicant     
+			flash[:success] = "Welcome to HIT-CRS! Your email has been confirmed" 	      
+			redirect_to applicant_path(@applicant) 	    
+		else 	      
+			flash[:error] = "Sorry. User does not exist." 	      
+			redirect_to '/signup' 	    
+		end 	
+	end
+	
+	def secure_hash(string)
+		Digest::SHA2.hexdigest(string)
+	end
 end
