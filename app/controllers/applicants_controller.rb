@@ -96,6 +96,13 @@ class ApplicantsController < ApplicationController
 		end 	
 	end
 	
+	# def requests_unread
+	#   @messages = Messages.messages_received
+	#   respond_to |format|
+	#    format.json { render json: @messages }
+	#   end
+	# end  
+
 	def secure_hash(string)
 		Digest::SHA2.hexdigest(string)
 	end

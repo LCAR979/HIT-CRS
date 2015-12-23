@@ -104,6 +104,7 @@ class StaffsController < ApplicationController
 		 @staff = Staff.find(params[:id])
 		 flash[:success] = "rooms status imported."
 		 redirect_to staff_path(@staff)
+	end 
 	# confirm_email_staff GET    
 	#/staffs/:id/confirm_email(.:format) 
 	def confirm_email     	

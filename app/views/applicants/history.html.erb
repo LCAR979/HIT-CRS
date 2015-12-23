@@ -4,6 +4,7 @@
 <% @waiting_list=Request.find_all_by_status_and_applicant_id(2, @applicant.id,:order=>'week desc, day desc, time desc')%>
 <% @cancelled_list=Request.find_all_by_status_and_applicant_id(3, @applicant.id,:order=>'week desc, day desc, time desc')%>
 <% end %>
+
 <% @buildings = Request.buildings %>
 <% @days = Request.days %>
 <div class="col-xs-offset-2 col-xs-8">
@@ -19,6 +20,8 @@
 	    <div class="tab-pane fade" id="ccc">...cccc</div>
 	    <div class="tab-pane fade" id="ddd">...ddd</div>
 	</div>
+
+	<% if false %>
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -57,7 +60,6 @@
 			<%= will_paginate @waiting_list %>
 		</div>
   </div>
-<% if false %>
   <div class="row">
 		<div class="panel panel-default">
 			<div class="panel-heading">
