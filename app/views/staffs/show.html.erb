@@ -9,6 +9,9 @@
          <div class="col-lg-2"><%= link_to 'View Request Pool', staff_requests_path(@staff) %></div>
           <div class="col-lg-2"><%= link_to 'Setting', 
           '/staffs/'+@staff.id.to_s+'/setting/'%></div>
+          <%str='/staffs/'+@staff.id.to_s+'/uploadrooms/'%>
+          <div class="col-lg-2"><%= link_to 'upload rooms status', str%>
+          </div>
       </div>
     </div>
     <!-- <div class="span4">...</div> -->

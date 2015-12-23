@@ -66,8 +66,6 @@ class OverallControllController < ApplicationController
 				redirect_to("/login")
 			elsif hashpassword == @searchRe.password
 				flash[:success] = "Welcome"
-				#save applicant_id to session
-				session[:applicant_id] = @searchRe.id
 				cookies[:username] = Applicant.find_by_username(@searchRe.username)
 				redirect_to applicant_path(@searchRe)
 			end
@@ -87,9 +85,7 @@ class OverallControllController < ApplicationController
 				flash[:error] = "Wrong password"
 				redirect_to("/login")
 			elsif hashpassword == @searchRe.password
-				#save staff_id to session
 				flash[:success] = "Welcome"
-				session[:staff_id] = @searchRe.id
 				cookies[:username] = Staff.find_by_username(@searchRe.username)
 				redirect_to staff_path(@searchRe)
 			end

@@ -67,6 +67,9 @@ HITCrs::Application.routes.draw do
   # save applicant image
   put "/applicants/:id/upload", to: "applicants#uploadimage"
   put "/staffs/:id/upload", to: "staffs#uploadimage"
+  # import files
+  put '/staffs/:id/import', to: 'staffs#import'
+  get '/staffs/:id/uploadrooms', to: 'staffs#uploadrooms'
 end
 
  # The priority is based upon order of creation:

@@ -1,0 +1,7 @@
+<div>
+  <%str="/staffs/"+@staff.id.to_s+"/import"%>
+  <%= form_for @staff, url:{action: "import"}, :html => {:multipart => true} do |f| %>
+    <%= f.file_field :file %>
+    <%= f.submit "Import file" %>
+  <% end %>
+</div>

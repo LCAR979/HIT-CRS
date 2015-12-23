@@ -1,5 +1,5 @@
 <%= render 'layouts/notice' %>
-<%=form_for @staff, url: {action: "uploadimage"} do |f|%>
+<%=form_for @staff, url: {action: "uploadimage"}, :html => {:multipart => true}  do |f|%>
   <%=f.file_field :image%>
 <br/>
 <br/>

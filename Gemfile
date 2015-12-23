@@ -46,3 +46,6 @@ end
 # gem 'debugger'
 # saving images
 gem 'carrierwave'
+# read excel file
+gem 'roo'
+gem 'rack-utf8_sanitizer'
