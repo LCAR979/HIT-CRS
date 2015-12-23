@@ -44,29 +44,28 @@ HITCrs::Application.routes.draw do
 
   
   #applicant
+  get "/applicants/:id/histroy", to: 'applicants#history'
   post "/applicants/:id/reset", to: 'applicants#reset'
   get "/applicants/:id/setting", to: 'applicants#setting'
   get "/applicants/:id/profile", to: 'applicants#profile'
-  put "/applicants/:id/upload", to: "applicants#uploadimage"
-  get "/applicants/:id/histroy", to: 'applicants#history'
-  #----------------------
+  put "/applicants/:id/upload", to: "applicants#uploadimage" 
+  get "/applicants/:id/shut_down", to: "applicants#shut_down"
   # view detail for applicants/requests
-  get "/applicants/:applicant_id/requests/:id/show", to: "applicants#view_detail" 
+  get "/applicants/:applicant_id/requests/:request_id/show", to: "applicants#view_detail" 
+  get "/applicants/:applicant_id/requests/:request_id/cancel", to: "requests#cancel"
   # click to reserve
   get "/applicants/:applicant_id/rooms/:room_id/:day/:course", to: "requests#new"
-  # cancel a request
-  get "/applicants/:applicant_id/requests/:id/cancel", to: "requests#cancel"
-  get "/applicants/:id/shut_down", to: "applicants#shut_down"
-  
 
+  
   #staff
+  get '/staffs/:staff_id/requests/:id', to: 'requests#show'
+  get '/staffs/requestProc/:id',to: 'staffs#requestProc'
+  put '/staffs/audit/:id',to: 'staffs#audit'
+
   post "/staffs/:id/reset", to: 'staffs#reset'
   get "/staffs/:id/setting", to: 'staffs#setting'
   get "/staffs/:id/profile", to: 'staffs#profile'
   put "/staffs/:id/upload", to: "staffs#uploadimage"
-  get '/staffs/:staff_id/requests/:id', to: 'requests#show'
-  get '/staffs/requestProc/:id',to: 'staffs#requestProc'
-  put '/staffs/audit/:id',to: 'staffs#audit'
   get '/staffs/:id/shut_down',to: 'staffs#shut_down'
 
   get '/rooms/applicant/:applicant_id', to: 'rooms#index'

@@ -10,6 +10,8 @@ class OverallControllController < ApplicationController
 					status:0)
 				if @applicant.save
 					Mailer.applicant_confirmation(@applicant).deliver
+					@applicant.create_remember_token
+					@applicant.save
 					flash[:success] = "Please confirm your email to continue"
 					redirect_to '/login'
 				else
@@ -28,6 +30,8 @@ class OverallControllController < ApplicationController
 					 phone: params[:phone], email: params[:email], password: hashpassword, status:0)
 					if @staff.save
 						Mailer.staff_confirmation(@staff).deliver
+						@staff.create_remember_token
+						@staff.save
 						flash[:success] = "Please confirm your email to continue"
 						redirect_to '/login'
 					else

@@ -21,8 +21,10 @@
 			</br>
 			</br>
 			</br>
-			<a href="/login"><input type="button" value="Login" style="background-color: DeepSkyBlue;color: white;font-size: 25px;border: 0;width:200px;height:50px;padding-right:"></a>			
-			<a href="/signup"><input type="button" value="Signup" style="background-color: DeepSkyBlue;color: white;font-size: 25px;border: 0;width:200px;height:50px;"></a>
+			<% if !signed_in? %>
+				<a href="/login"><input type="button" value="Log in" style="background-color: DeepSkyBlue;color: white;font-size: 25px;border: 0;width:200px;height:50px;padding-right:"></a>			
+				<a href="/signup"><input type="button" value="Sign up" style="background-color: DeepSkyBlue;color: white;font-size: 25px;border: 0;width:200px;height:50px;"></a>
+			<% end %>
 		</div>
 	</div>
 </section>

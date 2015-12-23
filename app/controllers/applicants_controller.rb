@@ -1,8 +1,8 @@
 class ApplicantsController < ApplicationController
 	layout "basic"
-    before_filter :signed_in_user, only: [:show, :setting, :history, 
+    before_filter :signed_in_user, only: [ :setting, :history, 
     				:view_detail, :reset, :shut_down, :uploadimage ]
-    before_filter :correct_user,   only: [:show, :setting, :history, 
+    before_filter :correct_user,   only: [ :setting, :history, 
     				:view_detail, :reset, :shut_down, :uploadimage]
 	#applicant_path GET    /applicants/:id(.:format)            applicants#show
 	#render applicants/show.html, applicant home page
@@ -38,15 +38,19 @@ class ApplicantsController < ApplicationController
 	#render applicants/history.html, history reservation page
 	def history
 		@applicant = Applicant.find(params[:id])
-		# @permitted_list=Request.find_all_by_status_and_applicant_id(0, @applicant.id,:order=>'week desc, day desc, time desc')
-		# @rejected_list=Request.find_all_by_status_and_applicant_id(1, @applicant.id,:order=>'week desc, day desc, time desc')
+		@permitted_list=Request.find_all_by_status_and_applicant_id(0, @applicant.id,:order=>'week desc, day desc, time desc')
+		@rejected_list=Request.find_all_by_status_and_applicant_id(1, @applicant.id,:order=>'week desc, day desc, time desc')
 		@waiting_list=Request.find_all_by_status_and_applicant_id(2, @applicant.id,:order=>'week desc, day desc, time desc')
-		# @cancelled_list=Request.find_all_by_status_and_applicant_id(3, @applicant.id,:order=>'week desc, day desc, time desc')
-		# @waiting_list = @waiting_list.paginate(page: params[:page], per_page:3)
+		@cancelled_list=Request.find_all_by_status_and_applicant_id(3, @applicant.id,:order=>'week desc, day desc, time desc')
+		
 		@waiting_list = @waiting_list.paginate(page: params[:page], per_page:3)
+		@permitted_list = @permitted_list.paginate(page: params[:page], per_page:3)
+		@rejected_list = @rejected_list.paginate(page: params[:page], per_page:3)
+		@cancelled_list = @cancelled_list.paginate(page: params[:page], per_page:3)
 		respond_to do |format|
 	    	format.html 
-	    	format.json{ render json: @applicant}
+	    	format.json{ render json: @waiting_list, json: @permitted_list,
+	    						json: @rejected_list, json: @cancelled_list}
 	    end  
 	end
 
@@ -54,7 +58,7 @@ class ApplicantsController < ApplicationController
 	#render applicants/view_detail.html
 	#view request details
 	def view_detail
-		@request = Request.find(params[:id])
+		@request = Request.find(params[:request_id])
 		@applicant = Applicant.find(params[:applicant_id])
 		respond_to do |format|
 	    	format.html 
@@ -127,8 +131,14 @@ class ApplicantsController < ApplicationController
     end
 
     def correct_user
-      @user = Applicant.find(params[:id])
-      #flash[:info] = "Please log in to continue."
-      redirect_to login_path unless current_user?(@user)
+		if params[:id]
+	  		@user = Applicant.find(params[:id])
+	  	elsif params[:applicant_id]
+	 		@user = Applicant.find(params[:applicant_id])
+	 	end
+	 	unless current_user?(@user)
+	      	flash[:info] = "Please log in to continue."
+	      	redirect_to login_path 
+	    end
     end
 end
