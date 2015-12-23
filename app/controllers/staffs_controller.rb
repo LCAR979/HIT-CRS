@@ -152,8 +152,10 @@ class StaffsController < ApplicationController
 
     def correct_user
       @user = Staff.find(params[:id])
-      flash[:info] = "Please log in to continue."
-      redirect_to login_path unless current_user?(@user)
+	  unless current_user?(@user)	
+		  flash[:info] = "Please log in to continue."
+		  redirect_to login_path 
+	  end
     end
 
 end
