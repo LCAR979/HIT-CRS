@@ -133,17 +133,17 @@ class StaffsController < ApplicationController
 
 	private
 	def signed_in_user
-		unless signed_in?
-		  store_location
-	      flash[:info] = "Please log in." 
-	      redirect_to login_path
-	    end
+		# unless signed_in?
+		#   store_location
+	 #      flash[:info] = "Please log in." 
+	 #      redirect_to login_path
+	 #    end
     end
 
     def correct_user
-      @user = Staff.find(params[:id])
-      flash[:info] = "Please log in to continue."
-      redirect_to login_path unless current_user?(@user)
+      # @user = Staff.find(params[:id])
+      # flash[:info] = "Please log in to continue."
+      # redirect_to login_path unless current_user?(@user)
     end
 
 end
