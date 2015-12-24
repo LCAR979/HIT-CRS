@@ -61,8 +61,8 @@ HITCrs::Application.routes.draw do
   
   #staff
   get '/staffs/:staff_id/requests/:id', to: 'requests#show'
-  get '/staffs/requestProc/:id',to: 'staffs#requestProc'
-  put '/staffs/audit/:id',to: 'staffs#audit'
+  get '/staffs/requestProc/:request_id',to: 'staffs#requestProc'
+  put '/staffs/audit/:request_id',to: 'staffs#audit'
 
   post "/staffs/:id/reset", to: 'staffs#reset'
   get "/staffs/:id/setting", to: 'staffs#setting'

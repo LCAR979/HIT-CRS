@@ -47,7 +47,7 @@ class StaffsController < ApplicationController
 	def requestProc
 		@roomsize = [42, 72, 120, 260]
 		@buildings = ['ZhengXin', 'GeWu']
-		@request = Request.find(params[:id])
+		@request = Request.find(params[:request_id])
 		@staff = Staff.find(@request.staff_id)
 		respond_to do |format|
 	     	format.html{ render layout:"form"}
@@ -58,7 +58,7 @@ class StaffsController < ApplicationController
     # PUT    /staffs/audit/:id(.:format)
     # save auditing request
 	def audit
-		@request = Request.find(params[:id])
+		@request = Request.find(params[:request_id])
 		@request.comment = params[:request][:comment]
 		@request.status = params[:request][:status]
 		@request.save
