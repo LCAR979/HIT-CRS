@@ -132,11 +132,12 @@ class ApplicantsController < ApplicationController
     end
 
     def correct_user
-		if params[:id]
-	  		@user = Applicant.find(params[:id])
-	  	elsif params[:applicant_id]
-	 		@user = Applicant.find(params[:applicant_id])
-	 	end
+		# if params[:id]
+	 #  		@user = Applicant.find(params[:id])
+	 #  	elsif params[:applicant_id]
+	 # 		@user = Applicant.find(params[:applicant_id])
+	 # 	end
+	 	@user = Applicant.find_by_remember_token(cookies[:remember_token])
 	 	unless current_user?(@user)
 	      	flash[:info] = "Please log in to continue."
 	      	redirect_to login_path 

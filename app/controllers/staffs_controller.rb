@@ -151,7 +151,7 @@ class StaffsController < ApplicationController
     end
 
     def correct_user
-      @user = Staff.find(params[:id])
+      @user = Staff.find_by_remember_token(cookies[:remember_token])
 	  unless current_user?(@user)	
 		  flash[:info] = "Please log in to continue."
 		  redirect_to login_path 
