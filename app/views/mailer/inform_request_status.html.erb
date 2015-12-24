@@ -9,7 +9,7 @@
 		Week: <%=  @request.week %> <br />
 		Day: <%= @request.day %> <br />
 		Time Interval: From course <%= @request.time %> to course <%= @request.time + 1 %> </br>
-        Building: <%= @buildings[request.building] %></br>
+        Building: <%= @buildings[@request.building] %></br>
         Location: <%= @request.location %></br>
         has been 
         <bold>
