@@ -78,17 +78,20 @@ class RequestsController < ApplicationController
   	#cancel a request
   	def cancel
   		@applicant = Applicant.find(params[:applicant_id])
-  		@request = Request.find(params[:id])
+  		@request = Request.find(params[:request_id])
   		#change request status
   		@request.status = 4
   		#change room status
-  		@room = Room.find_by_location_and_week(@request.location,@request.week)
+  		@room = Room.find_by_building_and_location_and_week(@request.building,@request.location,@request.week)
 	    str = 'day'+@request.day.to_s+'course' + @request.time.to_s
 	    if @room != nil
 	    	@room.update_attributes(str=>0)  #room status : free
 	    	# cancel num + 1
 	    	@applicant.cancel_num = @applicant.cancel_num + 1
 	    	@applicant.save
+	    	if @applicant.cancel_num == 4
+	    		# do some thing
+	    	end
 	    	#@room.save
 	    end
 	    @request.save

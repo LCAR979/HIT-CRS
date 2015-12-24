@@ -11,4 +11,7 @@ class StaticPagesController < ApplicationController
   def signup
     render :layout => "form"
   end
+  def guest
+    redirect_to '/rooms/index'
+  end 
 end

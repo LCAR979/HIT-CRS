@@ -1,5 +1,5 @@
 HITCrs::Application.routes.draw do
-
+ 
   resources :applications
   resources :staffs
   resources :rooms
@@ -35,6 +35,8 @@ HITCrs::Application.routes.draw do
   get '/signup', to: 'static_pages#signup'
 
   post '/save', to: 'overall_controll#save'
+
+  get '/guest', to: 'static_pages#guest'
 
   resources :sessions, only: [:new, :create, :destroy]
   #login_path  create new session page --> (login)

@@ -10,12 +10,14 @@
 
 	<div class="tab-content" id="tabs">
 
-	  <div class="tab-pane fade active" id="waiting">
+	  <div class="tab-pane fade in active" id="waiting">
+	  	 
 	    <div class="row">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3>Reservation Requests <span class="label label-info">Waiting </span></h3>
 					</div>
+
 					<table class="table" id="requests-list">  
 						<thead>
 							<tr>      
@@ -43,17 +45,18 @@
 								<%end%>
 							<%end%>
 						</tbody>
-					</table>
+					</table> 
 					<%= will_paginate @waiting_list %>
 				</div>
   		</div>
-  	</div>
+  		
+  	 </div>
 
-  	<div class="tab-pane fade active" id="waiting">
-	    <div class="row">
+  	<div class="tab-pane fade" id="permitted">
+	     <div class="row">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3>Reservation Requests <span class="label label-green">Permitted </span></h3>
+						<h3>Reservation Requests <span class="label label-success">Permitted </span></h3>
 					</div>
 					<table class="table" id="requests-list">  
 						<thead>
@@ -82,19 +85,19 @@
 								<%end%>
 							<%end%>
 						</tbody>
-					</table>
+					</table> 
 					<%= will_paginate @permitted_list %>
 				</div>
   		</div>
   	</div>
 
-  	<div class="tab-pane fade active" id="waiting">
+  	<div class="tab-pane fade" id="rejected">
 	    <div class="row">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3>Reservation Requests <span class="label label-danger">Rejected </span></h3>
 					</div>
-					<table class="table" id="requests-list">  
+				 	<table class="table" id="requests-list">  
 						<thead>
 							<tr>      
 								<th>Week</th>
@@ -121,13 +124,13 @@
 								<%end%>
 							<%end%>
 						</tbody>
-					</table>
+					</table> 
 					<%= will_paginate @rejected_list %>
 				</div>
   		</div>
   	</div>
 
-  	<div class="tab-pane fade active" id="waiting">
+  	<div class="tab-pane fade" id="cancelled">
 	    <div class="row">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -167,22 +170,3 @@
   	</div>
 
 
-<!-- <nav>
-  <ul class="pagination">
-	<li>
-	  <a href="#" aria-label="Previous">
-		<span aria-hidden="true">&laquo;</span>
-	  </a>
-	</li>
-	<li><a href="#">1</a></li>
-	<li><a href="#">2</a></li>
-	<li><a href="#">3</a></li>
-	<li><a href="#">4</a></li>
-	<li><a href="#">5</a></li>
-	<li>
-	  <a href="#" aria-label="Next">
-		<span aria-hidden="true">&raquo;</span>
-	  </a>
-	</li>
-  </ul>
-</nav> -->

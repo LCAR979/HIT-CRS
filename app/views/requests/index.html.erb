@@ -3,8 +3,7 @@
 
   <% @all_requests.each do |request| %> 
   <tr>
-        <% if request.status == 3%> <!-- status :wait -->
-            <!-- <td>Room status: waiting </td> -->
+        <% if request.status == 3%> 
             <td>Week: <%= request.week %></td> 
             <td>Building: <%= @buildings[request.building] %></td>
             <td>Location: <%= request.location %></td>
