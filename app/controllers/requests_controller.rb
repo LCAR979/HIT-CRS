@@ -90,7 +90,7 @@ class RequestsController < ApplicationController
 	    	@applicant.cancel_num = @applicant.cancel_num + 1
 	    	@applicant.save
 	    	if @applicant.cancel_num == 4
-	    		# do some thing
+	    		redirect_to '/applicants/'+@applicant.id.to_s + '/shut_down'
 	    	end
 	    	#@room.save
 	    end

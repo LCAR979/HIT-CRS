@@ -57,7 +57,7 @@ class Staff < ActiveRecord::Base
 
 	def email_active
 		self.status = 1
-		self.confirm_token = nil
+		#self.confirm_token = nil
 	end
 
 

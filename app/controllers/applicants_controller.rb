@@ -92,6 +92,7 @@ class ApplicantsController < ApplicationController
 	def shut_down
 		@applicant = Applicant.find(params[:id])
 		@applicant.update_attributes('status'=>2)
+		log_out
 		redirect_to '/index'
 	end
 	

@@ -52,12 +52,12 @@
     </table>
   </div>
 </div>
+
 <% str='/staffs/requestProc/'+@request.id.to_s%>
 <div class="row">
   <div class="col-xs-offset-3 col-xs-6" >
           <%= link_to 'Audit', str,
-              class: "btn btn-primary", role:"button", :method => :get %>   
-    <%end%>  
+              class: "btn btn-primary", role:"button", :method => :get %>     
   </div>
 </div>
 <%= render 'layouts/home_btn' %>
