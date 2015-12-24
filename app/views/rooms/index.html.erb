@@ -78,7 +78,8 @@
 						<%if current_group == "Applicant" %>
 						  <% /day(\d)course(\d{1,2})/ =~ attr %>
 						  <%str="/applicants/"+@applicant.id.to_s+"/rooms/"+room.id.to_s+"/"+$1.to_s+"/"+$2.to_s+"/"%>
-					  	<a href=<%=str%> >a</a>
+					  	<a href=<%=str%> >R</a>
+					  	<!-- <button><a href=<%=str%> >R</a></button> -->
 					  <% end %>
 				  </td>
 				<% elsif room.send(attr) ==1 %> <!-- status: class -->

@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/index">
+      <a class="site-logo" href="/index">
         <img alt="Brand" src="/assets/logo.png"></a>
     </div> <!-- /.navbar header  -->
 
@@ -34,7 +34,7 @@
 				<li><a href="/feature">Feature</a></li>
 				<li><a href="/help">Help</a></li>
 				<li><a href="/about">About</a></li>
-        <% if signed_in? %>
+        <% if false %>
           <li><a href="#">Requests             
             <% if current_user.unread != 0 %>
               <span class="badge">  <%= current_user.unread %></span>
