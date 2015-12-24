@@ -17,7 +17,7 @@
         <tbody>
           <% if @myrequests != nil %>
             <% @myrequests.each do |request| %> 
-              <% if request.status ==3%> 
+              <% if request.status ==2%> 
                 <tr>                              
                   <td><%= request.week %></td> 
                   <td><%= @days[request.day] %></td>
@@ -35,3 +35,5 @@
     </div>
   </div>
 </div>
+
+<%= render 'layouts/home_btn' %>

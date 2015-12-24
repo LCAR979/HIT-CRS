@@ -1,51 +1,52 @@
+<% @roomsize = Request.roomsize %>
+<% @buildings = Request.buildings %>
+
 <%if @room%>	
-	
 	<p>Location: <%=@room.location%></p>
 	<p>Building: <%=@buildings[@room.building]%></p>
 	<p>Size: <%=@roomsize[@room.size]%></p>
-<table id="room-list" class="col-lg-12 ">
-	<tr>
-		<td class="col-lg-1-5">Day</td>
-		<td class="col-lg-1-5">Mon</td>
-		<td class="col-lg-1-5">Tues</td>
-		<td class="col-lg-1-5">Wed</td>
-		<td class="col-lg-1-5">Thur</td>
-		<td class="col-lg-1-5">Fri</td>
-		<td class="col-lg-1-5">Sat</td>
-		<td class="col-lg-1-5">Sun</td>	
-	</tr>
-	<tr >
-		<td class="col-lg-1-5">Course</td>
-		<% 7.times do %>
-			<td class="col-lg-1-5 ">
-				<table class="nest-table"><tr>
-					<td class="cell"> 1</td>
-					<td class="cell"> 3</td>
-					<td class="cell"> 5</td>
-					<td class="cell"> 7</td>
-					<td class="cell"> 9</td>
-					<td class="cell"> 11</td>
-				</tr></table>
-			</td>
-		<% end %>
-	</tr>
-
-	<tr>
-		<% @attributes.each do |attr| %>
-			<% if @room.send(attr) == 0%>  <!-- status: free-->
-			  <td class="cell-free cell">
-			  </td>
-			<% elsif @room.send(attr) ==1 %> <!-- status: class -->
-			  <td class="cell-class cell"></td>
-			<% elsif @room.send(attr) ==2 %> <!-- status: wait -->
-			  <td class="cell-wait cell"></td>
-			<% else %> 						<!-- status: resvered -->
-			  <td class="cell-reserved cell"></td>
+	<table id="room-list" class="col-lg-12 ">
+		<tr>
+			<td class="col-lg-1-5">Day</td>
+			<td class="col-lg-1-5">Mon</td>
+			<td class="col-lg-1-5">Tues</td>
+			<td class="col-lg-1-5">Wed</td>
+			<td class="col-lg-1-5">Thur</td>
+			<td class="col-lg-1-5">Fri</td>
+			<td class="col-lg-1-5">Sat</td>
+			<td class="col-lg-1-5">Sun</td>	
+		</tr>
+		<tr >
+			<td class="col-lg-1-5">Course</td>
+			<% 7.times do %>
+				<td class="col-lg-1-5 ">
+					<table class="nest-table"><tr>
+						<td class="cell"> 1</td>
+						<td class="cell"> 3</td>
+						<td class="cell"> 5</td>
+						<td class="cell"> 7</td>
+						<td class="cell"> 9</td>
+						<td class="cell"> 11</td>
+					</tr></table>
+				</td>
 			<% end %>
-		<%end%>
-	</tr>
+		</tr>
+		<tr>
+			<% @attributes.each do |attr| %>
+				<% if @room.send(attr) == 0%>  <!-- status: free-->
+				  <td class="cell-free cell">
+				  </td>
+				<% elsif @room.send(attr) ==1 %> <!-- status: class -->
+				  <td class="cell-class cell"></td>
+				<% elsif @room.send(attr) ==2 %> <!-- status: wait -->
+				  <td class="cell-wait cell"></td>
+				<% else %> 						<!-- status: resvered -->
+				  <td class="cell-reserved cell"></td>
+				<% end %>
+			<%end%>
+		</tr>
 <%else%>
 	<% flash[:info] = "No such room" %>
 	<%= render 'layouts/notice' %>
-	<%= render 'layouts/home_btn' %>
 <%end%>
+<%= render 'layouts/home_btn' %>

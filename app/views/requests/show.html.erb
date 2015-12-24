@@ -1,19 +1,63 @@
-<p>
-  <b>Room:</b>
-  location:
-  <%= @request.location %>
-</p>
+<% @buildings = Request.buildings %>
+<% @days = Request.days %>
+<% @roomsize = Request.roomsize %>
+<% @media = Request.media %>
+<div class="col-lg-8 col-lg-offset-2">
+  <div class="panel panel-primary ">
+    <div class="panel-heading ">Reservation details</div>
 
-<p>
-  <b>Size:</b>
-  <%= @roomsize[@request.size] %>
-</p>
-<p>
-  <b> Building</b>
-	<%= @buildings[@request.building]%>
-</p>
-
+    <table class="table">
+      <tbody>
+        <tr class="row"> 
+          <td class="col-xs-5"> Week </td> 
+          <td class="col-xs-7"> <%= @request.week %></td>
+        </tr>
+        <tr class="row"> 
+          <td class="col-xs-5"> Day </td> 
+          <td class="col-xs-7"> <%= @days[@request.day] %></td>
+        </tr>
+        <tr class="row"> 
+          <td class="col-xs-5"> Time </td> 
+          <td class="col-xs-7"> Course <%= @request.time %> ~ Course <%= @request.time + 1 %>
+          </td>
+        </tr>
+        <tr class="row"> 
+          <td class="col-xs-5"> Building </td> 
+          <td class="col-xs-7"> <%= @buildings[@request.building] %></td>
+        </tr>
+        <tr class="row"> 
+          <td class="col-xs-5"> Room</td> 
+          <td class="col-xs-7"> <%= @request.location %></td>
+        </tr>
+        <tr class="row"> 
+          <td class="col-xs-5"> Size </td> 
+          <td class="col-xs-7"> <%= @request.size %></td>
+        </tr>
+        <tr class="row"> 
+          <td class="col-xs-5"> Media</td> 
+          <td class="col-xs-7"> 
+          	<% if @request.media==true %>
+          		<%= "Use" %>
+          	<% else %>
+          		<%= "Not use" %>
+          	<% end %>
+          </td>
+        </tr>
+        <tr class="row"> 
+          <td class="col-xs-5"> Discription</td> 
+          <td class="col-xs-7"> <%= @request.description %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 <% str='/staffs/requestProc/'+@request.id.to_s%>
-
-<td><%= link_to 'Audit', str,:method => :get%></td>
-<%= link_to 'Back', rooms_path %>
+<div class="row">
+  <div class="col-xs-offset-3 col-xs-6" >
+          <%= link_to 'Audit', str,
+              class: "btn btn-primary", role:"button", :method => :get %>   
+    <%end%>  
+  </div>
+</div>
+<%= render 'layouts/home_btn' %>

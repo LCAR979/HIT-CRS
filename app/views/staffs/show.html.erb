@@ -23,9 +23,16 @@
 
       <div class="row">
         <div class="col-lg-5 jumbotron">
-           <p>Account Settings</p>
+           <p>Account settings</p>
            <h5>Reset password, change avater and delete your account</h5>
            <%= link_to 'Settings', '/staffs/'+@staff.id.to_s+'/setting/', 
+            class: "btn btn-primary", role:"button" %>
+        </div>
+
+        <div class="col-lg-5 col-lg-offset-1 jumbotron">
+           <p>Upload room status data</p>
+           <h5>Upload excel files to create room using record</h5>
+           <%= link_to 'Upload', '/staffs/'+@staff.id.to_s+'/uploadrooms/', 
             class: "btn btn-primary", role:"button" %>
         </div>
       </div>

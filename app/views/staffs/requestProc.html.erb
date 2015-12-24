@@ -59,9 +59,25 @@
 </div>
 
 <%str = '/staffs/audit/'+@request.id.to_s%>
-<%=form_for @request, :url => str  do |r|%>
-		<%=r.label :comment %><br/>
-		<%=r.text_area :comment %>
-		<%=r.select :status, [['permited',1],['rejected',2]] %>
-		<%=r.submit "Audit a new request"%>
-<%end%>
+<%=form_for @request, url: str,:html => {class:'form-horizontal col-lg-12', 'role'=>'form', 'data-toggle'=>'validator'}  do |r|%>
+
+  <div class="form-group">
+    <%=r.label :comment, class:"control-label col-lg-2"  %>
+    <div class="col-lg-10">
+      <%=r.text_area :comment , class:"form-control",placeholder:"Comment" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-10 selectContainer">
+        <%=r.select :status,  [['permited',0],['rejected',1]], class:"form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="control-label col-lg-2"></div>
+        <div class="col-lg-10">
+          <%=r.submit "Audit", class:"btn btn-info"%>
+        </div>
+  </div>
+<% end %>
+
+<%= render 'layouts/home_btn' %>

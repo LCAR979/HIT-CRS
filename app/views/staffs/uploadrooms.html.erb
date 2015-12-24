@@ -1,7 +1,17 @@
 <div>
-  <%str="/staffs/"+@staff.id.to_s+"/import"%>
-  <%= form_for @staff, url:{action: "import"}, :html => {:multipart => true} do |f| %>
-    <%= f.file_field :file %>
-    <%= f.submit "Import file" %>
+  <%= form_for @staff, url:{action: "import"}, :html => {:multipart => true,class:'form-horizontal col-lg-8'} do |f| %>
+    <div class="form-group row">
+      <%=f.label :file, class:"control-label col-lg-2"  %>
+      <div class="col-lg-10">
+        <%=f.file_field :file %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-xs-offset-1 col-xs-4">
+        <%=f.submit "Upload", class:"btn btn-info"%>
+      </div>
+    </div>
   <% end %>
 </div>
+
+<%= render 'layouts/home_btn' %>

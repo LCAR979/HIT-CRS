@@ -103,7 +103,7 @@ class ApplicantsController < ApplicationController
 			applicant.save	 
 			log_in applicant     
 			flash[:success] = "Welcome to HIT-CRS! Your email has been confirmed" 	      
-			redirect_to applicant_path(@applicant) 	    
+			redirect_to '/login' 	    
 		else 	      
 			flash[:error] = "Sorry. User does not exist." 	      
 			redirect_to '/signup' 	    

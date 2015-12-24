@@ -48,7 +48,7 @@
 		<td class="col-md-0-5">&nbsp;</td>
 		<% 7.times do %>
 			<td class="col-md-1-5 ">
-				<table class="nest-table"><tr>
+				<table class="day-table" id="day-table-head"><tr>
 					<td class="cell"> 1</td>
 					<td class="cell"> 3</td>
 					<td class="cell"> 5</td>
@@ -74,7 +74,7 @@
 				<% end %>
 
 				<% if room.send(attr) == 0%>  <!-- status: free-->
-					<td class="cell-free cell">
+				  <td class="cell-free cell">
 						<%if current_group == "Applicant" %>
 						  <% /day(\d)course(\d{1,2})/ =~ attr %>
 						  <%str="/applicants/"+@applicant.id.to_s+"/rooms/"+room.id.to_s+"/"+$1.to_s+"/"+$2.to_s+"/"%>
@@ -85,7 +85,7 @@
 				  <td class="cell-class cell"></td>
 				<% elsif room.send(attr) ==2 %> <!-- status: wait -->
 				  <td class="cell-wait cell"></td>
-				<% else %> 						<!-- status: resvered -->
+				<% else %> 						<!-- status: reserved -->
 				  <td class="cell-reserved cell"></td>
 				<% end %>
 
@@ -100,3 +100,17 @@
 		</tr>	
 	<%end%>
 </table>
+<div class="col-md-6 col-md-offset-3">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>Status</h3>
+		</div>
+		<div class="panel-body">
+			 <h4><span class="label label-info">Free </span>
+			 <span class="label label-success">Reserved</span>
+			 <span class="label label-danger">Waiting </span>
+			 <span class="label label-default">Class </span></h4>
+		</div>
+	</div>
+</div>
+<%= render 'layouts/home_btn' %>

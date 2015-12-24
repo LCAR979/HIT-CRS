@@ -124,7 +124,7 @@ class StaffsController < ApplicationController
 			staff.save   
 			log_in staff   
 			flash[:success] = "Welcome to HIT-CRS! Your email has been confirmed." 	      
-			redirect_to staff_path(staff)	    
+			redirect_to '/login'   
 		else 	      
 			flash[:error] = "Sorry. User does not exist." 	      
 			redirect_to '/signup' 	    
