@@ -12,6 +12,6 @@ class StaticPagesController < ApplicationController
     render :layout => "form"
   end
   def guest
-    redirect_to '/rooms/index'
+    redirect_to '/rooms'
   end 
 end

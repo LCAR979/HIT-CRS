@@ -35,12 +35,12 @@
 		<td class="col-md-0-5">Room</td>
 		<td class="col-md-0-5">Week</td>
 		<td class="col-md-1-5">Mon</td>
-		<td class="col-md-1-5">Tues</td>
-		<td class="col-md-1-5">Wed</td>
-		<td class="col-md-1-5">Thur</td>
-		<td class="col-md-1-5">Fri</td>
-		<td class="col-md-1-5">Sat</td>
-		<td class="col-md-1-5">Sun</td>	
+		<td class="col-md-1-5">Tue.</td>
+		<td class="col-md-1-5">Wed.</td>
+		<td class="col-md-1-5">Thur.</td>
+		<td class="col-md-1-5">Fri.</td>
+		<td class="col-md-1-5">Sat.</td>
+		<td class="col-md-1-5">Sun.</td>	
 	</tr>
 	<tr >
 		<td class="col-md-0-5">&nbsp;</td>
@@ -61,7 +61,7 @@
 	</tr>
 
 	<% @rooms.each do |room| %>
-		<tr ><% i=0 %><% j=0 %>
+		<tr ><% i=0 %>
 			<td class="col-md-0-5"><%= @buildings[room.building] %></td>
 			<td class="col-md-0-5"><%=room.location%></td>
 			<td class="col-md-0-5"><%=room.week%></td>
@@ -72,13 +72,12 @@
 					<td class="col-md-1-5 ">
 					<table class="day-table"><tr>
 				<% end %>
-
 				<% if room.send(attr) == 0%>  <!-- status: free-->
-				  <td class="cell-free cell">
+				  <td class="cell-free cell">&nbsp;
 						<%if current_group == "Applicant" %>
 						  <% /day(\d)course(\d{1,2})/ =~ attr %>
 						  <%str="/applicants/"+@applicant.id.to_s+"/rooms/"+room.id.to_s+"/"+$1.to_s+"/"+$2.to_s+"/"%>
-					  	<a href=<%=str%> >&nbsp;r</a>
+					  	<a href=<%=str%> >r</a>
 					  	<!-- <button><a href=<%=str%> >R</a></button> -->
 					  <% end %>
 				  </td>
@@ -89,14 +88,12 @@
 				<% else %> 						<!-- status: reserved -->
 				  <td class="cell-reserved cell">&nbsp;</td>
 				<% end %>
-
-
-				<% if j%6 == 5 %>
+				<% if i%6 == 5 %>
 					</tr></table>
 					</td>
 				<% end %>
 				<% i=i+1 %>
-				<% j=j+1 %>
+				
 		  	<% end %>
 		</tr>	
 	<%end%>

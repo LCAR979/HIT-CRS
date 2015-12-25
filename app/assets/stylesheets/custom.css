@@ -4,6 +4,7 @@ html{
 body{
 	font-family:'Open Sans','Helvetica Neue',Arial,'Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
   padding-top: 60px;
+  padding-bottom: 70px;
 }
 section{
 	overflow:auto;

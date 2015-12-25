@@ -130,6 +130,9 @@ section {
 .inner-title {
   text-shadow: 5px 6px #1eb368;
 }
+section.move-on, section.move-down, section.move-up{
+	background-size: 100% 100%;
+}
 
 #index-1
 {

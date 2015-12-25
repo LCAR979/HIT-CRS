@@ -88,5 +88,19 @@
 	<% flash[:info] = "No such room" %>
 	<%= render 'layouts/notice' %>
 <%end%>
-
-<%= render 'layouts/home_btn' %>
+<div class="row">
+  <div class="col-xs-offset-5 col-xs-4" style='margin-top:20px;margin-bottom:10px;'>
+  	<% if signed_in? %>
+      <% if current_group == "Applicant"%>
+          <%= link_to 'Home', applicant_path(current_user),
+              class: "btn btn-primary", role:"button" %>
+      <% else %>
+          <%= link_to 'Home', staff_path(current_user),
+              class: "btn btn-primary", role:"button" %>
+      <% end %>
+    <% else %>
+    	<%= link_to 'Back', '/guest',
+              class: "btn btn-primary", role:"button" %>
+    <%end%>  
+  </div>
+</div>
